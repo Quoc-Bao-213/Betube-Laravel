@@ -1,6 +1,10 @@
 <?php
 
+use App\Playlist;
 use Illuminate\Database\Seeder;
+use App\User;
+use App\VideoType;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +15,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        factory(User::class)->create([
+            'email' => 'taquocbao.it.99@gmail.com'
+        ]);
+
+        factory(VideoType::class)->create([
+            'name' => 'Âm Nhạc'
+        ]);
+
+        factory(VideoType::class)->create([
+            'name' => 'Trò Chơi'
+        ]);
+
+        factory(VideoType::class)->create([
+            'name' => 'Tin Tức'
+        ]);
+
+        factory(VideoType::class)->create([
+            'name' => 'Phim Ảnh'
+        ]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateSubscriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->unique();
-            $table->string('name');
-            $table->string('email');
-            $table->string('password');
-            $table->string('channel_name');
-            $table->text('description')->nullable();
+        Schema::create('subscriptions', function (Blueprint $table) {
+            $table->uuid('user_id')->unique();
+            $table->uuid('user_subscribe')->unique();
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('subscriptions');
     }
 }
