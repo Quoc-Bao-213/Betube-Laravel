@@ -15,24 +15,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class)->create([
-            'email' => 'taquocbao.it.99@gmail.com'
-        ]);
+        // factory(User::class)->create([
+        //     'email' => 'taquocbao.it.99@gmail.com'
+        // ]);
 
-        factory(VideoType::class)->create([
-            'name' => 'Âm Nhạc'
-        ]);
+        // factory(VideoType::class)->create([
+        //     'name' => 'Âm Nhạc'
+        // ]);
 
-        factory(VideoType::class)->create([
-            'name' => 'Trò Chơi'
-        ]);
+        // factory(VideoType::class)->create([
+        //     'name' => 'Trò Chơi'
+        // ]);
 
-        factory(VideoType::class)->create([
-            'name' => 'Tin Tức'
-        ]);
+        // factory(VideoType::class)->create([
+        //     'name' => 'Tin Tức'
+        // ]);
 
-        factory(VideoType::class)->create([
-            'name' => 'Phim Ảnh'
-        ]);
+        // factory(VideoType::class)->create([
+        //     'name' => 'Phim Ảnh'
+        // ]);
     }
 }

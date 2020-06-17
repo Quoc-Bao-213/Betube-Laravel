@@ -17,6 +17,10 @@ class CreateFK extends Migration
             $table->foreign('user_id')->references('id')->on('users');
         });
 
+        Schema::table('subscriptions', function (Blueprint $table) {
+            $table->foreign('user_subscribe')->references('id')->on('users');
+        });
+
         Schema::table('videos', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
         });
