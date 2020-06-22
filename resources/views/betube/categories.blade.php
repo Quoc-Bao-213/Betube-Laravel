@@ -43,7 +43,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="#" class="hover-posts">
                <span><i class="fa fa-play"></i>Watch Video</span>
             </a>
         </div>
@@ -55,7 +55,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="#" class="hover-posts">
                 <span><i class="fa fa-play"></i>Watch Video</span>
             </a>
         </div>
@@ -67,7 +67,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="#" class="hover-posts">
                 <span><i class="fa fa-play"></i>Watch Video</span>
             </a>
         </div>
@@ -79,7 +79,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="#" class="hover-posts">
                 <span><i class="fa fa-play"></i>Watch Video</span>
             </a>
         </div>
@@ -91,7 +91,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="#" class="hover-posts">
                 <span><i class="fa fa-play"></i>Watch Video</span>
             </a>
         </div>
@@ -103,7 +103,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="#" class="hover-posts">
                 <span><i class="fa fa-play"></i>Watch Video</span>
             </a>
         </div>

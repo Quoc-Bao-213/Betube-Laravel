@@ -50,7 +50,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="javascript:void(0)" class="hover-posts">
                 <span><i class="fa fa-play"></i>watch video</span>
             </a>
         </div>
@@ -62,7 +62,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="javascript:void(0)" class="hover-posts">
                 <span><i class="fa fa-play"></i>watch video</span>
             </a>
         </div>
@@ -74,7 +74,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="javascript:void(0)" class="hover-posts">
                 <span><i class="fa fa-play"></i>watch video</span>
             </a>
         </div>
@@ -86,7 +86,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="javascript:void(0)" class="hover-posts">
                 <span><i class="fa fa-play"></i>watch video</span>
             </a>
         </div>
@@ -98,7 +98,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="javascript:void(0)" class="hover-posts">
                 <span><i class="fa fa-play"></i>watch video</span>
             </a>
         </div>
@@ -110,7 +110,7 @@
                     <p>Movies Trailer</p>
                 </figcaption>
             </figure>
-            <a href="single-video-v1.html" class="hover-posts">
+            <a href="javascript:void(0)" class="hover-posts">
                 <span><i class="fa fa-play"></i>watch video</span>
             </a>
         </div>
@@ -135,84 +135,86 @@
                 </div>
                 </div>
             </div>
+
+            {{-- ÍT NHẤT 7 CATEGORIES ĐỂ CHẠY SLIDE --}}
             <!-- category carousel -->
             <div id="owl-demo-cat" class="owl-carousel carousel" data-car-length="6" data-items="6" data-loop="true" data-nav="false" data-autoplay="true" data-autoplay-timeout="4000" data-auto-width="true" data-margin="10" data-dots="false">
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
                         <img src="images/category/category1.png" alt="carousel">
-                        <a href="categories.html" class="hover-posts">
+                        <a href="#" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
                     </figure>
-                    <h6><a href="categories.html">Entertainment</a></h6>
+                    <h6><a href="#">Entertainment</a></h6>
                 </div>
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
                         <img src="images/category/category2.png" alt="carousel">
-                        <a href="categories.html" class="hover-posts">
+                        <a href="#" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
                     </figure>
-                    <h6><a href="categories.html">Technology</a></h6>
+                    <h6><a href="#">Technology</a></h6>
                 </div>
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
                         <img src="images/category/category3.png" alt="carousel">
-                        <a href="categories.html" class="hover-posts">
+                        <a href="#" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
                     </figure>
-                    <h6><a href="categories.html">Fashion &amp; Beauty</a></h6>
+                    <h6><a href="#">Fashion &amp; Beauty</a></h6>
                 </div>
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
                         <img src="images/category/category4.png" alt="carousel">
-                        <a href="categories.html" class="hover-posts">
+                        <a href="#" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
                     </figure>
-                    <h6><a href="categories.html">Sports</a></h6>
+                    <h6><a href="#">Sports</a></h6>
                 </div>
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
                         <img src="images/category/category5.png" alt="carousel">
-                        <a href="categories.html" class="hover-posts">
+                        <a href="#" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
                     </figure>
-                    <h6><a href="categories.html">Foods &amp; Drinks</a></h6>
+                    <h6><a href="#">Foods &amp; Drinks</a></h6>
                 </div>
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
                         <img src="images/category/category6.png" alt="carousel">
-                        <a href="categories.html" class="hover-posts">
+                        <a href="#" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
                     </figure>
-                    <h6><a href="categories.html">Automotive</a></h6>
+                    <h6><a href="#">Automotive</a></h6>
                 </div>
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
                         <img src="images/category/category4.png" alt="carousel">
-                        <a href="categories.html" class="hover-posts">
+                        <a href="#" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
                     </figure>
-                    <h6><a href="categories.html">Sports</a></h6>
+                    <h6><a href="#">Sports</a></h6>
                 </div>
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
                         <img src="images/category/category5.png" alt="carousel">
-                        <a href="categories.html" class="hover-posts">
+                        <a href="#" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
                     </figure>
-                    <h6><a href="categories.html">Foods &amp; Drinks</a></h6>
+                    <h6><a href="#">Foods &amp; Drinks</a></h6>
                 </div>
             </div><!-- end carousel -->
             <div class="row collapse">
                 <div class="large-12 columns text-center row-btn">
-                    <a href="categories.html" class="button radius">View All Categories</a>
+                    <a href="#" class="button radius">View All Categories</a> 
                 </div>
             </div>
         </div>
@@ -221,6 +223,7 @@
 
 <!-- main content -->
 <section class="content">
+    {{-- SHOW ALL VIDEO THEO TRUONG CREATED_AT --}}
     <!-- newest video -->
     <div class="main-heading">
         <div class="row secBg padding-14">
@@ -241,7 +244,8 @@
     <div class="row secBg">
         <div class="large-12 columns">
             <div class="row column head-text clearfix">
-                <p class="pull-left">All Videos : <span>1,862 Videos posted</span></p>
+                {{-- COUNT VIDEO (NẾU CÓ THỂ HOẶC XÓA) --}}
+                <p class="pull-left">All Videos : <span>1,862 Videos posted</span></p> 
                 <div class="grid-system pull-right show-for-large">
                     <a class="secondary-button current grid-default" href="#"><i class="fa fa-th"></i></a>
                     <a class="secondary-button grid-medium" href="#"><i class="fa fa-th-large"></i></a>
@@ -837,9 +841,9 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center row-btn">
+            {{-- <div class="text-center row-btn">
                 <a class="button radius" href="all-video.html">View All Video</a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

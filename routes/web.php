@@ -15,8 +15,69 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Route::get('/', function () {
+// Controller cho homepage
+// Controller cho categories
+// Controller cho mỗi profile
+// Controller cho login -> middleware auth: chỉ xem đc home còn lại ko 
+// Controller cho register
+
+// --- TODOS --- 
+// 1. Hoàn chỉnh hompage
+// 2. Hoàn chỉnh profile 
+// 3. explore sidebar (set active)
+
+// route tạm 
+
+// Route::get('/admin', function () {
+//     return view('home-admin');
+// });
+
+// Route::get('/loginadmin', function () {
+//     return view('admin.auth.login');
+// });
+
+// Route::get('/video', function () {
+//     return view('betube.video');
+// });
+
+// Route::get('/categories', function () {
+//     return view('betube.categories');
+// });
+
+// Route::get('/login', function () {
+//     return view('betube.auth.login');
+// });
+
+// Route::get('/register', function () {
+//     return view('betube.auth.register');
+// });
+
+// Route::get('/forgotpass', function () {
+//     return view('betube.auth.forgot-pass');
+// });
+
+// ON WORK (USE FOR TEST)
+// Route::get('/about-me', function () {
+//     return view('betube.profile.about-me');
+// });
+
+// Route::get('/setting', function () {
+//     return view('betube.profile.setting');
+// });
+
+// Route::get('/favorite', function () {
+//     return view('betube.profile.favorite');
+// });
+
+// Route::get('/follower', function () {
+//     return view('betube.profile.follower');
+// });
+
+// Route::get('/profile-video', function () {
 //     return view('betube.profile.profile-video');
 // });
 
-// TEST
+// Route::get('/upload', function () {
+//     return view('betube.profile.upload');
+// });
+// END

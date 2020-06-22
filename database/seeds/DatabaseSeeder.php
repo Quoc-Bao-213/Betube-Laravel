@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // factory(User::class)->create([
-        //     'email' => 'taquocbao.it.99@gmail.com'
-        // ]);
+        factory(User::class)->create([
+            'email' => 'taquocbao.it.99@gmail.com'
+        ]);
 
         // factory(VideoType::class)->create([
         //     'name' => 'Âm Nhạc'

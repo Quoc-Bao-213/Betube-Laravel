@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(VideoType::class, function (Faker $faker) {
     return [
-        'name' => $faker->sentence(1)
+        'name' => $faker->sentence(3)
     ];
 });

@@ -16,7 +16,7 @@
                 <div class="top-button">
                     <ul class="menu float-right">
                         <li>
-                            <a href="submit-post.html">upload Video</a>
+                            <a href="#">upload Video</a>
                         </li>
                         <li class="dropdown-login">
                             <a class="loginReg" data-toggle="example-dropdown" href="#">login/Register</a>
@@ -79,8 +79,8 @@
                                 <li class="has-submenu" data-dropdown-menu="example1">
                                 <a href="#"><i class="fa fa-film"></i>Videos</a>                                     
                                 </li>
-                                <li><a href="categories.html"><i class="fa fa-th"></i>category</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>about</a></li>
+                                <li><a href="#"><i class="fa fa-th"></i>category</a></li>
+                                <li><a href="#"><i class="fa fa-user"></i>profile</a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i>contact</a></li>
                             </ul>
                         </div>

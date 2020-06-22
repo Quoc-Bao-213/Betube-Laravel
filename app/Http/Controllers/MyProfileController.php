@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
-class PlaylistController extends Controller
+class MyProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class PlaylistController extends Controller
      */
     public function index()
     {
-        //
+        // $users = User::all();
+
+        // return view('betube.profile.about-me', compact('users'));
     }
 
     /**
@@ -56,7 +59,7 @@ class PlaylistController extends Controller
      */
     public function edit($id)
     {
-        //
+        // return View('betube.profile.setting');
     }
 
     /**
