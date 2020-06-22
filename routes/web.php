@@ -15,8 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Route::get('/', function () {
-//     return view('betube.profile.profile-video');
-// });
+Route::get('/register','RegisterController@index')->name('register');
+Route::post('/register','RegisterController@register')->name('actionRegister');
 
-// TEST
+Route::get('/login','LoginUserController@index')->name('login')->middleware('guest');
+Route::post('/login','LoginUserController@login')->name('actionLogin');
+
+Route::middleware('auth')->group(function(){
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
+    
+});
+
