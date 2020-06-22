@@ -330,6 +330,20 @@ input[type=checkbox]:checked + .customLabel:before {
   font-size: 12px; }
   .top-button .menu li a:hover {
     background: #e96969; }
+
+  .top-button .menu .hi-user {
+    text-transform: none;  
+    display: block;
+    margin-bottom: 0.5rem;
+    background: #444 !important; 
+    color: #fff;
+    transition: all ease 0.5s;
+  }
+
+  .top-button .menu .hi-user:hover {
+    background: #e96969 !important;
+    color: #fff;
+  } 
 .top-button .menu li.dropdown-login {
   position: relative; }
   .top-button .menu li.dropdown-login .login-form {

@@ -28,8 +28,7 @@
                 <div class="row collapse borderBottom">
                     <div class="medium-6 large-centered medium-centered">
                         <div class="page-heading text-center">
-                            <h3>User login</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                            <h3 style="margin-bottom: 0">User login</h3>
                         </div>
                     </div>
                 </div>
@@ -65,20 +64,29 @@
                             <h5 class="text-center">Create your Account</h5>
                             <form method="post" data-abide novalidate>
                                 @csrf
-                                <div data-abide-error class="alert callout" style="display: none;">
+                                {{-- <div data-abide-error class="alert callout" style="display: none;">
                                     <p><i class="fa fa-exclamation-triangle"></i> There are some errors in your form.</p>
-                                </div>
+                                </div> --}}
+                                @if(session('error'))
+                                <p style="color: #e96969 !important; text-align: center; margin-bottom: 0.5rem">
+                                    {{ session('error') }}
+                                </p>
+                                @endif
+
+                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('email') }}</span>
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-user"></i></span>
                                     <input class="input-group-field" name="email" type="text" placeholder="Enter your email" >
                                     {{-- <span class="form-error">username is required</span> --}}
                                 </div>
 
+                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('password') }}</span>
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-lock"></i></span>
                                     <input type="password" id="password" name="password" placeholder="Enter your password" >
                                     {{-- <span class="form-error">password is required</span> --}}
                                 </div>
+
                                 <div class="checkbox">
                                     <input id="remember" type="checkbox" name="check" value="remember">
                                     <label class="customLabel" for="remember">Remember me</label>

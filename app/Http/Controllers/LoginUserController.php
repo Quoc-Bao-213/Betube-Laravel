@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginUserRequest;
 use Illuminate\Support\Facades\Auth;
 
 class LoginUserController extends Controller
@@ -12,7 +12,7 @@ class LoginUserController extends Controller
         return view('betube.auth.login');
     }
 
-    public function login(Request $request)
+    public function login(LoginUserRequest $request)
     {
         $email = $request->email;
         $password = $request->password;
@@ -21,7 +21,6 @@ class LoginUserController extends Controller
         {
             return redirect()->route('home');
         }
-        return redirect()->route('login');
-
+        return redirect()->back()->with('error',"Email or Password invalid!");
     }
 }

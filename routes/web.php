@@ -18,8 +18,6 @@ Auth::routes();
 // Controller cho homepage
 // Controller cho categories
 // Controller cho mỗi profile
-// Controller cho login -> middleware auth: chỉ xem đc home còn lại ko 
-// Controller cho register
 
 // --- TODOS --- 
 // 1. Hoàn chỉnh hompage
@@ -42,14 +40,6 @@ Auth::routes();
 
 // Route::get('/categories', function () {
 //     return view('betube.categories');
-// });
-
-// Route::get('/login', function () {
-//     return view('betube.auth.login');
-// });
-
-// Route::get('/register', function () {
-//     return view('betube.auth.register');
 // });
 
 // Route::get('/forgotpass', function () {
@@ -81,3 +71,17 @@ Auth::routes();
 //     return view('betube.profile.upload');
 // });
 // END
+
+Route::get('/register','RegisterController@index')->name('register');
+Route::post('/register','RegisterController@register')->name('actionRegister');
+
+Route::get('/login','LoginUserController@index')->name('login')->middleware('guest');
+Route::post('/login','LoginUserController@login')->name('actionLogin');
+
+Route::post('/logout','LoginUserController@logout')->name('actionLogout');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('auth')->group(function(){
+    
+});

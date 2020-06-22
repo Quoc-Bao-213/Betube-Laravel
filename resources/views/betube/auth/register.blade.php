@@ -28,9 +28,7 @@
                 <div class="row collapse borderBottom">
                     <div class="medium-6 large-centered medium-centered">
                         <div class="page-heading text-center">
-                            <h3>User Registeration</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s</p>
+                            <h3 style="margin-bottom: 0">User Registeration</h3>
                         </div>
                     </div>
                 </div>
@@ -65,42 +63,43 @@
                         <div class="register-form">
                             <h5 class="text-center">Create your Account</h5>
                             @if(session('success'))
-                            <p class="alert alert-success text-center" role="alert">
+                            <p style="color: #28a745 !important; text-align: center; margin-bottom: 0.5rem">
                                 {{ session('success') }}
                             </p>
                             @elseif(session('error'))
-                            <p class="alert alert-danger text-center" role="alert">
+                            <p style="color: #e96969 !important; text-align: center; margin-bottom: 0.5rem">
                                 {{ session('error') }}
                             </p>
                             @endif
                            
                             <form method="POST" data-abide novalidate>
                                 @csrf
-                                <div data-abide-error class="alert callout" style="display: none;">
+                                {{-- <div data-abide-error class="alert callout" style="display: none;">
                                     <p><i class="fa fa-exclamation-triangle"></i> There are some errors in your form.
                                     </p>
-                                </div>
-                                {{-- <div class="input-group">
-                                    <span class="input-group-label"><i class="fa fa-user"></i></span>
-                                    <input class="input-group-field" type="text" name="username" placeholder="Enter your username" required>
                                 </div> --}}
 
+                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('email') }}</span>
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
                                     <input class="input-group-field" name="email" type="email"
                                         placeholder="Enter your email" >
                                 </div>
-
+                               
+                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('password') }}</span>
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-lock"></i></span>
                                     <input type="password" id="password" name="password"
                                         placeholder="Enter your password" >
                                 </div>
+
+                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('retype_password') }}</span>
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-lock"></i></span>
                                     <input type="password" name="retype_password" placeholder="Re-type your password">
                                 </div>
-                                <span class="form-error">your email is invalid</span>
+
+                                {{-- <span class="form-error">your email is invalid</span> --}}
                                 <button class="button expanded" type="submit" name="submit">register Now</button>
                                 <p class="loginclick"> <a href="login.html">Login here</a><a href="login.html">Already
                                         have acoount?</a></p>

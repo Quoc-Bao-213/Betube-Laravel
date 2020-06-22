@@ -18,18 +18,29 @@
                         <li>
                             <a href="#">upload Video</a>
                         </li>
+                        @if(Auth::user())
+                        <li class="dropdown-login">
+                            <a href="#" class="loginReg" style="text-transform: none" data-toggle="example-dropdown">Hi! {{ Auth::user()->email }}</a>
+                            <div class="login-form">
+                                <a href="#" class="text-center hi-user">My Profile</a>
+                                
+                                <a href="{{ Auth::logout() }}" class="text-center hi-user">Logout</a>
+                            </div>
+                        </li>
+                        @else
                         <li class="dropdown-login">
                             <a class="loginReg" data-toggle="example-dropdown" href="#">login/Register</a>
                             <div class="login-form">
                                 <h6 class="text-center">Great to have you back!</h6>
-                                <form method="post">
+                                <form method="post" action="{{ route('actionLogin') }}">
+                                    @csrf
                                     <div class="input-group">
                                         <span class="input-group-label"><i class="fa fa-user"></i></span>
-                                        <input class="input-group-field" type="text" placeholder="Enter username">
+                                        <input class="input-group-field" name="email" type="email" placeholder="Enter email" required>
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                                        <input class="input-group-field" type="text" placeholder="Enter password">
+                                        <input class="input-group-field" name="password" type="password" placeholder="Enter password" required>
                                     </div>
                                     <div class="checkbox">
                                         <input id="check1" type="checkbox" name="check" value="check">
@@ -40,6 +51,7 @@
                                 <p class="text-center">New here? <a class="newaccount" href="login-register.html">Create a new Account</a></p>
                             </div>
                         </li>
+                        @endif
                     </ul>
                 </div>
             </div>
