@@ -1,7 +1,7 @@
 @extends('betube.layout.app')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/jquery.kyco.easyshare.css') }}">
+<link rel="stylesheet" href="{{ asset('css/jquery.kyco.easyshare.css') }}">
 @endsection
 
 @section('content')
@@ -18,8 +18,8 @@
             </nav>
         </div>
     </div>
-</section><!--end breadcrumbs-->
-
+</section>
+<!--end breadcrumbs-->
 <!-- registration -->
 <section class="registration">
     <div class="row secBg">
@@ -29,7 +29,8 @@
                     <div class="medium-6 large-centered medium-centered">
                         <div class="page-heading text-center">
                             <h3>User Registeration</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s</p>
                         </div>
                     </div>
                 </div>
@@ -63,31 +64,46 @@
                     <div class="large-4 medium-6 columns end">
                         <div class="register-form">
                             <h5 class="text-center">Create your Account</h5>
-                            <form method="post" data-abide novalidate>
+                            @if(session('success'))
+                            <p class="alert alert-success text-center" role="alert">
+                                {{ session('success') }}
+                            </p>
+                            @elseif(session('error'))
+                            <p class="alert alert-danger text-center" role="alert">
+                                {{ session('error') }}
+                            </p>
+                            @endif
+                           
+                            <form method="POST" data-abide novalidate>
+                                @csrf
                                 <div data-abide-error class="alert callout" style="display: none;">
-                                    <p><i class="fa fa-exclamation-triangle"></i> There are some errors in your form.</p>
+                                    <p><i class="fa fa-exclamation-triangle"></i> There are some errors in your form.
+                                    </p>
                                 </div>
-                                <div class="input-group">
+                                {{-- <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-user"></i></span>
-                                    <input class="input-group-field" type="text" placeholder="Enter your username" required>
-                                </div>
+                                    <input class="input-group-field" type="text" name="username" placeholder="Enter your username" required>
+                                </div> --}}
 
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
-                                    <input class="input-group-field" type="email" placeholder="Enter your email" required>
+                                    <input class="input-group-field" name="email" type="email"
+                                        placeholder="Enter your email" >
                                 </div>
 
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                                    <input type="password" id="password" placeholder="Enter your password" required>
+                                    <input type="password" id="password" name="password"
+                                        placeholder="Enter your password" >
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                                    <input type="password" placeholder="Re-type your password" required pattern="alpha_numeric" data-equalto="password">
+                                    <input type="password" name="retype_password" placeholder="Re-type your password">
                                 </div>
                                 <span class="form-error">your email is invalid</span>
                                 <button class="button expanded" type="submit" name="submit">register Now</button>
-                                <p class="loginclick"> <a href="login.html">Login here</a><a href="login.html">Already have acoount?</a></p>
+                                <p class="loginclick"> <a href="login.html">Login here</a><a href="login.html">Already
+                                        have acoount?</a></p>
                             </form>
                         </div>
                     </div>

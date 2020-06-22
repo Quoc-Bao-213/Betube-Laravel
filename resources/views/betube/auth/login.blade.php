@@ -64,19 +64,20 @@
                         <div class="register-form">
                             <h5 class="text-center">Create your Account</h5>
                             <form method="post" data-abide novalidate>
+                                @csrf
                                 <div data-abide-error class="alert callout" style="display: none;">
                                     <p><i class="fa fa-exclamation-triangle"></i> There are some errors in your form.</p>
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-user"></i></span>
-                                    <input class="input-group-field" type="text" placeholder="Enter your username" required>
-                                    <span class="form-error">username is required</span>
+                                    <input class="input-group-field" name="email" type="text" placeholder="Enter your email" >
+                                    {{-- <span class="form-error">username is required</span> --}}
                                 </div>
 
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                                    <input type="password" id="password" placeholder="Enter your password" required>
-                                    <span class="form-error">password is required</span>
+                                    <input type="password" id="password" name="password" placeholder="Enter your password" >
+                                    {{-- <span class="form-error">password is required</span> --}}
                                 </div>
                                 <div class="checkbox">
                                     <input id="remember" type="checkbox" name="check" value="remember">
