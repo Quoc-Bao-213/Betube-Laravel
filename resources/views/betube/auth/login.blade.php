@@ -61,7 +61,7 @@
                     </div>
                     <div class="large-4 medium-6 columns end">
                         <div class="register-form">
-                            <h5 class="text-center">Create your Account</h5>
+                            <h5 class="text-center">Login your Account</h5>
                             <form method="post" data-abide novalidate>
                                 @csrf
                                 {{-- <div data-abide-error class="alert callout" style="display: none;">

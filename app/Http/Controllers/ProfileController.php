@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class MyProfileController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,7 @@ class MyProfileController extends Controller
      */
     public function index()
     {
-        // $users = User::all();
-
-        // return view('betube.profile.about-me', compact('users'));
+    
     }
 
     /**
@@ -48,7 +48,8 @@ class MyProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return View('betube.profile.about-me',compact('user'));
     }
 
     /**
@@ -59,7 +60,8 @@ class MyProfileController extends Controller
      */
     public function edit($id)
     {
-        // return View('betube.profile.setting');
+        $user = User::find($id);
+        return view('betube.profile.setting',compact('user'));
     }
 
     /**
@@ -69,9 +71,18 @@ class MyProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProfileRequest $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->channel_name = $request->channel_name;
+        $user->description = $request->description;
+        $user->save();
+
+        return redirect()->back()->with('success','Update Successfully!');
     }
 
     /**

@@ -84,8 +84,14 @@
                 </div>
                 <div class="clearfix">
                     <div class="profile-author-name float-left">
-                        <h4>Joseph John</h4>
-                        <p>Join Date : <span>5 January 16</span></p>
+                        <h4>
+                            @if($user->channel_name)
+                                {{ $user->channel_name }}
+                            @else
+                            {{  $user->name }}
+                            @endif
+                        </h4>
+                        <p>Join Date : <span>{{ $user->created_at->toFormattedDateString() }}</span></p>
                     </div>
                     <div class="profile-author-stats float-right">
                         <ul class="menu">
@@ -144,54 +150,43 @@
                 <div class="large-12 columns">
                     <div class="heading">
                         <i class="fa fa-gears"></i>
-                        <h4>profile Settings</h4>
+                        <h4>Profile Settings</h4>
+                        @if(session('success'))
+                        <h5 style="color: #28a745 !important; text-align: center; margin-bottom: 0.5rem">
+                            {{ session('success') }}
+                        </h5>
+                        @endif
                     </div>
                     <div class="row">
                         <div class="large-12 columns">
                             <div class="setting-form">
-                                <form method="post">
+                                <form method="post" action="{{ route('action-upload-profile', Auth::user()->id ) }}">
+                                    @csrf
                                     <div class="setting-form-inner">
                                         <div class="row">
                                             <div class="large-12 columns">
                                                 <h6 class="borderBottom">Username Setting:</h6>
                                             </div>
                                             <div class="medium-6 columns">
-                                                <label>First Name:
-                                                    <input type="text" placeholder="enter your first name..">
+                                                <label> Name:
+                                                <input type="text" name="name" value="{{ $user->name }}" placeholder="Enter your name..">
                                                 </label>
                                             </div>
-                                            <div class="medium-6 columns">
+                                            {{-- <div class="medium-6 columns">
                                                 <label>Last Name:
                                                     <input type="text" placeholder="enter your last name..">
                                                 </label>
-                                            </div>
+                                            </div> --}}
                                             <div class="medium-6 columns">
-                                                <label>Nick Name:
-                                                    <input type="text" placeholder="enter your nick name..">
+                                                <label>Channel Name:
+                                                    <input type="text" name="channel_name" value="{{ $user->channel_name }}"  placeholder="Enter your channel name..">
                                                 </label>
                                             </div>
-                                            <div class="medium-6 columns">
+                                            {{-- <div class="medium-6 columns">
                                                 <label>Display Name:
                                                     <input type="text" placeholder="select your display name">
                                                 </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="setting-form-inner">
-                                        <div class="row">
-                                            <div class="large-12 columns">
-                                                <h6 class="borderBottom">Update Password:</h6>
-                                            </div>
-                                            <div class="medium-6 columns">
-                                                <label>New Password:
-                                                    <input type="password" placeholder="enter your new password..">
-                                                </label>
-                                            </div>
-                                            <div class="medium-6 columns">
-                                                <label>Retype Password:
-                                                    <input type="password" placeholder="enter your new password..">
-                                                </label>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                     <div class="setting-form-inner">
@@ -200,23 +195,25 @@
                                                 <h6 class="borderBottom">About Me:</h6>
                                             </div>
                                             <div class="medium-6 columns">
-                                                <label>Email ID:
-                                                    <input type="email" placeholder="enter your email address..">
+                                                <label>Email:
+                                                    <input type="email" name="email" value="{{ $user->email }}"  placeholder="Enter your email address..">
                                                 </label>
+                                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('email') }}</span>
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label>Website URL:
-                                                    <input type="url" placeholder="enter your website url..">
+                                                    <input type="url" placeholder="Enter your website url.." disabled>
                                                 </label>
                                             </div>
                                             <div class="medium-6 columns end">
-                                                <label>Phone No:
-                                                    <input type="tel" placeholder="enter your website url..">
+                                                <label>Phone:
+                                                <input type="text" name="phone" value="{{ $user->phone }}" placeholder="Enter your phone..">
                                                 </label>
+                                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('phone') }}</span>
                                             </div>
                                             <div class="medium-12 columns">
-                                                <label>Bio Description:
-                                                    <textarea></textarea>
+                                                <label>Description:
+                                                    <textarea name="description" value="{{ $user->description }}"></textarea>
                                                 </label>
                                             </div>
                                         </div>
@@ -228,48 +225,48 @@
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label>facebook:
-                                                    <input type="url" placeholder="enter your profile link..">
+                                                    <input type="url" placeholder="Enter your profile link.." disabled>
                                                 </label>
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label>twitter:
-                                                    <input type="url" placeholder="enter your profile link..">
+                                                    <input type="url" placeholder="Enter your profile link.." disabled>
                                                 </label>
                                             </div>
                                             <div class="medium-6 columns end">
                                                 <label>Google Plus:
-                                                    <input type="url" placeholder="enter your profile link..">
+                                                    <input type="url" placeholder="Enter your profile link.." disabled>
                                                 </label>
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label>Youtube:
-                                                    <input type="url" placeholder="enter your profile link..">
+                                                    <input type="url" placeholder="Enter your profile link.." disabled>
                                                 </label>
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label>vimeo:
-                                                    <input type="url" placeholder="enter your profile link..">
+                                                    <input type="url" placeholder="Enter your profile link.." disabled>
                                                 </label>
                                             </div>
                                             <div class="medium-6 columns end">
                                                 <label>Pinterest:
-                                                    <input type="url" placeholder="enter your profile link..">
+                                                    <input type="url" placeholder="Enter your profile link.." disabled>
                                                 </label>
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label>Instagram:
-                                                    <input type="url" placeholder="enter your profile link..">
+                                                    <input type="url" placeholder="Enter your profile link.." disabled>
                                                 </label>
                                             </div>
                                             <div class="medium-6 columns end">
                                                 <label>Linkedin:
-                                                    <input type="url" placeholder="enter your profile link..">
+                                                    <input type="url" placeholder="Enter your profile link.." disabled>
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="setting-form-inner">
-                                        <button class="button expanded" type="submit" name="setting">update now</button>
+                                        <button class="button expanded" type="submit">update now</button>
                                     </div>
                                 </form>
                             </div>

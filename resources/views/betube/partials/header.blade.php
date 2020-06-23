@@ -20,11 +20,13 @@
                         </li>
                         @if(Auth::user())
                         <li class="dropdown-login">
-                            <a href="#" class="loginReg" style="text-transform: none" data-toggle="example-dropdown">Hi! {{ Auth::user()->email }}</a>
+                            <a href="#" class="loginReg" style="text-transform: none" data-toggle="example-dropdown">Hi! {{ Auth::user()->name }}</a>
                             <div class="login-form">
-                                <a href="#" class="text-center hi-user">My Profile</a>
-                                
-                                <a href="{{ Auth::logout() }}" class="text-center hi-user">Logout</a>
+                            <a href="{{ route('about-me', Auth::user()->id) }}" class="text-center hi-user">My Profile</a>
+                                <form action="{{ route('actionLogout') }}" method="POST">
+                                    @csrf
+                                    <a href="#" class="text-center hi-user">Logout</a>
+                                </form>
                             </div>
                         </li>
                         @else

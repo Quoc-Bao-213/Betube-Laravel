@@ -332,7 +332,6 @@ input[type=checkbox]:checked + .customLabel:before {
     background: #e96969; }
 
   .top-button .menu .hi-user {
-    text-transform: none;  
     display: block;
     margin-bottom: 0.5rem;
     background: #444 !important; 

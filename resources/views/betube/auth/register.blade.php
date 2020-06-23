@@ -79,6 +79,13 @@
                                     </p>
                                 </div> --}}
 
+                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('name') }}</span>
+                                <div class="input-group">
+                                    <span class="input-group-label"><i class="fa fa-user"></i></span>
+                                    <input class="input-group-field" name="name" type="text"
+                                        placeholder="Enter your name" >
+                                </div>
+                                
                                 <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('email') }}</span>
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>

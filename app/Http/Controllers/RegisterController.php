@@ -16,6 +16,7 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $user = new User;
+        $name = $request->name;
         $email = $request->email;
         $password = $request->password;
 
@@ -24,6 +25,7 @@ class RegisterController extends Controller
         if(!$checkUserDB)
         {
             $user->email = $email;
+            $user->name = $name;
             $user->password = Hash::make($password);
             $user->save();
             return redirect()->route('register')->with('success','Register Successfully!');

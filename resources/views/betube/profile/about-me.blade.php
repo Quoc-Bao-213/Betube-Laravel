@@ -69,8 +69,14 @@
                 </div>
                 <div class="clearfix">
                     <div class="profile-author-name float-left">
-                        <h4>Joseph John</h4>
-                        <p>Join Date : <span>5 January 16</span></p>
+                        <h4>
+                            @if($user->channel_name)
+                                {{ $user->channel_name }}
+                            @else
+                               {{  $user->name }}
+                            @endif
+                         </h4>
+                        <p>Join Date : <span>{{ $user->created_at->toFormattedDateString() }}</span></p>
                     </div>
                     <div class="profile-author-stats float-right">
                         <ul class="menu">
@@ -133,19 +139,18 @@
                         <h4>Description</h4>
                     </div>
                     <div class="description">
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. </p>
+                    <p> {{ $user->description }}</p>
                         <div class="site profile-margin">
                             <button><i class="fa fa-globe"></i>Site</button>
                             <a href="#" class="inner-btn">www.betube.com</a>
                         </div>
                         <div class="email profile-margin">
                             <button><i class="fa fa-envelope"></i>Email</button>
-                            <span class="inner-btn">support@betube.com</span>
+                        <span class="inner-btn">{{ $user->email }}</span>
                         </div>
                         <div class="phone profile-margin">
                             <button><i class="fa fa-phone"></i>Phone</button>
-                            <span class="inner-btn">92-568-748</span>
+                        <span class="inner-btn">{{ $user->phone }}</span>
                         </div>
                         <div class="socialLinks profile-margin">
                             <button><i class="fa fa-share-alt"></i>get socialize</button>
@@ -154,8 +159,6 @@
                             <a href="#" class="inner-btn"><i class="fa fa-google-plus"></i></a>
                             <a href="#" class="inner-btn"><i class="fa fa-flickr"></i></a>
                         </div>
-
-
                     </div>
                 </div>
             </div>

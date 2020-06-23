@@ -47,14 +47,6 @@ Auth::routes();
 // });
 
 // ON WORK (USE FOR TEST)
-// Route::get('/about-me', function () {
-//     return view('betube.profile.about-me');
-// });
-
-// Route::get('/setting', function () {
-//     return view('betube.profile.setting');
-// });
-
 // Route::get('/favorite', function () {
 //     return view('betube.profile.favorite');
 // });
@@ -72,7 +64,7 @@ Auth::routes();
 // });
 // END
 
-Route::get('/register','RegisterController@index')->name('register');
+Route::get('/register','RegisterController@index')->name('register')->middleware('guest');
 Route::post('/register','RegisterController@register')->name('actionRegister');
 
 Route::get('/login','LoginUserController@index')->name('login')->middleware('guest');
@@ -83,5 +75,7 @@ Route::post('/logout','LoginUserController@logout')->name('actionLogout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function(){
-    
+    Route::get('/about-me/{id}','ProfileController@show')->name('about-me');
+    Route::get('/upload-profile/{id}','ProfileController@edit')->name('upload-profile');
+    Route::post('/upload-profile/{id}','ProfileController@update')->name('action-upload-profile');
 });
