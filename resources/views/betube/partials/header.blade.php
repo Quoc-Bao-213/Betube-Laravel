@@ -25,7 +25,7 @@
                             <a href="{{ route('about-me', Auth::user()->id) }}" class="text-center hi-user">My Profile</a>
                                 <form action="{{ route('actionLogout') }}" method="POST">
                                     @csrf
-                                    <a href="#" class="text-center hi-user">Logout</a>
+                                    <button type="submit" style="width: 97.8%; height: 2.3rem;" class="text-center hi-user">Logout</button>
                                 </form>
                             </div>
                         </li>
@@ -50,7 +50,7 @@
                                     </div>
                                     <input type="submit" name="submit" value="Login Now">
                                 </form>
-                                <p class="text-center">New here? <a class="newaccount" href="login-register.html">Create a new Account</a></p>
+                                <p class="text-center">New here? <a class="newaccount" href="{{ route('register') }}">Create a new Account</a></p>
                             </div>
                         </li>
                         @endif
@@ -67,14 +67,14 @@
                     <div class="large-12 columns">
                     <div class="title-bar" data-responsive-toggle="beNav" data-hide-for="large">
                         <button class="menu-icon" type="button" data-toggle="offCanvas-responsive"></button>
-                        <div class="title-bar-title"><img src="images/logo-small.png" alt="logo"></div>
+                        <div class="title-bar-title"><img src="{{ asset('images/logo-small.png') }}" alt="logo"></div>
                     </div>
 
                     <div class="top-bar show-for-large" id="beNav" style="width: 100%;">
                         <div class="top-bar-left">
                             <ul class="menu">
                                 <li class="menu-text">
-                                    <a href="home-v1.html"><img src="images/logo.png" alt="logo"></a>
+                                    <a href="home-v1.html"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
                                 </li>
                             </ul>
                         </div>
@@ -94,7 +94,11 @@
                                 <a href="#"><i class="fa fa-film"></i>Videos</a>                                     
                                 </li>
                                 <li><a href="#"><i class="fa fa-th"></i>category</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>profile</a></li>
+                                @if(isset(Auth::user()->id))
+                                <li><a href="{{ route('about-me', Auth::user()->id ) }}"><i class="fa fa-user"></i>profile</a></li>
+                                @else
+                                <li><a href="{{ route('login') }}"><i class="fa fa-user"></i>profile</a></li>
+                                @endif
                                 <li><a href="#"><i class="fa fa-envelope"></i>contact</a></li>
                             </ul>
                         </div>

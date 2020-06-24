@@ -59,9 +59,9 @@ Auth::routes();
 //     return view('betube.profile.profile-video');
 // });
 
-// Route::get('/upload', function () {
-//     return view('betube.profile.upload');
-// });
+Route::get('/upload', function () {
+    return view('betube.profile.upload');
+});
 // END
 
 Route::get('/register','RegisterController@index')->name('register')->middleware('guest');
@@ -74,8 +74,12 @@ Route::post('/logout','LoginUserController@logout')->name('actionLogout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function() {
     Route::get('/about-me/{id}','ProfileController@show')->name('about-me');
+
     Route::get('/upload-profile/{id}','ProfileController@edit')->name('upload-profile');
     Route::post('/upload-profile/{id}','ProfileController@update')->name('action-upload-profile');
+    Route::post('/upload-image/{id}', 'ProfileController@uploadAvatar')->name('action-upload-avatar');
+    Route::post('/upload-image-cover/{id}', 'ProfileController@uploadBackgroundImage')->name('action-upload-cover');
+    
 });

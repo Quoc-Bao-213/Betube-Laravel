@@ -1,3 +1,16 @@
+@php
+    $section = explode('/', Request::path());
+    
+    $aboutMe = "";
+    $profileSetting = "";
+
+    if ($section[0] === 'about-me'){
+        $aboutMe = 'active';
+    }else{
+        $profileSetting = 'active';
+    }
+@endphp
+
 <!-- left sidebar -->
 <div class="large-4 columns">
     <aside class="secBg sidebar">
@@ -10,12 +23,12 @@
                     </div>
                     <div class="widgetContent">
                         <ul class="profile-overview">
-                            <li class="clearfix"><a class="active" href="#"><i class="fa fa-user"></i>about me</a></li>
-                            <li class="clearfix"><a href="profile-video.html"><i class="fa fa-video-camera"></i>Videos <span class="float-right">36</span></a></li>
-                            <li class="clearfix"><a href="profile-favorite.html"><i class="fa fa-heart"></i>Favorite Videos<span class="float-right">50</span></a></li>
-                            <li class="clearfix"><a href="profile-followers.html"><i class="fa fa-users"></i>Followers<span class="float-right">6</span></a></li>
-                            <li class="clearfix"><a href="{{ route('upload-profile', Auth::user()->id) }}"><i class="fa fa-gears"></i>Profile Settings</a></li>
-                            <li class="clearfix"><a href="home-v1.html"><i class="fa fa-sign-out"></i>Logout</a></li>                       
+                            <li class="clearfix"><a class="{{ $aboutMe }}" href="{{ route('about-me', Auth::user()->id) }}"><i class="fa fa-user"></i>about me</a></li>
+                            <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-video-camera"></i>Videos <span class="float-right">36</span></a></li>
+                            <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-heart"></i>Favorite Videos<span class="float-right">50</span></a></li>
+                            <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-users"></i>Followers<span class="float-right">6</span></a></li>
+                            <li class="clearfix"><a class="{{ $profileSetting }}" href="{{ route('upload-profile', Auth::user()->id) }}"><i class="fa fa-gears"></i>Profile Settings</a></li>
+                            {{-- <li class="clearfix"><a href="{{ route('actionLogout') }}"><i class="fa fa-sign-out"></i>Logout</a></li>   --}}
                         </ul>
                         <a href="submit-post.html" class="button"><i class="fa fa-plus-circle"></i>Post Video</a>
                     </div>

@@ -23,33 +23,35 @@
 </section><!--end breadcrumbs-->
 
 <!-- profile top section -->
-<section class="topProfile topProfile-inner" style="background: url('images/profile-bg1.png') no-repeat;">
+<section class="topProfile topProfile-inner" style="background: url('{{ $user->cover() }}') no-repeat;background-size: cover;">
     <div class="row">
         <div class="large-12 columns">
             <div class="upload-bg">
-                <form method="post">
+                <form id="update-channel-forms" action="{{ route('action-upload-cover', Auth::user()->id ) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <label for="topfileupload" class="btn-upload"><i class="fa fa-camera"></i><span>update cover image</span></label>
-                    <input type="file" id="topfileupload" class="show-for-sr">
+                    <input onchange="document.getElementById('update-channel-forms').submit()" type="file" name="image_cover" id="topfileupload" class="show-for-sr">
                 </form>
             </div>
         </div>
     </div>
-    <div class="main-text">
+    {{-- <div class="main-text">
         <div class="row">
             <div class="large-12 columns">
                 <h3>World’s Biggest</h3>
                 <h1>Powerfull Video Theme</h1>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="profile-stats">
         <div class="row secBg">
             <div class="large-12 columns">
                 <div class="profile-author-img">
-                    <img src="images/profile-auth-img.png" alt="profile author img">
-                    <form method="post">
+                    <img src="{{ $user->avatar() }}" alt="profile author img">
+                    <form id="update-channel-form" action="{{ route('action-upload-avatar', Auth::user()->id ) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <label for="imgfileupload" class="btn-upload"><i class="fa fa-camera"></i><span>update Avatar</span></label>
-                        <input type="file" id="imgfileupload" class="show-for-sr">
+                        <input onchange="document.getElementById('update-channel-form').submit()" type="file" name="image_avatar" id="imgfileupload" class="show-for-sr">
                     </form>
                 </div>
                 <div class="profile-subscribe">
@@ -160,7 +162,7 @@
                     <div class="row">
                         <div class="large-12 columns">
                             <div class="setting-form">
-                                <form method="post" action="{{ route('action-upload-profile', Auth::user()->id ) }}">
+                                <form method="POST" action="{{ route('action-upload-profile', Auth::user()->id ) }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="setting-form-inner">
                                         <div class="row">
@@ -213,7 +215,7 @@
                                             </div>
                                             <div class="medium-12 columns">
                                                 <label>Description:
-                                                    <textarea name="description" value="{{ $user->description }}"></textarea>
+                                                    <textarea name="description">{{ $user->description }}</textarea>
                                                 </label>
                                             </div>
                                         </div>

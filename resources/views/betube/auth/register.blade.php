@@ -108,7 +108,7 @@
 
                                 {{-- <span class="form-error">your email is invalid</span> --}}
                                 <button class="button expanded" type="submit" name="submit">register Now</button>
-                                <p class="loginclick"> <a href="login.html">Login here</a><a href="login.html">Already
+                                <p class="loginclick"> <a href="{{ route('login') }}">Login here</a><a href="{{ route('login') }}">Already
                                         have acoount?</a></p>
                             </form>
                         </div>

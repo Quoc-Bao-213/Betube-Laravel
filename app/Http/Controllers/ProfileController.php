@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -74,7 +73,7 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request, $id)
     {
         $user = User::find($id);
-
+            
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
@@ -94,5 +93,33 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function uploadAvatar(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        if ($request->hasFile('image_avatar')) {
+            $user->clearMediaCollection('images');
+        
+            $user->addMediaFromRequest('image_avatar')
+                ->toMediaCollection('images');
+        }
+
+        return redirect()->back();
+    }
+
+    public function uploadBackgroundImage(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        if ($request->hasFile('image_cover')) {
+            $user->clearMediaCollection('covers');
+        
+            $user->addMediaFromRequest('image_cover')
+                ->toMediaCollection('covers');
+        }
+
+        return redirect()->back();
     }
 }

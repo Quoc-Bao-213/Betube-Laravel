@@ -6,10 +6,13 @@ use Illuminate\Support\Str;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\Models\Media;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use Notifiable;
+    use Notifiable, HasMediaTrait;
 
     public $incrementing = false;
 
@@ -28,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'phone', 'email', 'password', 'channel_name'
+        'phone', 'email', 'password', 'channel_name', 'image'
     ];
 
     /**
@@ -40,15 +43,6 @@ class User extends Authenticatable
         'password', 
         // 'remember_token',
     ];
-
-    // /**
-    //  * The attributes that should be cast to native types.
-    //  *
-    //  * @var array
-    //  */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
 
     public function playlists()
     {
@@ -63,4 +57,31 @@ class User extends Authenticatable
     public function comments() {
         return $this->hasMany(Comment::class);
     } 
+
+    public function avatar()
+    {
+        if ($this->media->where('collection_name', '=', 'images')->first()) {
+            return $this->media->where('collection_name', '=', 'images')->first()->getFullUrl('avatar');
+        }
+
+        return null;
+    }
+
+    public function cover()
+    {
+        if ($this->media->where('collection_name', '=', 'covers')->first()) {
+            return $this->media->where('collection_name', '=', 'covers')->first()->getFullUrl('cover');
+        }
+
+        return null;
+    }
+
+    public function registerMediaConversions(?Media $media = null)
+    {
+        $this->addMediaConversion('avatar')
+            ->quality(80);
+        
+        $this->addMediaConversion('cover')
+            ->quality(80);
+    }
 }
