@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->enum('is_admin', ['true', 'false'])->default('false');
             $table->string('password');
-            $table->string('image')->nullable();
             $table->string('channel_name')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();

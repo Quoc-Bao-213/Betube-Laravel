@@ -16,6 +16,8 @@ class User extends Authenticatable implements HasMedia
 
     public $incrementing = false;
 
+    // protected $guarded = [];
+
     protected static function boot()
     {
         parent::boot();
@@ -64,7 +66,7 @@ class User extends Authenticatable implements HasMedia
             return $this->media->where('collection_name', '=', 'images')->first()->getFullUrl('avatar');
         }
 
-        return null;
+        return "https://i.picsum.photos/id/890/200/200.jpg?hmac=_chNVuEZW4X8X4PEIIJNyv3kMTFOR517hu8zLfMAf70";
     }
 
     public function cover()

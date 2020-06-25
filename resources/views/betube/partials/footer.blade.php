@@ -20,7 +20,7 @@
                     <div class="media-object">
                         <div class="media-object-section">
                             <div class="recent-img">
-                                <img src= "images/recent1.png" alt="recent">
+                                <img src= "{{ asset('images/recent1.png') }}" alt="recent">
                                 <a href="#" class="hover-posts">
                                     <span><i class="fa fa-play"></i></span>
                                 </a>
@@ -36,7 +36,7 @@
                     <div class="media-object">
                         <div class="media-object-section">
                             <div class="recent-img">
-                                <img src= "images/video-thumbnail/1.jpg" alt="recent">
+                                <img src= "{{ asset('images/video-thumbnail/1.jpg') }}" alt="recent">
                                 <a href="#" class="hover-posts">
                                     <span><i class="fa fa-play"></i></span>
                                 </a>
@@ -52,7 +52,7 @@
                     <div class="media-object">
                         <div class="media-object-section">
                             <div class="recent-img">
-                                <img src= "images/recent3.png" alt="recent">
+                                <img src= "{{ asset('images/recent3.png') }}" alt="recent">
                                 <a href="#" class="hover-posts">
                                     <span><i class="fa fa-play"></i></span>
                                 </a>
@@ -130,7 +130,7 @@
 <!-- footer -->
 <div id="footer-bottom">
     <div class="logo text-center">
-        <img src="images/footerlogo.png" alt="footer logo">
+        <img src="{{ asset('images/footerlogo.png') }}" alt="footer logo">
     </div>
     <div class="btm-footer-text text-center">
         <p>2016 © Betube video wordpress theme.</p>

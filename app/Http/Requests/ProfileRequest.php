@@ -25,7 +25,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'email' => 'email',
-            'phone' => 'numeric|min:10',
+            'phone' => 'alpha_num|min:10|max:10',
         ];
     }
 }

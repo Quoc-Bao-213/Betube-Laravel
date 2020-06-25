@@ -74,12 +74,16 @@ Route::post('/logout','LoginUserController@logout')->name('actionLogout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/about-me/{id}','ProfileController@show')->name('about-me');
+
 Route::middleware('auth')->group(function() {
-    Route::get('/about-me/{id}','ProfileController@show')->name('about-me');
 
     Route::get('/upload-profile/{id}','ProfileController@edit')->name('upload-profile');
     Route::post('/upload-profile/{id}','ProfileController@update')->name('action-upload-profile');
     Route::post('/upload-image/{id}', 'ProfileController@uploadAvatar')->name('action-upload-avatar');
     Route::post('/upload-image-cover/{id}', 'ProfileController@uploadBackgroundImage')->name('action-upload-cover');
-    
+
+    Route::post('channels/{channel}/subscriptions', 'SubscriptionController@store');
+    Route::delete('channels/{channel}/subscriptions', 'SubscriptionController@destroy');
+
 });

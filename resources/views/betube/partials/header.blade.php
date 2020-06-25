@@ -74,7 +74,7 @@
                         <div class="top-bar-left">
                             <ul class="menu">
                                 <li class="menu-text">
-                                    <a href="home-v1.html"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
+                                    <a href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
                                 </li>
                             </ul>
                         </div>
@@ -88,14 +88,14 @@
                         <div class="top-bar-right">
                             <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
                                 <li class="has-submenu active">
-                                    <a href="home-v1.html"><i class="fa fa-home"></i>Home</a>
+                                    <a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a>
                                 </li>
                                 <li class="has-submenu" data-dropdown-menu="example1">
                                 <a href="#"><i class="fa fa-film"></i>Videos</a>                                     
                                 </li>
                                 <li><a href="#"><i class="fa fa-th"></i>category</a></li>
                                 @if(isset(Auth::user()->id))
-                                <li><a href="{{ route('about-me', Auth::user()->id ) }}"><i class="fa fa-user"></i>profile</a></li>
+                                <li><a href="{{ route('about-me', auth()->user()->id ) }}"><i class="fa fa-user"></i>profile</a></li>
                                 @else
                                 <li><a href="{{ route('login') }}"><i class="fa fa-user"></i>profile</a></li>
                                 @endif

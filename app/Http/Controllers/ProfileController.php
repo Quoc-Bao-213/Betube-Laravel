@@ -48,7 +48,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return View('betube.profile.about-me',compact('user'));
+        return View('betube.profile.about-me', compact('user'));
     }
 
     /**
