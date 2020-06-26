@@ -31,7 +31,6 @@
                     <div class="medium-6 large-centered medium-centered">
                         <div class="page-heading text-center">
                             <h3>Forgot Password</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                         </div>
                     </div>
                 </div>
@@ -39,13 +38,19 @@
                     <div class="large-4 medium-6 large-centered medium-centered columns">
                         <div class="register-form">
                             <h5 class="text-center">Enter Email</h5>
-                            <form method="post" data-abide novalidate>
+                            <form method="POST" data-abide novalidate>
+                                @if(session('notify'))
+                                <p style="color: #e96969 !important; text-align: center; margin-bottom: 0.5rem">
+                                    {{ session('notify') }}
+                                </p>                               
+                                @endif
+                                @csrf
                                 <div class="input-group">
-                                    <span class="input-group-label"><i class="fa fa-user"></i></span>
-                                    <input type="email" placeholder="Enter your email" required>
-                                    <span class="form-error">email is required</span>
+                                    <span class="input-group-label"><i class="fa fa-envelope"></i></span>
+                                    <input type="email" placeholder="Enter your email" name="email">
+                                    {{-- <span class="form-error">email is required</span> --}}
                                 </div>
-                                <button class="button expanded" type="submit" name="submit">reset Now</button>
+                                <button class="button expanded" type="submit" name="submit">send link</button>
                             </form>
                         </div>
                     </div>

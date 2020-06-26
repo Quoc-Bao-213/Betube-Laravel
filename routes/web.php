@@ -42,9 +42,12 @@ Auth::routes();
 //     return view('betube.categories');
 // });
 
-// Route::get('/forgotpass', function () {
-//     return view('betube.auth.forgot-pass');
-// });
+Route::get('/forgot-password', 'ResetpasswordController@index')->name('forgot-password');
+Route::post('/forgot-password', 'ResetpasswordController@resetPassword')->name('action-forgot-password');
+Route::post('/link-reset-password', 'ResetpasswordController@sendLinkResetFromGmail')->name('send-link-reset-password');
+Route::get('/change-pass','ResetpasswordController@changePasswordFromLinkGmail')->name('change-password');
+Route::post('/change-pass','ResetpasswordController@processChangePassword');
+
 
 // ON WORK (USE FOR TEST)
 // Route::get('/favorite', function () {
@@ -76,13 +79,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/about-me/{id}','ProfileController@show')->name('about-me');
 
+
+Route::get('/change-pass','ProfileController@indexChangePassword')->name('change-password');
+
+
 Route::middleware('auth')->group(function() {
 
     Route::get('/upload-profile/{id}','ProfileController@edit')->name('upload-profile');
     Route::post('/upload-profile/{id}','ProfileController@update')->name('action-upload-profile');
     Route::post('/upload-image/{id}', 'ProfileController@uploadAvatar')->name('action-upload-avatar');
     Route::post('/upload-image-cover/{id}', 'ProfileController@uploadBackgroundImage')->name('action-upload-cover');
-
+    
+    Route::post('/change-pass/{id}','ProfileController@changePassword')->name('action-change-password');
+    
     Route::post('channels/{channel}/subscriptions', 'SubscriptionController@store');
     Route::delete('channels/{channel}/subscriptions', 'SubscriptionController@destroy');
 

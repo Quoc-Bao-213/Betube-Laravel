@@ -92,7 +92,7 @@
                                     <label class="customLabel" for="remember">Remember me</label>
                                 </div>
                                 <button class="button expanded" type="submit" name="submit">login Now</button>
-                                <p class="loginclick"><a href="login-forgot-pass.html">Forgot Password</a> New Here? <a href="{{ route('register') }}">Create a new Account</a></p>
+                                <p class="loginclick"><a href="{{ route('forgot-password') }}">Forgot Password</a> New Here? <a href="{{ route('register') }}">Create a new Account</a></p>
                             </form>
                         </div>
                     </div>

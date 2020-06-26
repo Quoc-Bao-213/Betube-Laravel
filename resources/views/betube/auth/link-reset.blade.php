@@ -1,0 +1,1 @@
+<p>Link password. !<a href="{{URL::to('/')}}/change-pass?email={{ $email }}&token={{ $token }}">Click here get your password</a></p>

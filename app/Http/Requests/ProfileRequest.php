@@ -26,6 +26,9 @@ class ProfileRequest extends FormRequest
         return [
             'email' => 'email',
             'phone' => 'alpha_num|min:10|max:10',
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'retype_password' => 'required|same:new_password'
         ];
     }
 }

@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('channel_name')->nullable();
             $table->text('description')->nullable();
+            $table->string('token')->nullable()->index();
             $table->timestamps();
         });
     }
