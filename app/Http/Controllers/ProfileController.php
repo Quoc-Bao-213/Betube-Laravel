@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -60,7 +63,10 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('betube.channel.setting',compact('user'));
+        
+        if (Auth::user()->id === $user)
+            return view('betube.channel.setting',compact('user'));
+        return view('betube.channel.about-me',compact('user'));
     }
 
     /**
@@ -125,13 +131,32 @@ class ProfileController extends Controller
 
     public function indexChangePassword()
     {
-        return view('betube.auth.change-pass');
+        $tokenDB = DB::select('select * from users where email = "'.$_GET['email'].'"');
+
+        if ($_GET['token'] === $tokenDB[0]->token) {
+            $token = $_GET['token'];
+            $tokenExpire = Crypt::decrypt($token);
+            $currentTime = time();
+            if ($tokenExpire < $currentTime){ 
+                return view('betube.page404');
+            }
+        } else 
+            return view('betube.page404');
+        
+        if (isset(Auth::user()->email)) {
+            return view('betube.auth.change-pass');
+        } else if (isset($_GET['token'])) {
+            return view('betube.auth.change-pass');
+        }
+            
+        return redirect()->route('home');
     }
     
     public function changePassword(ProfileRequest $request, $id)
     {
         $user = User::find($id);
         $current_pass = $user->password;
+        
         if (Hash::check($request->old_password, $current_pass)) {
             $user->password = Hash::make($request->new_password);
             $user->save();

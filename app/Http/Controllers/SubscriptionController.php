@@ -19,6 +19,7 @@ class SubscriptionController extends Controller
     {
         $id = explode("/", $request->path());
         $subscription = Subscription::find($id[3]);
+        
         $subscription->delete();
 
         return response()->json(['Delete Successfull']);

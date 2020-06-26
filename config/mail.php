@@ -89,7 +89,7 @@ return [
     //     'name' => env('MAIL_FROM_NAME', 'Example'),
     // ],
 
-    'from' => array('address' => 'pieyep2703@gmail.com', 'name' => 'BeTube'),
+    'from' => array('address' => 'Betube@mail.com', 'name' => 'BeTube'),
 
 
     /*

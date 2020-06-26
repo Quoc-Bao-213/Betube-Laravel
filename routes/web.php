@@ -15,17 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Controller cho homepage
-// Controller cho categories
-// Controller cho mỗi profile
-
-// --- TODOS --- 
-// 1. Hoàn chỉnh hompage
-// 2. Hoàn chỉnh profile 
-// 3. explore sidebar (set active)
-
-// route tạm 
-
 // Route::get('/admin', function () {
 //     return view('home-admin');
 // });
@@ -42,13 +31,6 @@ Auth::routes();
 //     return view('betube.categories');
 // });
 
-Route::get('/forgot-password', 'ResetpasswordController@index')->name('forgot-password');
-Route::post('/forgot-password', 'ResetpasswordController@resetPassword')->name('action-forgot-password');
-Route::post('/link-reset-password', 'ResetpasswordController@sendLinkResetFromGmail')->name('send-link-reset-password');
-Route::get('/change-pass','ResetpasswordController@changePasswordFromLinkGmail')->name('change-password');
-Route::post('/change-pass','ResetpasswordController@processChangePassword');
-
-
 // ON WORK (USE FOR TEST)
 // Route::get('/favorite', function () {
 //     return view('betube.profile.favorite');
@@ -61,10 +43,6 @@ Route::post('/change-pass','ResetpasswordController@processChangePassword');
 // Route::get('/profile-video', function () {
 //     return view('betube.profile.profile-video');
 // });
-
-Route::get('/upload', function () {
-    return view('betube.profile.upload');
-});
 // END
 
 Route::get('/register','RegisterController@index')->name('register')->middleware('guest');
@@ -75,13 +53,16 @@ Route::post('/login','LoginUserController@login')->name('actionLogin');
 
 Route::post('/logout','LoginUserController@logout')->name('actionLogout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/forgot-password', 'ResetpasswordController@index')->name('forgot-password');
+Route::post('/forgot-password', 'ResetpasswordController@resetPassword')->name('action-forgot-password');
+Route::post('/link-reset-password', 'ResetpasswordController@sendLinkResetFromGmail')->name('send-link-reset-password');
+Route::post('/change-pass','ResetpasswordController@processChangePassword');
 
 Route::get('/about-me/{id}','ProfileController@show')->name('about-me');
 
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/change-pass','ProfileController@indexChangePassword')->name('change-password');
-
 
 Route::middleware('auth')->group(function() {
 
