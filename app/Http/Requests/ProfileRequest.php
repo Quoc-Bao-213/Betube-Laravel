@@ -26,6 +26,8 @@ class ProfileRequest extends FormRequest
         return [
             'email' => 'email',
             'phone' => 'alpha_num|min:10|max:10',
+            'image_avatar' => 'image',
+            'image_cover' => 'image'
         ];
     }
 }

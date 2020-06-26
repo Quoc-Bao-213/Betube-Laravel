@@ -22,7 +22,7 @@
                         <li class="dropdown-login">
                             <a href="#" class="loginReg" style="text-transform: none" data-toggle="example-dropdown">Hi! {{ Auth::user()->name }}</a>
                             <div class="login-form">
-                            <a href="{{ route('about-me', Auth::user()->id) }}" class="text-center hi-user">My Profile</a>
+                                <a href="{{ route('about-me', Auth::user()->id) }}" class="text-center hi-user">My Profile</a>
                                 <form action="{{ route('actionLogout') }}" method="POST">
                                     @csrf
                                     <button type="submit" style="width: 97.8%; height: 2.3rem;" class="text-center hi-user">Logout</button>
@@ -95,9 +95,9 @@
                                 </li>
                                 <li><a href="#"><i class="fa fa-th"></i>category</a></li>
                                 @if(isset(Auth::user()->id))
-                                <li><a href="{{ route('about-me', auth()->user()->id ) }}"><i class="fa fa-user"></i>profile</a></li>
+                                <li><a href="{{ route('about-me', auth()->user()->id ) }}"><i class="fa fa-user"></i>channel</a></li>
                                 @else
-                                <li><a href="{{ route('login') }}"><i class="fa fa-user"></i>profile</a></li>
+                                <li><a href="{{ route('login') }}"><i class="fa fa-user"></i>channel</a></li>
                                 @endif
                                 <li><a href="#"><i class="fa fa-envelope"></i>contact</a></li>
                             </ul>

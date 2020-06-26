@@ -25,7 +25,7 @@
                     </div>
                     <div class="widgetContent">
                         <ul class="profile-overview">
-                            @if(isset(Auth::user()->id) && Auth::user()->id === $user->id)
+                            @if($user->editable())
                             <li class="clearfix"><a class="{{ $aboutMe }}" href="{{ route('about-me', Auth::user()->id) }}"><i class="fa fa-user"></i>about me</a></li>
                             <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-video-camera"></i>Videos <span class="float-right">36</span></a></li>
                             <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-heart"></i>Favorite Videos<span class="float-right">50</span></a></li>
@@ -38,7 +38,7 @@
                             <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-users"></i>Followers<span class="float-right">6</span></a></li>
                             @endif
                         </ul>
-                        @if(isset(Auth::user()->id) && Auth::user()->id === $user->id)
+                        @if($user->editable())
                         <a href="#" class="button"><i class="fa fa-plus-circle"></i>Post Video</a>
                         @endif
                     </div>

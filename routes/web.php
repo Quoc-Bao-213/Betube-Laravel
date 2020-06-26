@@ -84,6 +84,6 @@ Route::middleware('auth')->group(function() {
     Route::post('/upload-image-cover/{id}', 'ProfileController@uploadBackgroundImage')->name('action-upload-cover');
 
     Route::post('channels/{channel}/subscriptions', 'SubscriptionController@store');
-    Route::delete('channels/{channel}/subscriptions', 'SubscriptionController@destroy');
+    Route::delete('channels/{channel}/subscriptions/{subscriptions}', 'SubscriptionController@destroy');
 
 });
