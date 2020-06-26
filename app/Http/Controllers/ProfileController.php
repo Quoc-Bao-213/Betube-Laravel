@@ -48,7 +48,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return View('betube.profile.about-me', compact('user'));
+        return View('betube.channel.about-me', compact('user'));
     }
 
     /**
@@ -60,7 +60,7 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('betube.profile.setting', compact('user'));
+        return view('betube.channel.setting',compact('user'));
     }
 
     /**
@@ -95,7 +95,7 @@ class ProfileController extends Controller
         //
     }
 
-    public function uploadAvatar(Request $request, $id)
+    public function uploadAvatar(ProfileRequest $request, $id)
     {
         $user = User::find($id);
 
@@ -109,7 +109,7 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
-    public function uploadBackgroundImage(Request $request, $id)
+    public function uploadBackgroundImage(ProfileRequest $request, $id)
     {
         $user = User::find($id);
 

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 </head>
 <body>
-<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper" id="app">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
         <!--header-->
         <div class="off-canvas position-left light-off-menu" id="offCanvas-responsive" data-off-canvas>
@@ -95,7 +95,19 @@
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/inewsticker.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/jquery.kyco.easyshare.js') }}" type="text/javascript"></script>
+
+<script>
+    window.AuthUser = '{!! auth()->user() !!}'
+
+    window.__auth = function() {
+        try {
+            return JSON.parse(AuthUser)
+        } catch(error) {
+            return null
+        }
+    }
+</script>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 
-<!-- Mirrored from beetube.me/html-template/home-v1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Jun 2020 10:06:49 GMT -->
 </html>

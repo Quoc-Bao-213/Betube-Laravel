@@ -93,6 +93,6 @@ Route::middleware('auth')->group(function() {
     Route::post('/change-pass/{id}','ProfileController@changePassword')->name('action-change-password');
     
     Route::post('channels/{channel}/subscriptions', 'SubscriptionController@store');
-    Route::delete('channels/{channel}/subscriptions', 'SubscriptionController@destroy');
+    Route::delete('channels/{channel}/subscriptions/{subscriptions}', 'SubscriptionController@destroy');
 
 });

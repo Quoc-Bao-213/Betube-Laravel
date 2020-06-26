@@ -56,9 +56,22 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Video::class);
     }
 
-    public function comments() {
+    public function comments() 
+    {
         return $this->hasMany(Comment::class);
     } 
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function editable()
+    {
+        if (!auth()->check())
+            return false;
+        return $this->id === auth()->user()->id;
+    }
 
     public function avatar()
     {

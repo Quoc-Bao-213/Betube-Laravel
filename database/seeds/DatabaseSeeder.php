@@ -1,6 +1,7 @@
 <?php
 
 use App\Playlist;
+use App\Subscription;
 use Illuminate\Database\Seeder;
 use App\User;
 use App\VideoType;
@@ -15,24 +16,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class)->create([
+        $user1 = factory(User::class)->create([
             'email' => 'taquocbao.it.99@gmail.com'
         ]);
 
-        // factory(VideoType::class)->create([
-        //     'name' => 'Âm Nhạc'
-        // ]);
+        $user2 = factory(User::class)->create([
+            'email' => 'coderb2103@gmail.com'
+        ]);
 
-        // factory(VideoType::class)->create([
-        //     'name' => 'Trò Chơi'
-        // ]);
+        $user1->subscriptions()->create([
+            'user_subscribe' => $user2->id
+        ]);
 
-        // factory(VideoType::class)->create([
-        //     'name' => 'Tin Tức'
-        // ]);
+        $user2->subscriptions()->create([
+            'user_subscribe' => $user1->id
+        ]);
 
-        // factory(VideoType::class)->create([
-        //     'name' => 'Phim Ảnh'
-        // ]);
+        factory(Subscription::class, 1000)->create([
+            'user_id' => $user1->id,
+        ]);
+
+        factory(Subscription::class, 1000)->create([
+            'user_id' => $user2->id,
+        ]);
     }
 }
