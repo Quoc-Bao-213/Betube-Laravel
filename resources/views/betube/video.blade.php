@@ -66,14 +66,9 @@
                                             @php
                                                 $arrayHashTags = explode(' ', $video->hashtag);
                                                 $hashTag = "";
-
-                                                for ($i = 0; $i < count($arrayHashTags); $i++){
-                                                    $characters = substr($arrayHashTags[$i], 0, 1);
-                                                    if ($characters === "#") {
-                                                        $hashTag .= '<a href="#">'.$arrayHashTags[$i].'</a> ';
-                                                    } else {
-                                                        $hashTag .= $arrayHashTags[$i].' ';
-                                                    }
+                                                
+                                                foreach($arrayHashTags as $arrayHashTag){
+                                                    $hashTag .= '<a href="#">'.$arrayHashTag.'</a> ';
                                                 }
                                             @endphp
                                             {!! $hashTag !!}
@@ -86,7 +81,7 @@
                                         <button @click="toggleSubscription" v-if="owner === false && subscribed === false" name="subscribe">
                                             @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
                                         </button>
-                                        <button @click="toggleSubscription" style="background: #e96969" v-else-if="owner === false && subscribed === true" name="subscribe">
+                                        <button @click="toggleSubscription" style="background: #e96969; color: #fff;" v-else-if="owner === false && subscribed === true" name="subscribe">
                                             @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
                                         </button>
                                         <a v-else href="{{ route('update-video', $video->id) }}" class="edit-button">Edit Video</a>                   

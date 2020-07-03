@@ -49,8 +49,8 @@
                                 <div class="row">
                                     <div class="large-12 columns">
                                         <label>Title
-                                            <input type="text" placeholder="enter you video title..." value="{{ $video->title }}" name="title" >
-                                            <span class="form-error">
+                                            <input type="text" style="margin-bottom: 10px;" placeholder="enter you video title..." value="{{ $video->title }}" name="title" >
+                                            <span style="display: block;" class="form-error">
                                                 {{-- Yo, you had better fill this out, it's required. --}}
                                                 {{ $errors->first('title') }}
                                             </span>
@@ -89,7 +89,10 @@
                                     </div>
                                     <div class="large-12 columns">
                                         <label>Tags:
-                                            <input type="text" name="hashtag" value="{{ $video->hashtag }}" placeholder="enter video tags.." >
+                                            <input style="margin-bottom: 10px;" type="text" name="hashtag" value="{{ $video->hashtag }}" placeholder="enter video tags.." >
+                                            @if (session('errorHashTag'))
+                                                <span style="display: block;" class="form-error">{{ session('errorHashTag') }}</span>
+                                            @endif
                                         </label>
                                     </div>
                                     <div class="large-12 columns">

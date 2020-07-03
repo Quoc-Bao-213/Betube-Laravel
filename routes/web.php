@@ -52,12 +52,14 @@ Route::post('/change-pass','ResetpasswordController@processChangePassword');
 
 Route::get('/about-me/{id}','ProfileController@show')->name('about-me');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/change-pass','ProfileController@indexChangePassword')->name('change-password');
 
-Route::get('videos/{video}', 'VideoController@show');
+Route::get('videos/{video}', 'VideoController@show')->name('video');
 Route::put('videos/{video}', 'VideoController@updateViews');
+
+Route::get('channel/{channel}/videos', 'ChannelController@showVideos')->name('channel-videos');
 
 Route::middleware('auth')->group(function() {
 

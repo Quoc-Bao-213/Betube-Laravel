@@ -4,10 +4,10 @@
     $homepage = "";
     $channel = "";
 
-    if ($section[0] === 'home'){
-        $homepage = 'active';
-    }else{
+    if ($section[0] === 'about-me'){
         $channel = 'active';
+    }else{
+        $homepage = 'active';
     }
 @endphp
 
