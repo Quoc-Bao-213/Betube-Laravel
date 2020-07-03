@@ -30,7 +30,7 @@
             <div class="row secBg">
                 <div class="large-12 columns inner-flex-video">
                     <div style="height: 370px; padding-bottom: 10px;">
-                        <video id="my-video" class="video-js" controls preload="auto" style="width: 100%; height: 100%" data-setup="{}">
+                        <video id="my-video" class="video-js vjs-big-play-centered" controls poster="{{ asset($video->thumbnail) }}" controls preload="auto" style="width: 100%; height: 100%" data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
                             <source src='{{ asset(Storage::url("videos/{$video->id}/{$video->id}.m3u8")) }}' type="application/x-mpegURL">
                         </video>
                     </div>

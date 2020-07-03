@@ -58,7 +58,7 @@ class UploadVideoController extends Controller
         if ($request->hasFile('thumbnail')) {
             if ($video->thumbnail) {
                 Storage::delete("{$path}");
-                $thumbnail = $request->image_thumbnail->store('public/thumbnails');
+                $thumbnail = $request->thumbnail->store('public/thumbnails');
             }
         }
 

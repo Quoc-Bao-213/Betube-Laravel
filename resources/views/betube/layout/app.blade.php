@@ -84,6 +84,18 @@
     </div><!--end off canvas wrapper inner-->
 </div><!--end off canvas wrapper-->
 
+<script>
+    window.AuthUser = '{!! auth()->user() !!}'
+
+    window.__auth = function() {
+        try {
+            return JSON.parse(AuthUser)
+        } catch(error) {
+            return null
+        }
+    }
+</script>
+<script src="{{ asset('js/app.js') }}"></script>
 <!-- script files -->
 <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
 <script src="{{ asset('bower_components/what-input/what-input.js') }}"></script>
@@ -98,19 +110,6 @@
 <script src="{{ asset('js/inewsticker.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/jquery.kyco.easyshare.js') }}" type="text/javascript"></script>
 {{-- custom script --}}
-<script>
-    window.AuthUser = '{!! auth()->user() !!}'
-
-    window.__auth = function() {
-        try {
-            return JSON.parse(AuthUser)
-        } catch(error) {
-            return null
-        }
-    }
-</script>
-
-<script src="{{ asset('js/app.js') }}"></script>
 
 @yield('script')
 </body>

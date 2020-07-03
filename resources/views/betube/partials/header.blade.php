@@ -28,10 +28,10 @@
             <div class="medium-6 columns">
                 <div class="top-button">
                     <ul class="menu float-right">
+                        @if(Auth::user())
                         <li>
                             <a href="{{ route('upload-video', Auth::id()) }}">upload Video</a>
                         </li>
-                        @if(Auth::user())
                         <li class="dropdown-login">
                             <a href="#" class="loginReg" style="text-transform: none" data-toggle="example-dropdown">Hi! {{ Auth::user()->name }}</a>
                             <div class="login-form">
@@ -64,6 +64,7 @@
                                     <input type="submit" name="submit" value="Login Now">
                                 </form>
                                 <p class="text-center">New here? <a class="newaccount" href="{{ route('register') }}">Create a new Account</a></p>
+                                <p class="text-center">Forgot password? <a class="newaccount" href="{{ route('forgot-password') }}">Click here</a></p>
                             </div>
                         </li>
                         @endif
