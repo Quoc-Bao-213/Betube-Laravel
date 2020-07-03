@@ -71,7 +71,7 @@
                                     <i class="fa fa-video-camera"></i>
                                 </div>
                                 <div class="li-text float-left">
-                                    <p class="number-text">36</p>
+                                    <p class="number-text">{{ count($user->videos) }}</p>
                                     <span>Videos</span>
                                 </div>
                             </li>

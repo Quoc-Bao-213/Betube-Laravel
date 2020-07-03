@@ -3,12 +3,27 @@
     
     $aboutMe = "";
     $profileSetting = "";
+    $changePassword = "";
+    $channel = "";
 
-    if ($section[0] === 'about-me'){
-        $aboutMe = 'active';
-    }else{
-        $profileSetting = 'active';
+    switch ($section[0]) {
+        case 'about-me':
+            $aboutMe = "active";
+            break;
+        case 'upload-profile':
+            $profileSetting = "active";
+            break;
+        case 'change-pass':
+            $changePassword = "active";
+            break;
+        case 'channel':
+            $channel = "active";
+            break;
+        
+        default:
+            break;
     }
+    
 @endphp
 
 {{-- {{ dd($section[1]) }} --}}
@@ -26,15 +41,15 @@
                     <div class="widgetContent">
                         <ul class="profile-overview">
                             @if($user->editable())
-                            <li class="clearfix"><a class="{{ $aboutMe }}" href="{{ route('about-me', Auth::user()->id) }}"><i class="fa fa-user"></i>about me</a></li>
-                            <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-video-camera"></i>Videos <span class="float-right">36</span></a></li>
+                            <li class="clearfix"><a class="{{ $aboutMe }}" href="{{ route('about-me', Auth::id()) }}"><i class="fa fa-user"></i>about me</a></li>
+                            <li class="clearfix"><a class="{{ $channel }}" href="{{ route('channel-videos', Auth::id()) }}"><i class="fa fa-video-camera"></i>Videos <span class="float-right">{{ count($user->videos) }}</span></a></li>
                             <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-heart"></i>Favorite Videos<span class="float-right">50</span></a></li>
                             <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-users"></i>Followers<span class="float-right">6</span></a></li>
                             <li class="clearfix"><a class="{{ $profileSetting }}" href="{{ route('upload-profile', Auth::user()->id) }}"><i class="fa fa-gears"></i>Profile Settings</a></li>
                             <li class="clearfix"><a href="{{ route('change-password') }}"><i class="fa fa-lock"></i>change pass</a></li>
                             @else
                             <li class="clearfix"><a class="{{ $aboutMe }}" href="{{ route('about-me', $section[1]) }}"><i class="fa fa-user"></i>about me</a></li>
-                            <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-video-camera"></i>Videos <span class="float-right">36</span></a></li>
+                            <li class="clearfix"><a class="{{ $channel }}" href="{{ route('channel-videos', $section[1]) }}"><i class="fa fa-video-camera"></i>Videos <span class="float-right">{{ count($user->videos) }}</span></a></li>
                             <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-heart"></i>Favorite Videos<span class="float-right">50</span></a></li>
                             <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-users"></i>Followers<span class="float-right">6</span></a></li>
                             @endif

@@ -4,10 +4,10 @@
     $homepage = "";
     $channel = "";
 
-    if ($section[0] === 'home'){
-        $homepage = 'active';
-    }else{
+    if ($section[0] === 'about-me'){
         $channel = 'active';
+    }else{
+        $homepage = 'active';
     }
 @endphp
 
@@ -28,10 +28,10 @@
             <div class="medium-6 columns">
                 <div class="top-button">
                     <ul class="menu float-right">
+                        @if(Auth::user())
                         <li>
                             <a href="{{ route('upload-video', Auth::id()) }}">upload Video</a>
                         </li>
-                        @if(Auth::user())
                         <li class="dropdown-login">
                             <a href="#" class="loginReg" style="text-transform: none" data-toggle="example-dropdown">Hi! {{ Auth::user()->name }}</a>
                             <div class="login-form">
