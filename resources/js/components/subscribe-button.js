@@ -47,9 +47,9 @@ Vue.component('subscribe-button', {
                 return alert('Login To Subscribe')
             }
 
-            if(this.owner) {
-                return alert('You cannot subscribe to your channel')
-            }
+            // if(this.owner) {
+            //     return alert('You cannot subscribe to your channel')
+            // }
 
             if(this.subscribed) {
                 axios.delete(`/channels/${this.channel.id}/subscriptions/${this.subscription.id}`)

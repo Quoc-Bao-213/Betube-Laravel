@@ -29,8 +29,10 @@
         <section class="inner-video">
             <div class="row secBg">
                 <div class="large-12 columns inner-flex-video">
-                    <div class="flex-video widescreen">
-                        <iframe width="420" height="315" src="https://www.youtube.com/embed/qorU1icdKps" allowfullscreen></iframe>
+                    <div style="height: 370px; padding-bottom: 10px;">
+                        <video id="my-video" class="video-js" controls preload="auto" style="width: 100%; height: 100%" data-setup="{}">
+                            <source src='{{ asset(Storage::url("videos/{$video->id}/{$video->id}.m3u8")) }}' type="application/x-mpegURL">
+                        </video>
                     </div>
                 </div>
             </div>
@@ -44,28 +46,53 @@
                         <div class="media-object-section">
                             <div class="author-img-sec">
                                 <div class="thumbnail author-single-post">
-                                    <a href="#"><img src= "images/post-author-post.png" alt="post"></a>
+                                    <a href="#"><img src="{{ $video->user->avatar() }}" alt="post"></a>
                                 </div>
-                                <p class="text-center"><a href="#">Joseph John</a></p>
+                                <p class="text-center"><a href="#">{{ $video->user->channel_name }}</a></p>
                             </div>
                         </div>
                         <div class="media-object-section object-second">
                             <div class="author-des clearfix">
                                 <div class="post-title">
-                                    <h4>There are many variations of passage.</h4>
+                                    <h4>{{ $video->title }}</h4>
                                     <p>
-                                        <span><i class="fa fa-clock-o"></i>5 January 16</span>
-                                        <span><i class="fa fa-eye"></i>1,862K</span>
+                                        <span><i class="fa fa-clock-o"></i>{{ $video->created_at->toFormattedDateString() }}</span>
+                                        <span><i class="fa fa-eye"></i>{{ $video->total_views }}</span>
                                         <span><i class="fa fa-thumbs-o-up"></i>1,862</span>
                                         <span><i class="fa fa-thumbs-o-down"></i>180</span>
                                         <span><i class="fa fa-commenting"></i>8</span>
+                                        <span>
+                                            <i class="fa fa-hashtag"></i>
+                                            @php
+                                                $arrayHashTags = explode(' ', $video->hashtag);
+                                                $hashTag = "";
+
+                                                for ($i = 0; $i < count($arrayHashTags); $i++){
+                                                    $characters = substr($arrayHashTags[$i], 0, 1);
+                                                    if ($characters === "#") {
+                                                        $hashTag .= '<a href="#">'.$arrayHashTags[$i].'</a> ';
+                                                    } else {
+                                                        $hashTag .= $arrayHashTags[$i].' ';
+                                                    }
+                                                }
+                                            @endphp
+                                            {!! $hashTag !!}
+                                        </span>
                                     </p>
                                 </div>
-                                <div class="subscribe">
-                                    <form method="post">
-                                        <button type="submit" name="subscribe">Subscribe</button>
-                                    </form>
-                                </div>
+                                
+                                <subscribe-button :channel="{{ $video->user }}" :initial-subscriptions="{{ $video->user->subscriptions }}" inline-template>
+                                    <div class="subscribe">
+                                        <button @click="toggleSubscription" v-if="owner === false && subscribed === false" name="subscribe">
+                                            @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
+                                        </button>
+                                        <button @click="toggleSubscription" style="background: #e96969" v-else-if="owner === false && subscribed === true" name="subscribe">
+                                            @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
+                                        </button>
+                                        <a v-else href="{{ route('update-video', $video->id) }}" class="edit-button">Edit Video</a>                   
+                                    </div>
+                                </subscribe-button>
+
                             </div>
                             <div class="social-share">
                                 <div class="post-like-btn clearfix">
@@ -121,9 +148,7 @@
                         <h5>Description</h5>
                     </div>
                     <div class="description showmore_one">
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-
-                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur</p>
+                        <p>{{ $video->description }}</p>
                         <h6>Bullets List :</h6>
                         <ul>
                             <li>Sed ut perspiciatis unde omnis</li>
@@ -921,4 +946,16 @@
         </aside>
     </div><!-- end sidebar -->
 </div>
+@endsection
+
+@section('styles')
+    <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+@endsection
+
+@section('script')
+    <script src="https://vjs.zencdn.net/7.8.3/video.js"></script>
+    <script>
+        window.CURRENT_VIDEO = '{{ $video->id }}'
+    </script>
+    <script src="{{ asset('js/player.js') }}" type="text/javascript"></script>
 @endsection

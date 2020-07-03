@@ -1,3 +1,16 @@
+@php
+    $section = explode('/', Request::path());
+    
+    $homepage = "";
+    $channel = "";
+
+    if ($section[0] === 'home'){
+        $homepage = 'active';
+    }else{
+        $channel = 'active';
+    }
+@endphp
+
 <header>
     <!-- Top -->
     <section id="top" class="topBar show-for-large">
@@ -16,7 +29,7 @@
                 <div class="top-button">
                     <ul class="menu float-right">
                         <li>
-                            <a href="#">upload Video</a>
+                            <a href="{{ route('upload-video', Auth::id()) }}">upload Video</a>
                         </li>
                         @if(Auth::user())
                         <li class="dropdown-login">
@@ -87,19 +100,27 @@
                         </div>
                         <div class="top-bar-right">
                             <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
-                                <li class="has-submenu active">
+                                <li class="{{ $homepage }}">
                                     <a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a>
                                 </li>
-                                <li class="has-submenu" data-dropdown-menu="example1">
-                                <a href="#"><i class="fa fa-film"></i>Videos</a>                                     
+                                <li>
+                                    <a href="#"><i class="fa fa-film"></i>Videos</a>                                     
                                 </li>
-                                <li><a href="#"><i class="fa fa-th"></i>category</a></li>
+                                <li>
+                                    <a href="#"><i class="fa fa-th"></i>category</a>
+                                </li>
                                 @if(isset(Auth::user()->id))
-                                <li><a href="{{ route('about-me', auth()->user()->id ) }}"><i class="fa fa-user"></i>channel</a></li>
+                                <li class="{{ $channel }}">
+                                    <a href="{{ route('about-me', auth()->user()->id ) }}"><i class="fa fa-user"></i>channel</a>
+                                </li>
                                 @else
-                                <li><a href="{{ route('login') }}"><i class="fa fa-user"></i>channel</a></li>
+                                <li>
+                                    <a href="{{ route('login') }}"><i class="fa fa-user"></i>channel</a>
+                                </li>
                                 @endif
-                                <li><a href="#"><i class="fa fa-envelope"></i>contact</a></li>
+                                <li>
+                                    <a href="#"><i class="fa fa-envelope"></i>contact</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

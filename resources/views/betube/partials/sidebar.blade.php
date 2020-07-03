@@ -40,7 +40,7 @@
                             @endif
                         </ul>
                         @if($user->editable())
-                        <a href="#" class="button"><i class="fa fa-plus-circle"></i>Post Video</a>
+                        <a href="{{ route('upload-video', Auth::user()->id) }}" class="button"><i class="fa fa-plus-circle"></i>Post Video</a>
                         @endif
                     </div>
                 </div>

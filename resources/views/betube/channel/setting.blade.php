@@ -53,15 +53,20 @@
                         <input onchange="document.getElementById('update-channel-form').submit()" type="file" name="image_avatar" id="imgfileupload" class="show-for-sr">
                     </form>
                 </div>
+
                 <subscribe-button :channel="{{ $user }}" :initial-subscriptions="{{ $user->subscriptions }}" inline-template>
                     <div class="profile-subscribe">
                         <span><i class="fa fa-users"></i>@{{ count }}</span>                   
-                        {{-- <span><i class="fa fa-users"></i>12313</span>  --}}
-                        <button @click="toggleSubscription" name="subscribe">
-                            @{{ owner ? 'Subscribers' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
-                        </button>                   
+                        <button @click="toggleSubscription" v-if="owner === false && subscribed === false" name="subscribe">
+                            @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
+                        </button>
+                        <button @click="toggleSubscription" style="background: #e96969" v-else-if="owner === false && subscribed === true" name="subscribe">
+                            @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
+                        </button>
+                        <span v-else class="button-subscriber">Subscriber</span>                   
                     </div>
                 </subscribe-button>
+                
                 <div class="profile-share">
                     <div class="easy-share" data-easyshare data-easyshare-http data-easyshare-url="http://joinwebs.com/">
                         <!-- Facebook -->
@@ -178,21 +183,11 @@
                                                 <input type="text" name="name" value="{{ $user->name }}" placeholder="Enter your name..">
                                                 </label>
                                             </div>
-                                            {{-- <div class="medium-6 columns">
-                                                <label>Last Name:
-                                                    <input type="text" placeholder="enter your last name..">
-                                                </label>
-                                            </div> --}}
                                             <div class="medium-6 columns">
                                                 <label>Channel Name:
                                                     <input type="text" name="channel_name" value="{{ $user->channel_name }}"  placeholder="Enter your channel name..">
                                                 </label>
                                             </div>
-                                            {{-- <div class="medium-6 columns">
-                                                <label>Display Name:
-                                                    <input type="text" placeholder="select your display name">
-                                                </label>
-                                            </div> --}}
                                         </div>
                                     </div>
                                     <div class="setting-form-inner">

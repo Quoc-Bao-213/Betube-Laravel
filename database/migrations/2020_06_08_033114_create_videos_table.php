@@ -19,9 +19,10 @@ class CreateVideosTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('thumbnail')->nullable();
+            $table->integer('percentage')->nullable();
             $table->bigInteger('total_views')->default(0);
             $table->string('hashtag')->nullable();
-            $table->uuid('video_type_id');
+            $table->uuid('video_type_id')->nullable();
             $table->bigInteger('total_likes')->default(0);
             $table->bigInteger('total_dislikes')->default(0);
             $table->string('path');          

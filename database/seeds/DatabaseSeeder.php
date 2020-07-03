@@ -39,5 +39,13 @@ class DatabaseSeeder extends Seeder
         factory(Subscription::class, 1000)->create([
             'user_id' => $user2->id,
         ]);
+
+        factory(VideoType::class)->create([
+            'name' => "Music"
+        ]);
+
+        factory(VideoType::class)->create([
+            'name' => "Game"
+        ]);
     }
 }

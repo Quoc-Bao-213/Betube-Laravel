@@ -33,7 +33,7 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'phone', 'email', 'password', 'channel_name', 'image', 'token'
+        'name' ,'phone', 'email', 'password', 'channel_name', 'image', 'token'
     ];
 
     /**
@@ -94,9 +94,11 @@ class User extends Authenticatable implements HasMedia
     public function registerMediaConversions(?Media $media = null)
     {
         $this->addMediaConversion('avatar')
-            ->quality(80);
+            ->quality(80)
+            ->nonQueued();
         
         $this->addMediaConversion('cover')
-            ->quality(80);
+            ->quality(80)
+            ->nonQueued();
     }
 }

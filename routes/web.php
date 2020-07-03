@@ -23,10 +23,6 @@ Auth::routes();
 //     return view('admin.auth.login');
 // });
 
-// Route::get('/video', function () {
-//     return view('betube.video');
-// });
-
 // Route::get('/categories', function () {
 //     return view('betube.categories');
 // });
@@ -38,10 +34,6 @@ Auth::routes();
 
 // Route::get('/follower', function () {
 //     return view('betube.profile.follower');
-// });
-
-// Route::get('/profile-video', function () {
-//     return view('betube.profile.profile-video');
 // });
 // END
 
@@ -64,6 +56,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/change-pass','ProfileController@indexChangePassword')->name('change-password');
 
+Route::get('videos/{video}', 'VideoController@show');
+Route::put('videos/{video}', 'VideoController@updateViews');
+
 Route::middleware('auth')->group(function() {
 
     Route::get('/upload-profile/{id}','ProfileController@edit')->name('upload-profile');
@@ -76,4 +71,10 @@ Route::middleware('auth')->group(function() {
     Route::post('channels/{channel}/subscriptions', 'SubscriptionController@store');
     Route::delete('channels/{channel}/subscriptions/{subscriptions}', 'SubscriptionController@destroy');
 
+    Route::get('upload-video/{channel}/videos', 'UploadVideoController@index')->name('upload-video');
+    Route::post('upload-video/{channel}/videos', 'UploadVideoController@store')->name('action-upload-video');
+
+    Route::get('update-video/{id}/videos','UploadVideoController@edit')->name('update-video');
+    Route::post('update-video/{id}/videos','UploadVideoController@update')->name('action-update-video');
+    
 });

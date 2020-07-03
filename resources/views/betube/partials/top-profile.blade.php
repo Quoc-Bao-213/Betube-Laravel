@@ -13,15 +13,20 @@
                 <div class="profile-author-img">
                     <img src="{{ $user->avatar() }}" alt="profile author img">
                 </div>
+
                 <subscribe-button :channel="{{ $user }}" :initial-subscriptions="{{ $user->subscriptions }}" inline-template>
                     <div class="profile-subscribe">
                         <span><i class="fa fa-users"></i>@{{ count }}</span>                   
-                        {{-- <span><i class="fa fa-users"></i>12313</span>  --}}
-                        <button @click="toggleSubscription" name="subscribe">
-                            @{{ owner ? 'Subscribers' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
-                        </button>                   
+                        <button @click="toggleSubscription" v-if="owner === false && subscribed === false" name="subscribe">
+                            @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
+                        </button>
+                        <button @click="toggleSubscription" style="background: #e96969" v-else-if="owner === false && subscribed === true" name="subscribe">
+                            @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
+                        </button>
+                        <span v-else class="button-subscriber">Subscriber</span>                   
                     </div>
                 </subscribe-button>
+                
                 <div class="profile-share">
                     <div class="easy-share" data-easyshare data-easyshare-http data-easyshare-url="http://joinwebs.com/">
                         <!-- Facebook -->

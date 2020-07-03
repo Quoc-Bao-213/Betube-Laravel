@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
     @yield('style')
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    @yield('styles')
 </head>
 <body>
 <div class="off-canvas-wrapper" id="app">
@@ -82,6 +83,7 @@
         </div><!--end off canvas content-->
     </div><!--end off canvas wrapper inner-->
 </div><!--end off canvas wrapper-->
+
 <!-- script files -->
 <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
 <script src="{{ asset('bower_components/what-input/what-input.js') }}"></script>
@@ -95,7 +97,7 @@
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/inewsticker.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/jquery.kyco.easyshare.js') }}" type="text/javascript"></script>
-
+{{-- custom script --}}
 <script>
     window.AuthUser = '{!! auth()->user() !!}'
 
@@ -107,7 +109,10 @@
         }
     }
 </script>
+
 <script src="{{ asset('js/app.js') }}"></script>
+
+@yield('script')
 </body>
 
 </html>
