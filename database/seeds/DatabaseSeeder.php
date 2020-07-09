@@ -32,11 +32,11 @@ class DatabaseSeeder extends Seeder
             'user_subscribe' => $user1->id
         ]);
 
-        factory(Subscription::class, 1000)->create([
+        factory(Subscription::class, 50)->create([
             'user_id' => $user1->id,
         ]);
 
-        factory(Subscription::class, 1000)->create([
+        factory(Subscription::class, 50)->create([
             'user_id' => $user2->id,
         ]);
 

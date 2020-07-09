@@ -60,7 +60,6 @@ Vue.component('channel-uploads', {
                                     return data
                                 return v
                             })
-
                         })
                     }, 3000)
                 })

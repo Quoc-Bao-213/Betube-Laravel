@@ -2907,7 +2907,9 @@ footer {
   margin-bottom: 50px; }
   .followers .follower .follower-img {
     height: 100px;
-    width: 115px; }
+    /* width: 115px; } */
+    width: 100%;
+  }
     .followers .follower .follower-img img {
       width: 100%;
       height: 100%;

@@ -5,6 +5,7 @@
     $profileSetting = "";
     $changePassword = "";
     $channel = "";
+    $subcriber = "";
 
     switch ($section[0]) {
         case 'about-me':
@@ -18,6 +19,9 @@
             break;
         case 'channel':
             $channel = "active";
+            break;
+        case 'subcriber':
+            $subcriber = "active";
             break;
         
         default:
@@ -44,14 +48,13 @@
                             <li class="clearfix"><a class="{{ $aboutMe }}" href="{{ route('about-me', Auth::id()) }}"><i class="fa fa-user"></i>about me</a></li>
                             <li class="clearfix"><a class="{{ $channel }}" href="{{ route('channel-videos', Auth::id()) }}"><i class="fa fa-video-camera"></i>Videos <span class="float-right">{{ count($user->videos) }}</span></a></li>
                             <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-heart"></i>Favorite Videos<span class="float-right">50</span></a></li>
-                            <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-users"></i>Followers<span class="float-right">6</span></a></li>
+                            <li class="clearfix"><a class="{{ $subcriber }}" href="{{ route('subscriber', Auth::id()) }}"><i class="fa fa-users"></i>subscriptions<span class="float-right"></span></a></li>
                             <li class="clearfix"><a class="{{ $profileSetting }}" href="{{ route('upload-profile', Auth::user()->id) }}"><i class="fa fa-gears"></i>Profile Settings</a></li>
                             <li class="clearfix"><a href="{{ route('change-password') }}"><i class="fa fa-lock"></i>change password</a></li>
                             @else
                             <li class="clearfix"><a class="{{ $aboutMe }}" href="{{ route('about-me', $section[1]) }}"><i class="fa fa-user"></i>about me</a></li>
                             <li class="clearfix"><a class="{{ $channel }}" href="{{ route('channel-videos', $section[1]) }}"><i class="fa fa-video-camera"></i>Videos <span class="float-right">{{ count($user->videos) }}</span></a></li>
                             <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-heart"></i>Favorite Videos<span class="float-right">50</span></a></li>
-                            <li class="clearfix"><a href="javascript:void(0)"><i class="fa fa-users"></i>Followers<span class="float-right">6</span></a></li>
                             @endif
                         </ul>
                         @if($user->editable())

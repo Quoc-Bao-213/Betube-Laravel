@@ -1,7 +1,7 @@
   <!-- footer -->
   <footer>
     <div class="row">
-        <div class="large-3 medium-6 columns">
+        <div class="large-4 medium-6 columns">
             <div class="widgetBox">
                 <div class="widgetTitle">
                     <h5>About Betube</h5>
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <div class="large-3 medium-6 columns">
+        <div class="large-4 medium-6 columns">
             <div class="widgetBox">
                 <div class="widgetTitle">
                     <h5>Recent Videos</h5>
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="large-3 medium-6 columns">
+        <div class="large-4 medium-6 columns">
             <div class="widgetBox">
                 <div class="widgetTitle">
                     <h5>Tags</h5>
@@ -85,42 +85,6 @@
                     <a href="#">HD</a>
                     <a href="#">Music</a>
                     <a href="#">Recreation</a>
-                </div>
-            </div>
-        </div>
-        <div class="large-3 medium-6 columns">
-            <div class="widgetBox">
-                <div class="widgetTitle">
-                    <h5>Subscribe Now</h5>
-                </div>
-                <div class="widgetContent">
-                    <form data-abide novalidate method="post">
-                        <p>Subscribe to get exclusive videos</p>
-                        <div class="input">
-                            <input type="text" placeholder="Enter your full Name" required>
-                            <span class="form-error">
-                                Yo, you had better fill this out, it's required.
-                            </span>
-                        </div>
-                        <div class="input">
-                            <input type="email" id="email" placeholder="Enter your email addres" required>
-                            <span class="form-error">
-                              I'm required!
-                            </span>
-                        </div>
-                        <button class="button" type="submit" value="Submit">Sign up Now</button>
-                    </form>
-                    <div class="social-links">
-                        <h5>We’re a Social Bunch</h5>
-                        <a class="secondary-button" href="#"><i class="fa fa-facebook"></i></a>
-                        <a class="secondary-button" href="#"><i class="fa fa-twitter"></i></a>
-                        <a class="secondary-button" href="#"><i class="fa fa-google-plus"></i></a>
-                        <a class="secondary-button" href="#"><i class="fa fa-instagram"></i></a>
-                        <a class="secondary-button" href="#"><i class="fa fa-vimeo"></i></a>
-                        <a class="secondary-button" href="#"><i class="fa fa-youtube"></i></a>
-                        <a class="secondary-button" href="#"><i class="fa fa-flickr"></i></a>
-
-                    </div>
                 </div>
             </div>
         </div>

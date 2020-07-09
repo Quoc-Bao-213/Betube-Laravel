@@ -54,6 +54,7 @@
 	};
 })(jQuery);
 
+
 /* 
  
 BASIC USAGE

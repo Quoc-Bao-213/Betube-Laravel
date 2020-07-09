@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Subscription;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
@@ -24,4 +25,6 @@ class SubscriptionController extends Controller
 
         return response()->json(['Delete Successfull']);
     }
+    
+    
 }

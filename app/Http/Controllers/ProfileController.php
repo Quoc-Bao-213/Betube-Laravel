@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
+use App\Subscription;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -125,5 +126,15 @@ class ProfileController extends Controller
         } else {
             return  redirect()->back()->with('error', 'Wrong password! ');
         }
+    }
+
+    public function getSubscriber($id)
+    {
+        $user = User::find($id);
+        $getUser = Subscription::where('user_subscribe', $id)->paginate(8);
+
+        if(Auth::id()== $id)
+            return view('betube.channel.subscriptions', compact('user', 'getUser'));
+        return view('betube.channel.about-me',compact('user'));
     }
 }

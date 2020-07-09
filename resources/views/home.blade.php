@@ -26,96 +26,6 @@
     </div>
 </section><!--end slider-->
 
-<!-- Premium Videos -->
-<section id="premium">
-    <div class="row">
-        <div class="heading clearfix">
-            <div class="large-11 columns">
-                <h4><i class="fa fa-play-circle-o"></i>Premium Videos</h4>
-            </div>
-            <div class="large-1 columns">
-                <div class="navText show-for-large">
-                    <a class="prev secondary-button"><i class="fa fa-angle-left"></i></a>
-                    <a class="next secondary-button"><i class="fa fa-angle-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="owl-demo" class="owl-carousel carousel" data-car-length="4" data-items="4" data-loop="true" data-nav="false" data-autoplay="true" data-autoplay-timeout="3000" data-dots="false" data-auto-width="false" data-responsive-small="1" data-responsive-medium="2" data-responsive-xlarge="5">
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium1.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="javascript:void(0)" class="hover-posts">
-                <span><i class="fa fa-play"></i>watch video</span>
-            </a>
-        </div>
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium2.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="javascript:void(0)" class="hover-posts">
-                <span><i class="fa fa-play"></i>watch video</span>
-            </a>
-        </div>
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium3.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="javascript:void(0)" class="hover-posts">
-                <span><i class="fa fa-play"></i>watch video</span>
-            </a>
-        </div>
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium4.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="javascript:void(0)" class="hover-posts">
-                <span><i class="fa fa-play"></i>watch video</span>
-            </a>
-        </div>
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium1.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="javascript:void(0)" class="hover-posts">
-                <span><i class="fa fa-play"></i>watch video</span>
-            </a>
-        </div>
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium2.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="javascript:void(0)" class="hover-posts">
-                <span><i class="fa fa-play"></i>watch video</span>
-            </a>
-        </div>
-    </div>
-</section><!-- End Premium Videos -->
 
 <!-- Category -->
 <section id="category">
@@ -212,11 +122,6 @@
                     <h6><a href="#">Foods &amp; Drinks</a></h6>
                 </div>
             </div><!-- end carousel -->
-            <div class="row collapse">
-                <div class="large-12 columns text-center row-btn">
-                    <a href="#" class="button radius">View All Categories</a> 
-                </div>
-            </div>
         </div>
     </div>
 </section><!-- End Category -->
@@ -227,18 +132,18 @@
     <!-- newest video -->
     <div class="main-heading">
         <div class="row secBg padding-14">
-            <div class="medium-8 small-8 columns">
+            <div class="medium-12 small-12 columns">
                 <div class="head-title">
                     <i class="fa fa-film"></i>
                     <h4>Newest Videos</h4>
                 </div>
             </div>
-            <div class="medium-4 small-4 columns">
+            {{-- <div class="medium-4 small-4 columns">
                 <ul class="tabs text-right pull-right" data-tabs>
                     <li class="tabs-title is-active"><a class="is-active" href="#" data-tab="1">all</a></li>
                     <li class="tabs-title" data-tab-index="1"><a href="#" data-tab="2">HD</a></li>
                 </ul>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="row secBg">
@@ -841,34 +746,26 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="text-center row-btn">
-                <a class="button radius" href="all-video.html">View All Video</a>
-            </div> --}}
         </div>
     </div>
 </section>
 <section class="content">
     <!-- End newest video -->
-    <!-- ad Section -->
-    <div class="googleAdv">
-        <a href="#"><img src="images/goodleadv.png" alt="googel ads"></a>
-    </div><!-- End ad Section -->
-
     <!-- popular Videos -->
     <div class="main-heading">
         <div class="row secBg padding-14">
-            <div class="medium-8 small-8 columns">
+            <div class="medium-12 small-12 columns">
                 <div class="head-title">
                     <i class="fa fa-star"></i>
                     <h4>Most Popular Videos</h4>
                 </div>
             </div>
-            <div class="medium-4 small-4 columns">
+            {{-- <div class="medium-4 small-4 columns">
                 <ul class="tabs text-right pull-right" data-tabs id="popularVideos">
                     <li class="tabs-title is-active"><a href="#popular-all">all</a></li>
                     <li class="tabs-title"><a href="#popular-hd">HD</a></li>
                 </ul>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="row secBg">
@@ -1470,90 +1367,10 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center row-btn">
-                <a class="button radius" href="all-video.html">View All Video</a>
-            </div>
         </div>
     </div>
     <!-- ad Section -->
-   <div class="googleAdv">
-        <a href="#"><img src="images/goodleadv.png" alt="googel ads"></a>
-    </div><!-- End ad Section -->
+  
 </section><!-- End main content -->
 
-<!-- movies -->
-<section id="movies">
-    <div class="row secBg">
-        <div class="large-12 columns">
-            <div class="column row">
-                <div class="heading category-heading clearfix">
-                    <div class="cat-head pull-left">
-                        <i class="fa fa-video-camera"></i>
-                        <h4>Watch Movies</h4>
-                    </div>
-                <div>
-                    <div class="navText pull-right show-for-large">
-                        <a class="prev secondary-button"><i class="fa fa-angle-left"></i></a>
-                        <a class="next secondary-button"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <!-- movie carousel -->
-            <div id="owl-demo-movie" class="owl-carousel carousel" data-autoplay="true" data-autoplay-timeout="3000" data-autoplay-hover="true" data-car-length="5" data-items="6" data-dots="false" data-loop="true" data-auto-width="true" data-margin="10">
-                <div class="item-movie item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/movie1.png" alt="carousel">
-                        <a href="single-video-v3.html" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                </div>
-                <div class="item-movie item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/movie2.png" alt="carousel">
-                        <a href="single-video-v3.html" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                </div>
-                <div class="item-movie item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/movie3.png" alt="carousel">
-                        <a href="single-video-v3.html" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                </div>
-                <div class="item-movie item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/movie4.png" alt="carousel">
-                        <a href="single-video-v3.html" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                </div>
-                <div class="item-movie item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/movie5.png" alt="carousel">
-                        <a href="single-video-v3.html" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                </div>
-                <div class="item-movie item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/movie6.png" alt="carousel">
-                        <a href="single-video-v3.html" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                </div>
-            </div><!-- end carousel -->
-        </div>
-    </div>
-</section><!-- End movie -->
-<div class="googleAdv text-center">
-    <a href="#"><img src="images/goodleadv.png" alt="googel ads"></a>
-</div><!-- End ad Section -->
 @endsection

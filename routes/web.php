@@ -78,5 +78,7 @@ Route::middleware('auth')->group(function() {
 
     Route::get('update-video/{id}/videos','UploadVideoController@edit')->name('update-video');
     Route::post('update-video/{id}/videos','UploadVideoController@update')->name('action-update-video');
-    
+   
+    Route::get('/subcriber/{id}','ProfileController@getSubscriber')->name('subscriber');
+
 });

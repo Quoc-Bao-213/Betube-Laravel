@@ -1,14 +1,10 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-
-<!-- Mirrored from beetube.me/html-template/home-v1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Jun 2020 10:05:28 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeTube video</title>
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/appcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">

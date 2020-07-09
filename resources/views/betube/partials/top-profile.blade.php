@@ -89,8 +89,8 @@
                                     <i class="fa fa-users"></i>
                                 </div>
                                 <div class="li-text float-left">
-                                    <p class="number-text">6</p>
-                                    <span>followers</span>
+                                <p class="number-text">{{count($user->subscriptions) }}</p>
+                                    <span>subscribers</span>
                                 </div>
                             </li>
                             <li>

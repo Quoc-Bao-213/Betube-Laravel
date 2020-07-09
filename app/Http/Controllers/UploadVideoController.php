@@ -8,7 +8,6 @@ use App\Jobs\Videos\CreateVideoThumbnail;
 use App\User;
 use App\Video;
 use App\VideoType;
-use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
