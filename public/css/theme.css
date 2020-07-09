@@ -2403,7 +2403,15 @@ footer {
           line-height: 27px;
           font-size: 13px;
           width: 34px;
-          margin-right: 5px; }
+          /* margin-right: 5px; } */ }
+          .thumb-up-active,
+          .thumb-down-active {
+            background-color: #e96969;
+          }
+          .thumb-up-active i,
+          .thumb-down-active i{
+            color: #fff;
+          }
           .SinglePostStats .media-object .social-share .post-like-btn .secondary-button:hover {
             border-color: #e96969; }
         .SinglePostStats .media-object .social-share .post-like-btn .easy-share {

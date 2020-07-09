@@ -11,9 +11,8 @@ class ChannelController extends Controller
     public function showVideos($id)
     {
         $user = User::find($id);
-        // $videos = Video::all();
-        // $videos = $user->videos();
-        $videos = Video::where('user_id', $id)->get();
+       
+        $videos = Video::where('user_id', $id)->orderBy('created_at', 'DESC')->get();
 
         return View('betube.channel.profile-video', compact('user', 'videos'));
     }

@@ -68,9 +68,9 @@
                         </div>
                     </div>
                     @endforeach
-                    <div class="show-more-inner text-center">
+                    {{-- <div class="show-more-inner text-center">
                         <a href="#" class="show-more-btn">show more</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section><!-- End single post description -->
