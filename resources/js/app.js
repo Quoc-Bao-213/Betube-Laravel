@@ -2,8 +2,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.config.ignoredElements = ['video-js']
+Vue.component('votes', require('./components/votes.vue').default);
 require('./components/subscribe-button.js')
 require('./components/channel-uploads.js')
 

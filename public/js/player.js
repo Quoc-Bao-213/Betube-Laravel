@@ -1,5 +1,11 @@
 var player = videojs('my-video')
 
+// require('videojs-hls-quality-selector');
+
+// player.hlsQualitySelector({
+//     displayCurrentQuality: true
+// });
+
 var viewLogged = false
 
 player.on('timeupdate', function() {
