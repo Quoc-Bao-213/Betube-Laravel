@@ -1066,6 +1066,14 @@ input[type=checkbox]:checked + .customLabel:before {
     top: 62%; }
 .content .post .post-des {
   padding: 15px 0 15px 10px; }
+  .post-des h6 .text_overflow{
+    display: block;
+    width: 93%;
+    white-space: nowrap;
+    padding: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .content .post .post-des h6 {
     margin-bottom: 15px;
     font-weight: normal;

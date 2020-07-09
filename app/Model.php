@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model as BaseModel;
 use Illuminate\Support\Str;
 
 class Model extends BaseModel
-{
+{   
+    // protected $dates = ['created_at']; 
+
     public $incrementing = false;
 
     protected $guarded = [];

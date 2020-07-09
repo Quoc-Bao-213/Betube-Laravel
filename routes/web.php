@@ -23,18 +23,6 @@ Auth::routes();
 //     return view('admin.auth.login');
 // });
 
-// Route::get('/categories', function () {
-//     return view('betube.categories');
-// });
-
-// ON WORK (USE FOR TEST)
-// Route::get('/favorite', function () {
-//     return view('betube.profile.favorite');
-// });
-
-// Route::get('/follower', function () {
-//     return view('betube.profile.follower');
-// });
 // END
 
 Route::get('/register','RegisterController@index')->name('register')->middleware('guest');
@@ -81,5 +69,6 @@ Route::middleware('auth')->group(function() {
 
     Route::post('votes/{video}/{type}', 'VoteController@vote');
     Route::delete('votes/{video}/delete', 'VoteController@deleteVote');
-    
+
+    Route::get('subscriptions/{id}','ProfileController@getSubscriber')->name('subscriber');
 });
