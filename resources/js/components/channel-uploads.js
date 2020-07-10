@@ -21,6 +21,10 @@ Vue.component('channel-uploads', {
             this.selected = true
             this.videos = Array.from(this.$refs.videos.files)
 
+            // console.log(this.videos.currenttime)
+
+            // return
+
             const uploaders = this.videos.map(video => {
                 const form = new FormData()
 

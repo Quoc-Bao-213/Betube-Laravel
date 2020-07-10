@@ -49,6 +49,9 @@ Route::put('videos/{video}', 'VideoController@updateViews');
 
 Route::get('channel/{channel}/videos', 'ChannelController@showVideos')->name('channel-videos');
 
+Route::get('videos/{video}/comments', 'CommentController@index');
+Route::get('comments/{comment}/replies', 'CommentController@show');
+
 Route::middleware('auth')->group(function() {
 
     Route::get('/upload-profile/{id}','ProfileController@edit')->name('upload-profile');
@@ -67,8 +70,10 @@ Route::middleware('auth')->group(function() {
     Route::get('update-video/{id}/videos','UploadVideoController@edit')->name('update-video');
     Route::post('update-video/{id}/videos','UploadVideoController@update')->name('action-update-video');
 
-    Route::post('votes/{video}/{type}', 'VoteController@vote');
+    Route::post('votes/{entityID}/{type}', 'VoteController@vote');
     Route::delete('votes/{video}/delete', 'VoteController@deleteVote');
 
     Route::get('subscriptions/{id}','ProfileController@getSubscriber')->name('subscriber');
+
+    Route::post('comments/{video}', 'CommentController@store');
 });

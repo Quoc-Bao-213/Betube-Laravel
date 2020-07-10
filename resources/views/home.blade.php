@@ -128,7 +128,6 @@
 
 <!-- main content -->
 <section class="content" style="margin-bottom: 30px;">
-    {{-- SHOW ALL VIDEO THEO TRUONG CREATED_AT --}}
     <!-- newest video -->
     <div class="main-heading">
         <div class="row secBg padding-14">
@@ -143,7 +142,6 @@
     <div class="row secBg">
         <div class="large-12 columns">
             <div class="row column head-text clearfix">
-                {{-- COUNT VIDEO (NẾU CÓ THỂ HOẶC XÓA) --}}
                 <p class="pull-left">All Videos : <span>1,862 Videos posted</span></p> 
                 <div class="grid-system pull-right show-for-large">
                     <a class="secondary-button current grid-default" href="#"><i class="fa fa-th"></i></a>
