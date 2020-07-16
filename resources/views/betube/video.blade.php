@@ -165,7 +165,7 @@
     <div class="large-4 columns">
         <aside class="secBg sidebar">
             <div class="row">
-
+        
                 <!-- most view Widget -->
                 <div class="large-12 medium-7 medium-centered columns">
                     <div class="widgetBox">
@@ -173,26 +173,26 @@
                             <h5>More Videos</h5>
                         </div>
                         <div class="widgetContent">
-                            @foreach($videos as $video)
+                            @foreach($videos as $videos)
                                 @php
                                     $test = explode('/', Request::path());
                                 @endphp
-                                @if($test[1] === $video->id)
+                                @if($test[1] === $videos->id)
                                     @continue
                                 @else
                                     <div class="video-box thumb-border">
                                         <div class="video-img-thumb">
-                                            <img src="{{ asset($video->thumbnail) }}" alt="most viewed videos">
-                                            <a href="{{ route('video', $video->id) }}" class="hover-posts">
+                                            <img src="{{ asset($videos->thumbnail) }}" alt="most viewed videos">
+                                            <a href="{{ route('video', $videos->id) }}" class="hover-posts">
                                                 <span><i class="fa fa-play"></i>Watch Video</span>
                                             </a>
                                         </div>
                                         <div class="video-box-content">
-                                            <h6><a href="{{ route('video', $video->id) }}">{{ $video->title }}</a></h6>
+                                            <h6><a href="{{ route('video', $videos->id) }}">{{ $videos->title }}</a></h6>
                                             <p>
-                                                <span><i class="fa fa-user"></i><a href="{{ route('about-me', $video->user->id) }}">{{ $video->user->channel_name }}</a></span>
-                                                <span><i class="fa fa-clock-o"></i>{{ $video->created_at->toFormattedDateString() }}</span>
-                                                <span><i class="fa fa-eye"></i>{{ $video->total_views }}</span>
+                                                <span><i class="fa fa-user"></i><a href="{{ route('about-me', $videos->user->id) }}">{{ $videos->user->channel_name }}</a></span>
+                                                <span><i class="fa fa-clock-o"></i>{{ $videos->created_at->toFormattedDateString() }}</span>
+                                                <span><i class="fa fa-eye"></i>{{ $videos->total_views }}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -201,7 +201,6 @@
                         </div>
                     </div>
                 </div><!-- end most view Widget -->
-
             </div>
         </aside>
     </div><!-- end sidebar -->
@@ -210,10 +209,11 @@
 
 @section('styles')
     <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.css" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.css" rel="stylesheet" /> --}}
 @endsection
 
 @section('script')
+
     <script src="https://vjs.zencdn.net/7.8.3/video.js"></script>
     {{-- <script src="https://vjs.zencdn.net/7.8.3/video.min.js"></script> --}}
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-quality-levels/2.0.9/videojs-contrib-quality-levels.min.js"></script>

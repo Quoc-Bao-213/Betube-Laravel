@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\Subscription;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
@@ -36,8 +35,8 @@ class ProfileController extends Controller
         $user = User::find($id);
         
         if (Auth::user()->id === $id)
-            return view('betube.channel.setting',compact('user'));
-        return view('betube.channel.about-me',compact('user'));
+            return view('betube.channel.setting', compact('user'));
+        return view('betube.channel.about-me', compact('user'));
     }
 
     /**
@@ -51,11 +50,10 @@ class ProfileController extends Controller
     {
         $user = User::find($id);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->channel_name = $request->channel_name;
-        $user->description = $request->description;
+        $user->name = trim($request->name);
+        $user->phone = trim($request->phone);
+        $user->channel_name = trim($request->channel_name);
+        $user->description = trim($request->description);
         $user->save();
 
         return redirect()->back()->with('success', 'Update Successfully!');

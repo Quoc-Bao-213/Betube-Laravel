@@ -88,6 +88,7 @@
 
     // var_dump($isLogined)
 @endphp
+
 <script>
     window.AuthUser = {!! $isLogined !!}
 
@@ -101,6 +102,7 @@
     }
 </script>
 
+<script src="{{ asset('js/app.js') }}"></script>
 <!-- script files -->
 <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
 <script src="{{ asset('bower_components/what-input/what-input.js') }}"></script>
@@ -115,9 +117,7 @@
 <script src="{{ asset('js/inewsticker.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/jquery.kyco.easyshare.js') }}" type="text/javascript"></script>
 {{-- custom script --}}
-
 @yield('script')
-<script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>

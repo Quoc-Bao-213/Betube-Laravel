@@ -24,13 +24,9 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'email',
             'phone' => 'alpha_num|min:10|max:10',
             'image_avatar' => 'image',
             'image_cover' => 'image',
-            'old_password' => 'required',
-            'new_password' => 'required',
-            'retype_password' => 'required|same:new_password',
         ];
     }
 }
