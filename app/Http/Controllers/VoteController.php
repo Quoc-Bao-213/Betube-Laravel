@@ -16,9 +16,11 @@ class VoteController extends Controller
         return auth()->user()->toggleVote($entity, $type);
     }
 
-    public function deleteVote($user_id)
+    public function deleteVote ($id)
     {
-        $test2 = Vote::where('user_id', $user_id);
+        // $test2 = Vote::where('user_id', $user_id)->where('voteable_id', $vodeid);
+        $test2 = Vote::where('id', $id);
+
 
         $test2->delete();
 

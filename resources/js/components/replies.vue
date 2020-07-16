@@ -1,16 +1,16 @@
 <template>
     <div class="media-object stack-for-small reply-comment">
 
-        <div v-for="reply in replies.data">
+        <div v-for="reply in replies.data" :key="reply.id">
             <div class="media-object-section comment-img text-center">
                 <div class="comment-box-img">
-                    <img src= "images/post-author-post.png" alt="comment">
+                    <img :src="reply.user.avatar" alt="comment">
                 </div>
             </div>
             <div class="media-object-section comment-desc" style="width: 42rem">
                 <div class="comment-title">
-                    <span class="name"><a href="#">{{ reply.user.name }}</a> Said:</span>
-                    <span class="time float-right"><i class="fa fa-clock-o"></i>1 minute ago</span>
+                    <span class="name"><a :href="`/about-me/${reply.user.id}`">{{ reply.user.channel_name }}</a> Said:</span>
+                    <span class="time float-right"><i class="fa fa-clock-o"></i><time-ago class="time_ago" :datetime="reply.created_at" :long="true"></time-ago></span>
                 </div>
                 <div class="comment-text">
                     <p>{{ reply.content }}</p>
@@ -31,15 +31,26 @@
 </template>
 
 <script>
+import TimeAgo from 'vue2-timeago'
+
 export default {
-    props: ['comment'],
+    props: {
+        comment: {
+            required: true,
+            default: () => ({})
+        },
+    },
+
+    components: {
+        TimeAgo
+    },
 
     data() {
         return {
             replies: {
                 data: [],
-                next_page_url: `/comments/${this.comment.id}/replies`
-            }
+                next_page_url: `/comments/${this.comment.id}/replies`,
+            },
         }
     },
 
@@ -55,6 +66,15 @@ export default {
                         ]
                     }
                 })
+        },
+        addReply(reply) {
+            this.replies = {
+                ...this.replies,
+                data: [
+                    reply,
+                    ...this.replies.data
+                ]
+            }
         }
     }
 }

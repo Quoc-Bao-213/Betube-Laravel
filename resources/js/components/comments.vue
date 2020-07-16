@@ -17,14 +17,14 @@
                     <div class="media-object stack-for-small">
                         <div class="media-object-section comment-img text-center">
                             <div class="comment-box-img">
-                                <img src= "images/post-author-post.png" alt="comment">
+                                <img :src="users.avatar" alt="comment">
                             </div>
-                            <h6><a href="#">Joseph John</a></h6>
+                            <h6><a :href="`/about-me/${users.id}`">{{ users.channel_name }}</a></h6>
                         </div>
                         <div class="media-object-section comment-textarea">
                             <div>
                                 <textarea v-model="newComment" name="content" placeholder="Add a comment here.."></textarea>
-                                <button @click="addComment">
+                                <button @click="addComment" style="float: right;">
                                     <small>Add Comment</small>
                                 </button>
                             </div>
@@ -33,12 +33,12 @@
                 </div>
 
                 <div class="comment-sort text-right">
-                    <span>Sort By : <a href="#">newest</a> | <a href="#">oldest</a></span>
+                    <span>Sort By : <a href="javascript:void(0)">newest</a><!-- | <a href="#">oldest</a> --></span>
                 </div>
 
                 <!-- main comment -->
-                <div class="main-comment showmore_one">
-                    <Comment v-for="comment in comments.data" :key="comment.id" :comment="comment"/>
+                <div class="main-comment"> <!-- showmore_one -->
+                    <Comment v-for="comment in comments.data" :key="comment.id" :comment="comment" :video="video" :user="users"/>
 
                     <div v-if="comments.next_page_url" class="showmore_trigger" style="margin-top: 25px">
                         <span @click="fetchComments" class="more">Load Comments</span>
@@ -55,10 +55,29 @@
 import Comment from './comment.vue'
 
 export default {
-    props: ['video'],
+    props: {
+        video: {
+            required: true,
+            default: () => ({})
+        },
+        user: {
+            required: true,
+            default: () => ({})
+        }
+    },
 
     components: {
         Comment
+    },
+
+    data() {
+        return {
+            comments: {
+                data: []
+            },
+            newComment: '',
+            users: this.user
+        }
     },
 
     mounted() {
@@ -67,16 +86,10 @@ export default {
 
     computed: {
         auth() {
+            // console.log(__auth())
             return __auth()
         }
     },
-
-    data: () => ({
-        comments: {
-            data: []
-        },
-        newComment: ''
-    }),
 
     methods: {
         fetchComments() {
@@ -99,6 +112,7 @@ export default {
             axios.post(`/comments/${this.video.id}`, {
                 content: this.newComment
             }).then(({ data }) => {
+                this.newComment = ''
                 this.comments = {
                     ...this.comments,
                     data: [

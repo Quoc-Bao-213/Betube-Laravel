@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
+use App\User;
 use App\Video;
 use App\VideoType;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class VideoController extends Controller
@@ -12,9 +15,15 @@ class VideoController extends Controller
     {   
         $videos = Video::all();
         $videoType = VideoType::all();
-        if (request()->wantsJson())
+        $user = User::find(Auth::id());
+
+        if (request()->wantsJson()){
             return $video;
-        return view('betube.video', compact('video', 'videos','videoType'));
+        }
+            
+        // dd($video->comments->first()->replies);
+
+        return view('betube.video', compact('video', 'videos', 'user', 'videoType'));
     }
 
     public function updateViews(Video $video)

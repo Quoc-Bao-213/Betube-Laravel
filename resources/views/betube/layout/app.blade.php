@@ -79,19 +79,28 @@
         </div><!--end off canvas content-->
     </div><!--end off canvas wrapper inner-->
 </div><!--end off canvas wrapper-->
+@php
+    if (auth()->user() ) {
+        $isLogined = auth()->user() ;
+    }    else{
+        $isLogined = null;
+    }
 
+    // var_dump($isLogined)
+@endphp
 <script>
-    window.AuthUser = '{!! auth()->user() !!}'
+    window.AuthUser = {!! $isLogined !!}
 
+    stringifyAuthUser = JSON.stringify(window.AuthUser);
     window.__auth = function() {
         try {
-            return JSON.parse(AuthUser)
+            return JSON.parse(stringifyAuthUser)
         } catch(error) {
             return null
         }
     }
 </script>
-<script src="{{ asset('js/app.js') }}"></script>
+
 <!-- script files -->
 <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
 <script src="{{ asset('bower_components/what-input/what-input.js') }}"></script>
@@ -108,6 +117,7 @@
 {{-- custom script --}}
 
 @yield('script')
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>
