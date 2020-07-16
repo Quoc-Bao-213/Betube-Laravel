@@ -40,7 +40,19 @@
                     </div>
                     <div class="row">
                         <channel-uploads :channel="{{ $user }}" inline-template>
-                            <div class="large-12 columns" v-if="!selected">
+                            <div class="large-12 columns" v-if="!isSelected">
+                                <div class="post-category">
+                                    <label>Choose Video Type:
+                                        <select v-model="videoType">
+                                            <option value="" disabled selected>--- Choose Video Type ---</option>
+                                            @foreach($videoType as $videotype)
+                                            <option value="{{ $videotype->id }}">
+                                                {{ $videotype->name }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </label>
+                                </div>
                                 <h6 class="borderBottom">Choose Video:</h6>
                                 <div class="upload-video">
                                     <label for="videoUpload" class="button">Upload File</label>
@@ -49,7 +61,7 @@
                                 </div>
                                 <p class="extraMargin" style="margin-bottom: 1rem">Supported Video Formats: mp4.</p>
                             </div>
-
+                            
                             <div v-else class="large-12 columns">
                                 <h6 class="borderBottom">Video Processing</h6>
 

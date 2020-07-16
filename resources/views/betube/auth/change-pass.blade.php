@@ -45,10 +45,10 @@
                             <p style="color: #e96969 !important; text-align: center; margin-bottom: 0.5rem">
                                 {{ session('error') }}
                             </p>
-                            @elseif(session('notify'))
+                            {{-- @elseif(session('notify'))
                             <p style="color: #28a745 !important; text-align: center; margin-bottom: 0.5rem">
                                 {{ session('notify') }}
-                            </p>
+                            </p> --}}
                             @endif
                             @if(isset(Auth::user()->id))
                             <form method="POST" action="{{ route('action-change-password', Auth::user()->id ) }}" data-abide novalidate>

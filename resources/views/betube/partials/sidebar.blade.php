@@ -23,7 +23,6 @@
         case 'subcriber':
             $subcriber = "active";
             break;
-        
         default:
             break;
     }

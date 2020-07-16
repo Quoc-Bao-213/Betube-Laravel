@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Video;
+use App\VideoType;
 use Illuminate\Support\Facades\DB;
 
 class VideoController extends Controller
@@ -11,9 +12,10 @@ class VideoController extends Controller
     {   
         // $videoDESC = DB::table('videos')->orderBy('total_views', 'DESC')->get();
         $videos = Video::all();
+        $videoType = VideoType::all();
         if (request()->wantsJson())
             return $video;
-        return view('betube.video', compact('video', 'videos'));
+        return view('betube.video', compact('video', 'videos','videoType'));
     }
 
     public function updateViews(Video $video)

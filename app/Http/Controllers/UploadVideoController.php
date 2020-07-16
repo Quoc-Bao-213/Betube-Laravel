@@ -28,13 +28,13 @@ class UploadVideoController extends Controller
     {
         $video = $channel->videos()->create([
             'title' => $request->title,
-            'path' => $request->video->store("channels/{$channel->id}")
+            'path' => $request->video->store("channels/{$channel->id}"),
+            'video_type_id' => $request->video_type_id
         ]);
 
         $this->dispatch(new CreateVideoThumbnail($video));
 
         $this->dispatch(new ConvertForStreaming($video));
-
         return $video;
     }
     

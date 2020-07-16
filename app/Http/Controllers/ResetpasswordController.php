@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\ResetpasswordRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -28,7 +28,7 @@ class ResetpasswordController extends Controller
         $user = User::where('email',$getEmailFromForm)->first();
 
         if(!$user) {
-            return redirect()->back()->with('notify','Email your type not exists!');
+            return redirect()->back()->with('error','Email your type not exists!');
         }
 
         $token = Crypt::encrypt(time() + 60*60);
@@ -47,16 +47,21 @@ class ResetpasswordController extends Controller
             $message->to($getEmailFromForm, $user->name)->subject('Get a password!');
         });
 
-        return redirect()->back()->with('notify','Link get  password sent your email!');        
+        return redirect()->back()->with('success','Link get password sent your email!');        
     }
     
-    public function processChangePassword(ProfileRequest $request)
+    public function processChangePassword(ResetpasswordRequest $request)
     {
         $email = $_GET['email'];
-        $password = Hash::make($request->new_password);
-        
-        DB::update("update users set password = '".$password."' where email = '".$email."'");
+        if(isset($email))
+        {
+            $password = Hash::make($request->new_password);
 
-        return redirect()->back()->with('notify','Change password  success!');
+            DB::update("update users set password = '".$password."' where email = '".$email."'");
+            return redirect()->back()->with('success','Change password success!');
+        }else{
+            return view('betube.page404');
+        }
+        
     }
 }

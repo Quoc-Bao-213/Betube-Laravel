@@ -39,10 +39,14 @@
                         <div class="register-form">
                             <h5 class="text-center">Enter Email</h5>
                             <form method="POST" data-abide novalidate>
-                                @if(session('notify'))
+                                @if(session('error'))
                                 <p style="color: #e96969 !important; text-align: center; margin-bottom: 0.5rem">
-                                    {{ session('notify') }}
-                                </p>                               
+                                    {{ session('error') }}
+                                </p>  
+                                @elseif(session('success'))      
+                                <p style="color: #28a745 !important; text-align: center; margin-bottom: 0.5rem">
+                                    {{ session('success') }}
+                                </p>                       
                                 @endif
                                 @csrf
                                 <div class="input-group">

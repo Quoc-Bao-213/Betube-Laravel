@@ -92,17 +92,16 @@ class ProfileController extends Controller
     public function indexChangePassword()
     {
         if(isset($_GET['email']))
-        {
+        {   
             $tokenDB = DB::select('select * from users where email = "'.$_GET['email'].'"');
-        
-            if ($_GET['token'] === $tokenDB[0]->token) {
+            if (isset($tokenDB[0]) && $_GET['token'] === $tokenDB[0]->token){
                 $token = $_GET['token'];
                 $tokenExpire = Crypt::decrypt($token);
                 $currentTime = time();
                 if ($tokenExpire < $currentTime){ 
                     return view('betube.page404');
                 }
-            } else 
+            } else
                 return view('betube.page404');
         }
         if (isset(Auth::user()->email)) {
@@ -110,7 +109,6 @@ class ProfileController extends Controller
         } else if (isset($_GET['token'])) {
             return view('betube.auth.change-pass');
         }
-            
         return redirect()->route('home');
     }
     

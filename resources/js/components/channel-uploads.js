@@ -8,27 +8,31 @@ Vue.component('channel-uploads', {
     },
 
     data: () => ({
-        selected: false,
+        isSelected: false,
         videos: [],
         progress: {},
         uploads: [],
-        intervals: {}
+        intervals: {},
+        videoType: ''
     }),
 
     methods: {
         upload() {
             // console.log(this.$refs)
-            this.selected = true
+            this.isSelected = true
             this.videos = Array.from(this.$refs.videos.files)
-
+            
+            // console.log(this.videos)
+            // return 
             const uploaders = this.videos.map(video => {
                 const form = new FormData()
-
+                
                 this.progress[video.name] = 0
-
+  
                 form.append('video', video)
                 form.append('title', video.name)
-
+                form.append('video_type_id', this.videoType)
+              
                 return axios.post(`/upload-video/${this.channel.id}/videos`, form, {
                     onUploadProgress: (event) => { 
                         // console.log(event)
@@ -36,13 +40,14 @@ Vue.component('channel-uploads', {
                         this.$forceUpdate()
                     } 
                 }).then(({ data }) => {
+
                     this.uploads = [
                         ...this.uploads,
                         data
                     ]
+                    // console.log(this.uploads)
                 })
             })
-            // console.log(videos)
 
             axios.all(uploaders).then(() => {
                 this.videos = this.uploads
@@ -64,6 +69,6 @@ Vue.component('channel-uploads', {
                     }, 3000)
                 })
             })
-        }
+        },
     }
 })

@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Video;
-use Illuminate\Support\Facades\DB;
+use App\VideoType;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $videos = Video::all();
-        
-        return View('home',compact('videos'));
+        $videoTypes = VideoType::all();
+        return View('home',compact('videos','videoTypes'));
     }
 }

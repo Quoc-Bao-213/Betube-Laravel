@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- layerslider -->
-<section id="slider">
+<section id="slider" style="margin-bottom:30px;">
     <div id="full-slider-wrapper">
         <div id="layerslider" style="width:100%;height:500px;">
             <div class="ls-slide" data-ls="transition2d:1;timeshift:-1000;">
@@ -28,6 +28,7 @@
 
 
 <!-- Category -->
+
 <section id="category">
     <div class="row secBg">
         <div class="large-12 columns">
@@ -45,86 +46,24 @@
                 </div>
                 </div>
             </div>
-
-            {{-- ÍT NHẤT 7 CATEGORIES ĐỂ CHẠY SLIDE --}}
             <!-- category carousel -->
-            <div id="owl-demo-cat" class="owl-carousel carousel" data-car-length="6" data-items="6" data-loop="true" data-nav="false" data-autoplay="true" data-autoplay-timeout="4000" data-auto-width="true" data-margin="10" data-dots="false">
+            <div id="owl-demo-cat" class="owl-carousel carousel" data-car-length="5" data-items="5" data-loop="true" data-nav="false" data-autoplay="true" data-autoplay-timeout="4000" data-auto-width="true" data-margin="10" data-dots="false">
+                @foreach($videoTypes as $index =>  $videoType)
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
-                        <img src="images/category/category1.png" alt="carousel">
-                        <a href="#" class="hover-posts">
+                        <img src="{{ asset('images/category/category'.($index+1).'.png') }}" alt="carousel">
+                        <a href="javascript:void(0)" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
                     </figure>
-                    <h6><a href="#">Entertainment</a></h6>
+                <h6><a href="#">{{ $videoType->name }}</a></h6>
                 </div>
-                <div class="item-cat item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/category/category2.png" alt="carousel">
-                        <a href="#" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                    <h6><a href="#">Technology</a></h6>
-                </div>
-                <div class="item-cat item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/category/category3.png" alt="carousel">
-                        <a href="#" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                    <h6><a href="#">Fashion &amp; Beauty</a></h6>
-                </div>
-                <div class="item-cat item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/category/category4.png" alt="carousel">
-                        <a href="#" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                    <h6><a href="#">Sports</a></h6>
-                </div>
-                <div class="item-cat item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/category/category5.png" alt="carousel">
-                        <a href="#" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                    <h6><a href="#">Foods &amp; Drinks</a></h6>
-                </div>
-                <div class="item-cat item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/category/category6.png" alt="carousel">
-                        <a href="#" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                    <h6><a href="#">Automotive</a></h6>
-                </div>
-                <div class="item-cat item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/category/category4.png" alt="carousel">
-                        <a href="#" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                    <h6><a href="#">Sports</a></h6>
-                </div>
-                <div class="item-cat item thumb-border">
-                    <figure class="premium-img">
-                        <img src="images/category/category5.png" alt="carousel">
-                        <a href="#" class="hover-posts">
-                            <span><i class="fa fa-search"></i></span>
-                        </a>
-                    </figure>
-                    <h6><a href="#">Foods &amp; Drinks</a></h6>
-                </div>
+                @endforeach
             </div><!-- end carousel -->
         </div>
     </div>
-</section><!-- End Category -->
+</section><!-- End Category --> 
+    
 
 <!-- main content -->
 <section class="content" style="margin-bottom: 30px;">
@@ -144,7 +83,7 @@
         <div class="large-12 columns">
             <div class="row column head-text clearfix">
                 {{-- COUNT VIDEO (NẾU CÓ THỂ HOẶC XÓA) --}}
-                <p class="pull-left">All Videos : <span>1,862 Videos posted</span></p> 
+                {{-- <p class="pull-left">All Videos : <span></span></p>  --}}
                 <div class="grid-system pull-right show-for-large">
                     <a class="secondary-button current grid-default" href="#"><i class="fa fa-th"></i></a>
                     <a class="secondary-button grid-medium" href="#"><i class="fa fa-th-large"></i></a>
@@ -224,7 +163,7 @@
     <div class="row secBg">
         <div class="large-12 columns">
             <div class="row column head-text clearfix">
-                <p class="pull-left">All Videos : <span>1,862 Videos posted</span></p>
+            <p class="pull-left">All Videos : <span>{{ count($videos) }} Videos posted</span></p>
                 <div class="grid-system pull-right show-for-large">
                     <a class="secondary-button current grid-default" href="#"><i class="fa fa-th"></i></a>
                     <a class="secondary-button grid-medium" href="#"><i class="fa fa-th-large"></i></a>

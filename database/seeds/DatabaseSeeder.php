@@ -45,6 +45,21 @@ class DatabaseSeeder extends Seeder
         ]);
 
         factory(VideoType::class)->create([
+            'name' => "Technology"
+        ]);
+        factory(VideoType::class)->create([
+            'name' => "News"
+        ]);
+
+        factory(VideoType::class)->create([
+            'name' => "Movies"
+        ]);
+
+        factory(VideoType::class)->create([
+            'name' => "Entertainment"
+        ]);
+
+        factory(VideoType::class)->create([
             'name' => "Game"
         ]);
     }

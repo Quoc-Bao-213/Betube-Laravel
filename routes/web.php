@@ -49,6 +49,8 @@ Route::put('videos/{video}', 'VideoController@updateViews');
 
 Route::get('channel/{channel}/videos', 'ChannelController@showVideos')->name('channel-videos');
 
+Route::get('/search','SearchController@index')->name('search');
+
 Route::middleware('auth')->group(function() {
 
     Route::get('/upload-profile/{id}','ProfileController@edit')->name('upload-profile');

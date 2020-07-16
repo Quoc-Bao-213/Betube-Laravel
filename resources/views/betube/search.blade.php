@@ -19,97 +19,7 @@
         </div>
     </div>
 </section><!--end breadcrumbs-->
-<!-- Premium Videos -->
-<section id="premium">
-    <div class="row">
-        <div class="heading clearfix">
-            <div class="large-11 columns">
-                <h4><i class="fa fa-play-circle-o"></i>Premium Videos</h4>
-            </div>
-            <div class="large-1 columns">
-                <div class="navText show-for-large">
-                    <a class="prev secondary-button"><i class="fa fa-angle-left"></i></a>
-                    <a class="next secondary-button"><i class="fa fa-angle-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="owl-demo" class="owl-carousel carousel" data-car-length="4" data-items="4" data-loop="true" data-nav="false" data-autoplay="true" data-autoplay-timeout="3000" data-dots="false" data-auto-width="false" data-responsive-small="1" data-responsive-medium="2" data-responsive-xlarge="5">
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium1.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="#" class="hover-posts">
-               <span><i class="fa fa-play"></i>Watch Video</span>
-            </a>
-        </div>
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium2.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="#" class="hover-posts">
-                <span><i class="fa fa-play"></i>Watch Video</span>
-            </a>
-        </div>
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium3.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="#" class="hover-posts">
-                <span><i class="fa fa-play"></i>Watch Video</span>
-            </a>
-        </div>
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium4.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="#" class="hover-posts">
-                <span><i class="fa fa-play"></i>Watch Video</span>
-            </a>
-        </div>
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium1.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="#" class="hover-posts">
-                <span><i class="fa fa-play"></i>Watch Video</span>
-            </a>
-        </div>
-        <div class="item">
-            <figure class="premium-img">
-                <img src="images/premium2.png" alt="carousel">
-                <figcaption>
-                    <h5>ICE Age 5 upcoming Movie</h5>
-                    <p>Movies Trailer</p>
-                </figcaption>
-            </figure>
-            <a href="#" class="hover-posts">
-                <span><i class="fa fa-play"></i>Watch Video</span>
-            </a>
-        </div>
-    </div>
-</section><!-- End Premium Videos -->
-<section class="category-content">
+<section class="category-content" style="margin-top: 30px;">
     <div class="row">
         <!-- left side content area -->
         <div class="large-8 columns">
@@ -989,8 +899,8 @@
                             </div>
                             <div class="widgetContent">
                                 <ul class="accordion" data-accordion>
-                                    <li class="accordion-item is-active" data-accordion-item>
-                                        <a href="#" class="accordion-title">Entertainment</a>
+                                    <li class="accordion-item" data-accordion-item>
+                                    <a href="#" class="accordion-title" style="margin:10px 0"> Entertainment</a>
                                         <div class="accordion-content" data-tab-content>
                                            <ul>
                                                <li class="clearfix">
