@@ -65,14 +65,14 @@ class UploadVideoController extends Controller
             }
             $video->thumbnail = Storage::url("{$thumbnail}");
         }
-        
+
+        $hashTag = "";
+
         if ($request->hashtag) {
             $arrayHashTags = explode(' ', $request->hashtag);
 
             if (count($arrayHashTags) > 3)
                 return redirect()->back()->with('errorHashTag', 'Only 3 hashtags and must have a hashtag!');
-
-            $hashTag = "";
 
             for ($i = 0; $i < count($arrayHashTags); $i++){
                 $characters = substr($arrayHashTags[$i], 0, 1);
@@ -92,7 +92,7 @@ class UploadVideoController extends Controller
         
         $video->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Update Video Successfully!');
     }
 
 }

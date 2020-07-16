@@ -52,16 +52,10 @@ class ResetpasswordController extends Controller
     
     public function processChangePassword(ResetpasswordRequest $request)
     {
-        $email = $_GET['email'];
-        if(isset($email))
-        {
+            $email = $_GET['email'];
             $password = Hash::make($request->new_password);
-
+            
             DB::update("update users set password = '".$password."' where email = '".$email."'");
             return redirect()->back()->with('success','Change password success!');
-        }else{
-            return view('betube.page404');
-        }
-        
     }
 }

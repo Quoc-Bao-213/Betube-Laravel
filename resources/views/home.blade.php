@@ -106,7 +106,7 @@
                                         </div>
                                         <div class="thumb-stats pull-left">
                                             <i class="fa fa-heart"></i>
-                                            <span>506</span>
+                                            <span>{{ $newVideo->total_likes }}</span>
                                         </div>
                                         <div class="thumb-stats pull-right">
                                             <span>05:56</span>
@@ -118,7 +118,15 @@
                                     <div class="post-stats clearfix">
                                         <p class="pull-left">
                                             <i class="fa fa-user"></i>
-                                            <span><a href="#">{{ $newVideo->user->channel_name }}</a></span>
+                                            <span>
+                                                <a href="{{ route('about-me', $newVideo->user->id ) }}">
+                                                    @if($newVideo->user->channel_name)
+                                                    {{ $newVideo->user->channel_name }}
+                                                    @else
+                                                    {{ $newVideo->user->name }}
+                                                    @endif
+                                                </a>
+                                            </span>
                                         </p>
                                         <p class="pull-left">
                                             <i class="fa fa-clock-o"></i>
@@ -186,7 +194,7 @@
                                         </div>
                                         <div class="thumb-stats pull-left">
                                             <i class="fa fa-heart"></i>
-                                            <span>506</span>
+                                            <span>{{ $newVideo->total_likes }}</span>
                                         </div>
                                         <div class="thumb-stats pull-right">
                                             <span>05:56</span>
@@ -198,7 +206,15 @@
                                     <div class="post-stats clearfix">
                                         <p class="pull-left">
                                             <i class="fa fa-user"></i>
-                                            <span><a href="#">{{ $video->user->channel_name }}</a></span>
+                                            <span>
+                                                <a href="{{ route('about-me', $newVideo->user->id ) }}">
+                                                @if($newVideo->user->channel_name)
+                                                {{ $newVideo->user->channel_name }}
+                                                @else
+                                                {{ $newVideo->user->name }}
+                                                @endif
+                                                </a>
+                                            </span>
                                         </p>
                                         <p class="pull-left">
                                             <i class="fa fa-clock-o"></i>

@@ -37,6 +37,11 @@
                      <div class="heading">
                         <i class="fa fa-pencil-square-o"></i>
                         <h4>Edit video Post</h4>
+                        @if(session('success'))
+                        <h5 style="color: #28a745 !important; text-align: center; margin-bottom: 0.5rem">
+                            {{ session('success') }}
+                        </h5>
+                        @endif
                     </div>
                     <div class="row">
                         <div class="large-12 columns">
