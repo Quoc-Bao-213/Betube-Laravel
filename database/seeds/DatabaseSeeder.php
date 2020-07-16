@@ -1,9 +1,11 @@
 <?php
 
+use App\Comment;
 use App\Playlist;
 use App\Subscription;
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Video;
 use App\VideoType;
 use Illuminate\Support\Facades\DB;
 
@@ -61,6 +63,21 @@ class DatabaseSeeder extends Seeder
 
         factory(VideoType::class)->create([
             'name' => "Game"
+        ]);
+
+        $video = factory(Video::class)->create([
+            'user_id' => $user1->id
+        ]);
+
+        factory(Comment::class, 50)->create([
+            'video_id' => $video->id
+        ]);
+
+        $comment = Comment::first();
+
+        factory(Comment::class, 50)->create([
+            'video_id' => $video->id,
+            'comment_id' => $comment->id
         ]);
     }
 }

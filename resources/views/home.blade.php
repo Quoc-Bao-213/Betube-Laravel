@@ -67,7 +67,6 @@
 
 <!-- main content -->
 <section class="content" style="margin-bottom: 30px;">
-    {{-- SHOW ALL VIDEO THEO TRUONG CREATED_AT --}}
     <!-- newest video -->
     <div class="main-heading">
         <div class="row secBg padding-14">

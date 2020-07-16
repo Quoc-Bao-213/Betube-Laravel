@@ -10,7 +10,6 @@ class VideoController extends Controller
 {
     public function show(Video $video)
     {   
-        // $videoDESC = DB::table('videos')->orderBy('total_views', 'DESC')->get();
         $videos = Video::all();
         $videoType = VideoType::all();
         if (request()->wantsJson())
