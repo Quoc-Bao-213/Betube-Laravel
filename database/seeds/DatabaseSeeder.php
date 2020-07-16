@@ -65,19 +65,19 @@ class DatabaseSeeder extends Seeder
             'name' => "Game"
         ]);
 
-        $video = factory(Video::class)->create([
-            'user_id' => $user1->id
-        ]);
+        // $video = factory(Video::class)->create([
+        //     'user_id' => $user1->id
+        // ]);
 
-        factory(Comment::class, 50)->create([
-            'video_id' => $video->id
-        ]);
+        // factory(Comment::class, 50)->create([
+        //     'video_id' => $video->id
+        // ]);
 
-        $comment = Comment::first();
+        // $comment = Comment::first();
 
-        factory(Comment::class, 50)->create([
-            'video_id' => $video->id,
-            'comment_id' => $comment->id
-        ]);
+        // factory(Comment::class, 50)->create([
+        //     'video_id' => $video->id,
+        //     'comment_id' => $comment->id
+        // ]);
     }
 }

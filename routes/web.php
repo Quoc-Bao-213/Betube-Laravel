@@ -45,7 +45,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/change-pass','ProfileController@indexChangePassword')->name('change-password');
 
 Route::get('videos/{video}', 'VideoController@show')->name('video');
-Route::put('videos/{video}', 'VideoController@updateViews');
+Route::post('videos/{video}', 'VideoController@updateViews');
 
 Route::get('channel/{channel}/videos', 'ChannelController@showVideos')->name('channel-videos');
 
@@ -72,7 +72,6 @@ Route::middleware('auth')->group(function() {
     Route::post('update-video/{id}/videos','UploadVideoController@update')->name('action-update-video');
 
     Route::post('votes/{entityID}/{type}', 'VoteController@vote');
-    // Route::delete('votes/{video}/{id}/delete', 'VoteController@deleteVote');
     Route::delete('votes/{id}/delete', 'VoteController@deleteVote');
 
 

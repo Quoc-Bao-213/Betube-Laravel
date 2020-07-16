@@ -132,6 +132,15 @@
                                             <i class="fa fa-clock-o"></i>
                                             <span> {{ $newVideo->created_at->toFormattedDateString() }} </span>
                                         </p>
+                                        {{-- @php
+                                        $test = $newVideo->total_views;
+                                        if ($test >= 1000) {
+                                            return round($test/1000, 1) . "k";
+                                        } else {
+                                            return $test;
+                                        }
+                                        dd($test);
+                                        @endphp --}}
                                         <p class="pull-left">
                                             <i class="fa fa-eye"></i>
                                             <span>{{ $newVideo->total_views }}</span>

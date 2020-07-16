@@ -197,7 +197,7 @@
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label>Email:
-                                                    <input type="email" name="email" value="{{ $user->email }}"  placeholder="Enter your email address..">
+                                                    <input type="email" name="email" value="{{ $user->email }}" disabled placeholder="Enter your email address..">
                                                 </label>
                                                 <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('email') }}</span>
                                             </div>

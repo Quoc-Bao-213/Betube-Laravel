@@ -67,7 +67,11 @@ class UploadVideoController extends Controller
         }
 
         $hashTag = "";
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> f43a0451e01095fbb2d35c9e4f3e788eca3f9df6
         if ($request->hashtag) {
             $arrayHashTags = explode(' ', $request->hashtag);
 
@@ -84,9 +88,9 @@ class UploadVideoController extends Controller
             }
         }
         
-        $video->title = $request->title;
-        $video->description = $request->description;
-        $video->video_type_id = $request->videotype;
+        $video->title = trim($request->title);
+        $video->description = trim($request->description);
+        $video->video_type_id = trim($request->videotype);
         
         $video->hashtag = trim($hashTag);
         
