@@ -71,7 +71,9 @@ Route::middleware('auth')->group(function() {
     Route::post('update-video/{id}/videos','UploadVideoController@update')->name('action-update-video');
 
     Route::post('votes/{entityID}/{type}', 'VoteController@vote');
-    Route::delete('votes/{video}/delete', 'VoteController@deleteVote');
+    // Route::delete('votes/{video}/{id}/delete', 'VoteController@deleteVote');
+    Route::delete('votes/{id}/delete', 'VoteController@deleteVote');
+
 
     Route::get('subscriptions/{id}','ProfileController@getSubscriber')->name('subscriber');
 

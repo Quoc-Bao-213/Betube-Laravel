@@ -1,7 +1,7 @@
 <template>
     <span>
         <span @click="vote('up')" class="secondary-button" :class="{ 'thumb-up-active': upvoted }"><i class="fa fa-thumbs-o-up"></i></span>
-        <span style="margin-right: 5px;">{{ upvotes_count }}</span>
+        <span style="margin-right: 10px;">{{ upvotes_count }}</span>
         <span @click="vote('down')" class="secondary-button" :class="{ 'thumb-down-active': downvoted }"><i class="fa fa-thumbs-o-down"></i></span>
         <span>{{ downvotes_count }}</span>
 
@@ -73,24 +73,47 @@ export default {
             if (!__auth())
                 return alert('Please login to vote!')
 
+            // Delete Like
             if (type === 'up' && this.upvoted) {
-                axios.delete(`/votes/${this.entity.user_id}/delete`)
+                var isDelele = '';
+                for (var i = 0; i < this.votes.length; i++) {
+                    if (this.votes[i].user_id === __auth().id) {
+                        isDelele = this.votes[i].id
+                        break
+                    }
+                }
+
+                console.log(isDelele)
+                
+                axios.delete(`/votes/${isDelele}/delete`)
                     .then(() => {
-                        this.votes = this.votes.filter(v => v.id === this.upvotes.find(v => v.user_id === __auth().id))
+                        var findUser = this.upvotes.find(v => v.user_id === __auth().id)
+                        this.votes = this.votes.filter(v => v.user_id !== findUser.user_id)
                         console.log('Delete')
                     })
                 return
             }
 
+            // Delete dislike
             if (type === 'down' && this.downvoted) {
-                axios.delete(`/votes/${this.entity.user_id}/delete`)
+                var isDelele = '';
+                for (var i = 0; i < this.votes.length; i++) {
+                    if (this.votes[i].user_id === __auth().id) {
+                        isDelele = this.votes[i].id
+                        break
+                    }
+                }
+
+                axios.delete(`/votes/${isDelele}/delete`)
                     .then(() => {
-                        this.votes = this.votes.filter(v => v.id === this.downvotes.find(v => v.user_id === __auth().id))
+                        var findUser = this.downvotes.find(v => v.user_id === __auth().id)
+                        this.votes = this.votes.filter(v => v.user_id !== findUser.user_id)
                         console.log('Delete')
                     })
                 return
             }
 
+            // Votes
             axios.post(`/votes/${this.entity.id}/${type}`)
                 .then(({ data }) => {
                     // console.log(this.votes)

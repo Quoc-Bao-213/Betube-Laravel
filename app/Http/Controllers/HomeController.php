@@ -12,6 +12,6 @@ class HomeController extends Controller
     {
         $videos = Video::all();
         
-        return View('home',compact('videos'));
+        return View('home', compact('videos'));
     }
 }

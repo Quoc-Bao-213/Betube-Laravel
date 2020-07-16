@@ -52,6 +52,7 @@
                         <div class="media-object-section object-second">
                             <div class="author-des clearfix">
                                 <div class="post-title">
+
                                     <h4>{{ $video->title }}</h4>
                                     <p>
                                         <span><i class="fa fa-clock-o"></i>{{ $video->created_at->toFormattedDateString() }}</span>
@@ -126,7 +127,7 @@
                     <div class="heading">
                         <h5>Description</h5>
                     </div>
-                    <div class="description showmore_one">
+                    <div class="description showmore_one"> <!-- showmore_one -->
                         <p>{{ $video->description }}</p>
                         <h6>Bullets List :</h6>
                         <ul>
@@ -152,9 +153,11 @@
                 </div>
             </div>
         </section><!-- End single post description -->
-
         <!-- Comments -->
-        <comments :video="{{ $video }}"></comments>
+        {{-- @if(Auth::user()) avatar="{{ $user->avatar() }}" @endif --}}
+
+        <comments :video="{{ $video }}" @if(Auth::user()) :user="{{ $user }}" @endif></comments>
+       
         <!-- End Comments -->
 
     </div><!-- end left side content area -->
@@ -187,7 +190,7 @@
                                         <div class="video-box-content">
                                             <h6><a href="{{ route('video', $video->id) }}">{{ $video->title }}</a></h6>
                                             <p>
-                                                <span><i class="fa fa-user"></i><a href="#">{{ $video->user->channel_name }}</a></span>
+                                                <span><i class="fa fa-user"></i><a href="{{ route('about-me', $video->user->id) }}">{{ $video->user->channel_name }}</a></span>
                                                 <span><i class="fa fa-clock-o"></i>{{ $video->created_at->toFormattedDateString() }}</span>
                                                 <span><i class="fa fa-eye"></i>{{ $video->total_views }}</span>
                                             </p>

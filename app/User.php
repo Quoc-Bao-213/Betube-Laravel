@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Support\Str;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -15,6 +14,11 @@ class User extends Authenticatable implements HasMedia
     use Notifiable, HasMediaTrait;
 
     public $incrementing = false;
+
+    //Add extra attribute
+    // public $attributes = ['avatar'];
+    //Make it available in the json response
+    public $appends = ['avatar'];
 
     // protected $guarded = [];
 
@@ -119,4 +123,11 @@ class User extends Authenticatable implements HasMedia
             ->quality(80)
             ->nonQueued();
     }
+
+    //implement the attribute
+    public function getAvatarAttribute()
+    {
+        return $this->avatar();
+    }
+
 }
