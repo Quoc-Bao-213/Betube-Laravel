@@ -19,6 +19,7 @@
                 <votes :default_votes="comment.votes" :entity="comment"></votes>
                 <span style="margin-left: 10px;"><button v-if="auth" @click="addingReply = !addingReply"><i class="fa fa-share"></i>{{ addingReply ? 'Cancel' : 'Add Reply' }}</button></span>
                 <!-- <span class='reply float-right hide-reply'></span> -->
+                <!-- <span class="time float-right"><i class="fa fa-trash-o"></i></span> -->
             </div>
 
             <div v-if="addingReply" class="comment-box thumb-border">

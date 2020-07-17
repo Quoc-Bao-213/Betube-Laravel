@@ -7,7 +7,7 @@
                         <div class="medium-12 small-12 columns">
                             <div class="head-title">
                                 <i class="fa fa-comments"></i>
-                                <h4>Comments <span>(4)</span></h4>
+                                <h4>Comments <span>({{ comments.data.length }})</span></h4>
                             </div>
                         </div>
                     </div>

@@ -105,10 +105,10 @@
                                     <a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-film"></i>Videos</a>                                     
+                                    <a href="javascript:void(0)"><i class="fa fa-film"></i>Videos</a>                                     
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-th"></i>category</a>
+                                    <a href="javascript:void(0)"><i class="fa fa-th"></i>playlist</a>
                                 </li>
                                 @if(isset(Auth::user()->id))
                                 <li class="{{ $channel }}">
@@ -120,7 +120,7 @@
                                 </li>
                                 @endif
                                 <li>
-                                    <a href="#"><i class="fa fa-envelope"></i>contact</a>
+                                    <a href="javascript:void(0)"><i class="fa fa-envelope"></i>contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -128,12 +128,12 @@
                     </div>
                 </div>
                 <div id="search-bar" class="clearfix search-bar-light">
-                    <form method="post">
+                    <form action="{{ route('action-search') }}" method="GET">
                         <div class="search-input float-left">
                             <input type="search" name="search" placeholder="Seach Here your video">
                         </div>
                         <div class="search-btn float-right text-right">
-                            <button class="button" name="search" type="submit">search now</button>
+                            <button class="button" type="submit">search now</button>
                         </div>
                     </form>
                 </div>
