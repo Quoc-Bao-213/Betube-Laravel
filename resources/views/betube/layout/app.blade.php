@@ -77,7 +77,7 @@
             @include('betube.partials.footer')
 
         </div><!--end off canvas content-->
-    </div><!--end off canvas wrapper inner-->
+    </div><!--end off canvas wrapper inner-->    
 </div><!--end off canvas wrapper-->
 @php
     if (auth()->user() ) {
@@ -85,8 +85,6 @@
     }    else{
         $isLogined = null;
     }
-
-    // var_dump($isLogined)
 @endphp
 
 <script>

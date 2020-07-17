@@ -48,10 +48,10 @@
             </div>
             <!-- category carousel -->
             <div id="owl-demo-cat" class="owl-carousel carousel" data-car-length="5" data-items="5" data-loop="true" data-nav="false" data-autoplay="true" data-autoplay-timeout="4000" data-auto-width="true" data-margin="10" data-dots="false">
-                @foreach($videoTypes as $index =>  $videoType)
+                @foreach($videoTypes as $index => $videoType)
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
-                        <img src="{{ asset('images/category/category'.($index+1).'.png') }}" alt="carousel">
+                        <img src="{{ asset('images/category/category'.($index + 1).'.png') }}" alt="carousel">
                         <a href="javascript:void(0)" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
@@ -81,7 +81,6 @@
     <div class="row secBg">
         <div class="large-12 columns">
             <div class="row column head-text clearfix">
-                {{-- COUNT VIDEO (NẾU CÓ THỂ HOẶC XÓA) --}}
                 {{-- <p class="pull-left">All Videos : <span></span></p>  --}}
                 <div class="grid-system pull-right show-for-large">
                     <a class="secondary-button current grid-default" href="#"><i class="fa fa-th"></i></a>

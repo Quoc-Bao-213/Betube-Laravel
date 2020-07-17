@@ -49,9 +49,10 @@ Route::post('videos/{video}', 'VideoController@updateViews');
 
 Route::get('channel/{channel}/videos', 'ChannelController@showVideos')->name('channel-videos');
 
-Route::get('/search','SearchController@index')->name('search');
 Route::get('videos/{video}/comments', 'CommentController@index');
 Route::get('comments/{comment}/replies', 'CommentController@show');
+
+Route::get('result', 'SearchController@index')->name('action-search');
 
 Route::middleware('auth')->group(function() {
 

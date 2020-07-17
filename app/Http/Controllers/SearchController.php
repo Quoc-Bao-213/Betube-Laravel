@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\VideoType;
-use Illuminate\Http\Request;
+use App\Video;
 
 class SearchController extends Controller
 {
     public function index()
     {   
-        return view('betube.search');
+        $query = request()->search;
+        $searchVideos = collect();
+
+        if ($query) {
+            $searchVideos = Video::where('title', 'LIKE', "%{$query}%")->orWhere('hashtag', 'LIKE', "%{$query}%")->paginate(12);
+            // dd($query);
+        }
+
+        return view('betube.search')->with([
+            'searchVideos' => $searchVideos
+        ]);
     }
-    
 }

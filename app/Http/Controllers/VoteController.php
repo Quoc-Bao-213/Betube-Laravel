@@ -18,9 +18,7 @@ class VoteController extends Controller
 
     public function deleteVote ($id)
     {
-        // $test2 = Vote::where('user_id', $user_id)->where('voteable_id', $vodeid);
         $test2 = Vote::where('id', $id);
-
 
         $test2->delete();
 

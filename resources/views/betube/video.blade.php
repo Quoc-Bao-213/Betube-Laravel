@@ -28,7 +28,7 @@
             <div class="row secBg">
                 <div class="large-12 columns inner-flex-video">
                     <div style="height: 370px; padding-bottom: 10px;">
-                        <video id="my-video" class="video-js vjs-big-play-centered" controls poster="{{ asset($video->thumbnail) }}" controls preload="auto" style="width: 100%; height: 100%" data-setup='{ "aspectRatio":"640:267", "playbackRates": [0.25, 0.5, 1, 1.5, 2] }'>
+                        <video id="my-video" class="video-js vjs-big-play-centered" controls poster="{{ asset($video->thumbnail) }}" autoplay controls preload="auto" style="width: 100%; height: 100%" data-setup='{ "aspectRatio":"640:267", "playbackRates": [0.25, 0.5, 1, 1.5, 2] }'>
                             <source src='{{ asset(Storage::url("videos/{$video->id}/{$video->id}.m3u8")) }}' type="application/x-mpegURL">
                         </video>
                     </div>
@@ -57,7 +57,7 @@
                                     <p>
                                         <span><i class="fa fa-clock-o"></i>{{ $video->created_at->toFormattedDateString() }}</span>
                                         <span><i class="fa fa-eye"></i>{{ $video->total_views }}</span>
-                                        <span><i class="fa fa-commenting"></i>8</span>
+                                        <span><i class="fa fa-commenting"></i>{{ $video->comments->count() }}</span>
                                         @if ($video->hashtag)
                                         <span>
                                             <i class="fa fa-hashtag"></i>
@@ -66,7 +66,7 @@
                                                 $hashTag = "";
                                                 
                                                 foreach($arrayHashTags as $arrayHashTag){
-                                                    $hashTag .= '<a href="#">'.$arrayHashTag.'</a> ';
+                                                    $hashTag .= '<a target="_blank" href="'.route('action-search').'?search='.urlencode($arrayHashTag).'">'.$arrayHashTag.'</a> ';
                                                 }
                                             @endphp
                                             {!! $hashTag !!}

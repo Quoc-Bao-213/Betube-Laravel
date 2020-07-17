@@ -12,6 +12,6 @@ class HomeController extends Controller
         $videos = Video::all();
         $videoTypes = VideoType::all();
         
-        return View('home',compact('videos', 'videoTypes'));
+        return View('home', compact('videos', 'videoTypes'));
     }
 }
