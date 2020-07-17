@@ -67,9 +67,10 @@ Route::middleware('auth')->group(function() {
 
     Route::get('upload-video/{channel}/videos', 'UploadVideoController@index')->name('upload-video');
     Route::post('upload-video/{channel}/videos', 'UploadVideoController@store')->name('action-upload-video');
-
+    
     Route::get('update-video/{id}/videos','UploadVideoController@edit')->name('update-video');
     Route::post('update-video/{id}/videos','UploadVideoController@update')->name('action-update-video');
+    Route::get('video/{id}/delete', 'UploadVideoController@destroy')->name('action-delete-video');
 
     Route::post('votes/{entityID}/{type}', 'VoteController@vote');
     Route::delete('votes/{id}/delete', 'VoteController@deleteVote');

@@ -51,7 +51,7 @@ class ResetpasswordController extends Controller
     }
     
     public function processChangePassword(ResetpasswordRequest $request)
-    {
+    { 
             $email = $_GET['email'];
             $password = Hash::make($request->new_password);
             

@@ -89,25 +89,28 @@ class ProfileController extends Controller
 
     public function indexChangePassword()
     {
-        if(isset($_GET['email']))
+        if(isset($_GET['email']) && isset($_GET['token']))
         {   
-            $tokenDB = DB::select('select * from users where email = "'.$_GET['email'].'"');
-            if (isset($tokenDB[0]) && $_GET['token'] === $tokenDB[0]->token){
-                $token = $_GET['token'];
+            $email = $_GET['email'];
+            $token = $_GET['token'];
+            $tokenDB = DB::select('select * from users where email = "'.$email.'"');
+            if (isset($tokenDB[0]) && $token === $tokenDB[0]->token) {
                 $tokenExpire = Crypt::decrypt($token);
                 $currentTime = time();
-                if ($tokenExpire < $currentTime){ 
+                if ($tokenExpire < $currentTime) { 
                     return view('betube.page404');
                 }
             } else
                 return view('betube.page404');
         }
-        if (isset(Auth::user()->email)) {
-            return view('betube.auth.change-pass');
-        } else if (isset($_GET['token'])) {
+        else {
+            return redirect(route('home'));
+        }
+        
+        if (isset(Auth::user()->email) || isset($_GET['token'])) 
+        {
             return view('betube.auth.change-pass');
         }
-        return redirect()->route('home');
     }
     
     public function changePassword(ProfileRequest $request, $id)

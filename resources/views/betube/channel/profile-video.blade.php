@@ -37,6 +37,11 @@
                     <div class="heading">
                         <i class="fa fa-video-camera"></i>
                         <h4>My Videos</h4>
+                        @if(session('success'))
+                        <h5 style="color: #38c172; !important; text-align: center; margin-bottom: 0.5rem">
+                            {{ session('success') }}
+                        </h5>
+                        @endif
                     </div>
                     @foreach($videos as $video)
                     <div class="profile-video">
@@ -60,7 +65,7 @@
                                     @if ($user->editable())
                                     <div class="video-btns">
                                         <a class="video-btn" href="{{ route('update-video', $video->id) }}"><i class="fa fa-pencil-square-o"></i>edit</a>
-                                        <a class="video-btn" href="javascript:void(0)"><i class="fa fa-trash"></i>delete</a>
+                                        <a class="video-btn" href="{{ route('action-delete-video', $video->id) }}"><i class="fa fa-trash"></i>delete</a>
                                     </div>
                                     @endif
                                 </div>

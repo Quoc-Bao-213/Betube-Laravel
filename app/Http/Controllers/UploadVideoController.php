@@ -35,6 +35,7 @@ class UploadVideoController extends Controller
         $this->dispatch(new CreateVideoThumbnail($video));
 
         $this->dispatch(new ConvertForStreaming($video));
+        
         return $video;
     }
     
@@ -67,11 +68,7 @@ class UploadVideoController extends Controller
         }
 
         $hashTag = "";
-<<<<<<< HEAD
-
-=======
         
->>>>>>> f43a0451e01095fbb2d35c9e4f3e788eca3f9df6
         if ($request->hashtag) {
             $arrayHashTags = explode(' ', $request->hashtag);
 
@@ -99,4 +96,11 @@ class UploadVideoController extends Controller
         return redirect()->back()->with('success', 'Update Video Successfully!');
     }
 
+    public function destroy($id)
+    {
+        $video = Video::find($id);
+        $video->delete();   
+
+        return redirect()->back()->with('success','Deleted Video!');
+    }
 }

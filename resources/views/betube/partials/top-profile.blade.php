@@ -89,7 +89,7 @@
                                     <i class="fa fa-users"></i>
                                 </div>
                                 <div class="li-text float-left">
-                                <p class="number-text">{{count($user->subscriptions) }}</p>
+                                <p class="number-text">{{ count($user->subscriptions) }}</p>
                                     <span>subscribers</span>
                                 </div>
                             </li>
@@ -98,7 +98,7 @@
                                     <i class="fa fa-comments-o"></i>
                                 </div>
                                 <div class="li-text float-left">
-                                    <p class="number-text">26</p>
+                                    <p class="number-text">{{ count($user->comments) }}</p>
                                     <span>comments</span>
                                 </div>
                             </li>

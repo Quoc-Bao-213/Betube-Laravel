@@ -2,8 +2,13 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Video extends Model
 {
+
+    use SoftDeletes;    
+
     public function videoTypes()
     {
         return $this->hasMany(VideoType::class);
