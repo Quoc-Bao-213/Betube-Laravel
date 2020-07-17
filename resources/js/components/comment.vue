@@ -19,7 +19,7 @@
                 <votes :default_votes="comment.votes" :entity="comment"></votes>
                 <span style="margin-left: 10px;"><button v-if="auth" @click="addingReply = !addingReply"><i class="fa fa-share"></i>{{ addingReply ? 'Cancel' : 'Add Reply' }}</button></span>
                 <!-- <span class='reply float-right hide-reply'></span> -->
-                <!-- <span class="time float-right"><i class="fa fa-trash-o"></i></span> -->
+                <span @click="deleteComment(comment.id)" class="float-right" style="margin-top: 5px;"><i style="font-size: 1.5em" class="fa fa-trash-o"></i></span>
             </div>
 
             <div v-if="addingReply" class="comment-box thumb-border">
@@ -77,7 +77,7 @@ export default {
         return {
             content: '',
             addingReply: false,
-            users: this.user
+            users: this.user,
         }
     },
 
@@ -102,6 +102,10 @@ export default {
                 this.addingReply = false
                 this.$refs.replies.addReply(data)
             })
+        },
+        deleteComment(id) {
+            if(! __auth()) return 
+            this.$emit('update-comment', id)
         }
     }
 }

@@ -26,4 +26,12 @@ class CommentController extends Controller
             'comment_id' => $request->comment_id
         ])->fresh();
     }
+
+    public function destroy(Comment $comment)
+    { 
+        // dd($comment->id);
+        $comment->delete();
+        
+        return response()->json([]);
+    }
 }

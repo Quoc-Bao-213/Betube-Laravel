@@ -65,7 +65,17 @@
                                     @if ($user->editable())
                                     <div class="video-btns">
                                         <a class="video-btn" href="{{ route('update-video', $video->id) }}"><i class="fa fa-pencil-square-o"></i>edit</a>
-                                        <a class="video-btn" href="{{ route('action-delete-video', $video->id) }}"><i class="fa fa-trash"></i>delete</a>
+                                        <a class="video-btn" data-open="exampleModal2" href="javascipt:void(0)"><i class="fa fa-trash"></i>delete</a>
+                                        
+                                        <!-- This is the first modal -->
+                                        <div class="reveal" id="exampleModal2" data-reveal>
+                                            <h1 class="text-center">Are You Sure?</h1>
+                                            <a href="{{ route('action-delete-video', $video->id) }}" class="button" style="margin-left: 11rem; padding: 17px 38px">OK</a>
+                                            <button class="button" data-close>Cancel</button>
+                                            <button class="close-button" data-close aria-label="Close reveal" type="button">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                     </div>
                                     @endif
                                 </div>
@@ -73,9 +83,6 @@
                         </div>
                     </div>
                     @endforeach
-                    {{-- <div class="show-more-inner text-center">
-                        <a href="#" class="show-more-btn">show more</a>
-                    </div> --}}
                 </div>
             </div>
         </section><!-- End single post description -->

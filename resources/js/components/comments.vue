@@ -38,7 +38,7 @@
 
                 <!-- main comment -->
                 <div class="main-comment"> <!-- showmore_one -->
-                    <Comment v-for="comment in comments.data" :key="comment.id" :comment="comment" :video="video" :user="users"/>
+                    <Comment v-for="comment in comments.data" @update-comment="updateComment" :key="comment.id" :comment="comment" :video="video" :user="users"/>
 
                     <div v-if="comments.next_page_url" class="showmore_trigger" style="margin-top: 25px">
                         <span @click="fetchComments" class="more">Load Comments</span>
@@ -121,6 +121,15 @@ export default {
                     ]
                 }
             })
+        },
+        updateComment(id) {               
+            axios.delete(`/comments/${id}`)
+                .then(() => {
+                    // var findUser = this.comments.data.find(comment => comment.user_id === __auth().id)
+                    // console.log(findUser)
+                    this.comments.data = this.comments.data.filter(comment => comment.id !== id)
+                    // BUG
+                })
         }
     }
 }

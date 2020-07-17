@@ -80,4 +80,6 @@ Route::middleware('auth')->group(function() {
     Route::get('subscriptions/{id}','ProfileController@getSubscriber')->name('subscriber');
 
     Route::post('comments/{video}', 'CommentController@store');
+    Route::delete('comments/{comment}', 'CommentController@destroy');
+
 });
