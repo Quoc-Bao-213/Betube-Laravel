@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangepasswordRequest;
 use App\Http\Requests\ProfileRequest;
 use App\Subscription;
 use App\User;
@@ -103,17 +104,14 @@ class ProfileController extends Controller
             } else
                 return view('betube.page404');
         }
-        else {
-            return redirect(route('home'));
-        }
-        
-        if (isset(Auth::user()->email) || isset($_GET['token'])) 
-        {
+        else if (isset(Auth::user()->email) || isset($_GET['token'])){
             return view('betube.auth.change-pass');
+        } else {
+            return redirect(route('home'));
         }
     }
     
-    public function changePassword(ProfileRequest $request, $id)
+    public function changePassword(ChangepasswordRequest $request, $id)
     {
         $user = User::find($id);
         $current_pass = $user->password;
