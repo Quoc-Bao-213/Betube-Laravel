@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Route::get('/admin', function () {
+// Route::get('/admin/administrator', function () {
 //     return view('home-admin');
 // });
 
@@ -82,4 +82,11 @@ Route::middleware('auth')->group(function() {
     Route::post('comments/{video}', 'CommentController@store');
     Route::delete('comments/{comment}', 'CommentController@destroy');
 
+    Route::get('user/{id}/playlist', 'PlaylistController@getPlaylists');
+    Route::post('playlist/create', 'PlaylistController@create');
+    Route::post('playlist/{id}/video/{video}', 'PlaylistController@addingToPlaylist');
+    Route::post('playlist-detail/{id}', 'PlaylistController@destroy');
+
+    Route::get('playlist', 'PlaylistController@index')->name('playlist');
+    Route::get('playlist/{id}', 'PlaylistController@show')->name('edit-playlist');
 });

@@ -81,11 +81,11 @@
     <div class="row secBg">
         <div class="large-12 columns">
             <div class="row column head-text clearfix">
-                {{-- <p class="pull-left">All Videos : <span></span></p>  --}}
+                <p class="pull-left">All Videos: </p> 
                 <div class="grid-system pull-right show-for-large">
                     <a class="secondary-button current grid-default" href="#"><i class="fa fa-th"></i></a>
-                    <a class="secondary-button grid-medium" href="#"><i class="fa fa-th-large"></i></a>
-                    <a class="secondary-button list" href="#"><i class="fa fa-th-list"></i></a>
+                    {{-- <a class="secondary-button grid-medium" href="#"><i class="fa fa-th-large"></i></a>
+                    <a class="secondary-button list" href="#"><i class="fa fa-th-list"></i></a> --}}
                 </div>
             </div>
             <div class="tabs-content">
@@ -181,8 +181,8 @@
             <p class="pull-left">All Videos : <span>{{ count($videos) }} Videos posted</span></p>
                 <div class="grid-system pull-right show-for-large">
                     <a class="secondary-button current grid-default" href="#"><i class="fa fa-th"></i></a>
-                    <a class="secondary-button grid-medium" href="#"><i class="fa fa-th-large"></i></a>
-                    <a class="secondary-button list" href="#"><i class="fa fa-th-list"></i></a>
+                    {{-- <a class="secondary-button grid-medium" href="#"><i class="fa fa-th-large"></i></a>
+                    <a class="secondary-button list" href="#"><i class="fa fa-th-list"></i></a> --}}
                 </div>
             </div>
             <div class="tabs-content" data-tabs-content="popularVideos">

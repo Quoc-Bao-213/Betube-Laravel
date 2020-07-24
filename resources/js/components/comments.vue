@@ -61,7 +61,7 @@ export default {
             default: () => ({})
         },
         user: {
-            required: true,
+            type: Object,
             default: () => ({})
         }
     },
@@ -88,6 +88,11 @@ export default {
         auth() {
             // console.log(__auth())
             return __auth()
+        },
+        findUser() {
+            if (! __auth()) 
+                return 
+            return this.comments.data.find(comment => comment.user_id === __auth().id)
         }
     },
 
@@ -122,13 +127,10 @@ export default {
                 }
             })
         },
-        updateComment(id) {               
+        updateComment(id) {  
             axios.delete(`/comments/${id}`)
                 .then(() => {
-                    // var findUser = this.comments.data.find(comment => comment.user_id === __auth().id)
-                    // console.log(findUser)
-                    this.comments.data = this.comments.data.filter(comment => comment.id !== id)
-                    // BUG
+                    this.comments.data = this.comments.data.filter(comment => comment.id !== this.findUser.id)
                 })
         }
     }

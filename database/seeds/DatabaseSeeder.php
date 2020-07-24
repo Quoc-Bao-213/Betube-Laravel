@@ -65,9 +65,13 @@ class DatabaseSeeder extends Seeder
             'name' => "Game"
         ]);
 
-        // $video = factory(Video::class)->create([
-        //     'user_id' => $user1->id
-        // ]);
+        $video = factory(Video::class)->create([
+            'user_id' => $user1->id
+        ]);
+
+        factory(Playlist::class)->create([
+            'user_id' => $user1->id
+        ]);
 
         // factory(Comment::class, 50)->create([
         //     'video_id' => $video->id
