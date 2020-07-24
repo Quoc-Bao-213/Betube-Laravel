@@ -96,7 +96,7 @@
                                     
                                     <votes :default_votes="{{ $video->votes }}" :entity="{{ $video }}"></votes>
 
-                                    <div class="float-right easy-share" data-easyshare data-easyshare-http data-easyshare-url="http://joinwebs.com/">
+                                    <div class="float-right easy-share" data-easyshare data-easyshare-http data-easyshare-url="{{ $url }}">
                                         <!-- Total -->
                                         <button data-easyshare-button="total">
                                             <span>Total</span>

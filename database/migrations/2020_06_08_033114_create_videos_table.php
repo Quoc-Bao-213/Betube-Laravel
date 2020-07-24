@@ -25,8 +25,7 @@ class CreateVideosTable extends Migration
             $table->uuid('video_type_id')->nullable();
             $table->bigInteger('total_likes')->default(0);
             $table->bigInteger('total_dislikes')->default(0);
-            $table->string('path');    
-            $table->softDeletes();      
+            $table->string('path');      
             $table->timestamps();
         });
     }

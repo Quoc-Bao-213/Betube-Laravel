@@ -34,6 +34,11 @@ class DatabaseSeeder extends Seeder
             'user_subscribe' => $user1->id
         ]);
 
+        factory(User::class)->create([
+            'email' => 'admin@gmail.com',
+            'is_admin' => true
+        ]);
+
         factory(Subscription::class, 50)->create([
             'user_id' => $user1->id,
         ]);
@@ -64,7 +69,7 @@ class DatabaseSeeder extends Seeder
         factory(VideoType::class)->create([
             'name' => "Game"
         ]);
-
+        
         // $video = factory(Video::class)->create([
         //     'user_id' => $user1->id
         // ]);

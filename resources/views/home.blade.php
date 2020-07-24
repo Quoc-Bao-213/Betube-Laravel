@@ -133,16 +133,18 @@
                                         </p>
                                         {{-- @php
                                         $test = $newVideo->total_views;
-                                        if ($test >= 1000) {
-                                            return round($test/1000, 1) . "k";
-                                        } else {
-                                            return $test;
-                                        }
+                                        if($test>1000000000000) return round(($test/1000000000000),1).' trillion';
+                                        else if($test>1000000000) return round(($test/1000000000),1).' billion';
+                                        else if($test>1000000) return round(($test/1000000),1).' million';
+                                        else if($test>1000) return round(($test/1000),1).' thousand';
                                         dd($test);
                                         @endphp --}}
                                         <p class="pull-left">
                                             <i class="fa fa-eye"></i>
-                                            <span>{{ $newVideo->total_views }}</span>
+                                            <span>
+                                                {{ $newVideo->formatView($newVideo->total_views) }}
+                                            </span>
+
                                         </p>
                                     </div>
                                     <div class="post-summary">
@@ -230,7 +232,7 @@
                                         </p>
                                         <p class="pull-left">
                                             <i class="fa fa-eye"></i>
-                                            <span>{{ $video->total_views }}</span>   
+                                            <span>   {{ $newVideo->formatView($newVideo->total_views) }}</span>   
                                         </p>
                                     </div>
                                     <div class="post-summary">

@@ -8,11 +8,18 @@
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
                         data-toggle="dropdown" aria-expanded="false">
-                        <img src="images/img.jpg" alt="">John Doe
+                        <img src="images/img.jpg" alt="">{{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#"> Profile</a>
-                        <a class="dropdown-item" href="#"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                        {{-- <form action="{{ route('actionLogout') }}" method="POST">
+                            @csrf
+                            <button type="submit" style="width: 97.8%; height: 2.3rem;" class="text-center hi-user">Logout</button>
+                        </form> --}}
+                        <form action="{{ route('action-logout-admin') }}" method="POST">
+                            @csrf
+                            <button class="dropdown-item" type="submit"><i class="fa fa-sign-out pull-right"></i> Log Out</button>
+                        </form>
                     </div>
                 </li>
 

@@ -34,7 +34,7 @@ class CreateFK extends Migration
         });
 
         Schema::table('comments', function (Blueprint $table) {
-            $table->foreign('video_id')->references('id')->on('videos');
+            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
         });
 
         Schema::table('comments', function (Blueprint $table) {

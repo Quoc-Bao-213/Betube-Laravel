@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +16,30 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Route::get('/admin', function () {
-//     return view('home-admin');
-// });
+// Admin
+Route::get('/admin/login','LoginAdminController@index')->name('login-admin');
+Route::post('/admin/login','LoginAdminController@login')->name('action-login-admin');
+Route::post('/admin/logout','LoginAdminController@logout')->name('action-logout-admin');
 
 // Route::get('/loginadmin', function () {
 //     return view('admin.auth.login');
 // });
 
 // END
+
+
+Route::middleware(Admin::class)->group(function() {
+
+    Route::get('/admin/administrator','HomeAdminController@index')->name('home-admin');
+    Route::get('/admin/manage-user', 'AdminManageController@manageUser')->name('manage-user');
+    Route::get('/admin/manage-subscription', 'AdminManageController@manageSubscription')->name('manage-subscription');
+    Route::get('/admin/manage-video', 'AdminManageController@manageVideo')->name('manage-video');
+    Route::get('/admin/manage-videotype', 'AdminManageController@manageVideoType')->name('manage-videotype');
+    Route::get('/admin/manage-comment', 'AdminManageController@manageComment')->name('manage-comment');
+    Route::get('/admin/manage-vote', 'AdminManageController@manageVote')->name('manage-vote');
+
+});
+
 
 Route::get('/register','RegisterController@index')->name('register')->middleware('guest');
 Route::post('/register','RegisterController@register')->name('actionRegister');
@@ -83,3 +99,4 @@ Route::middleware('auth')->group(function() {
     Route::delete('comments/{comment}', 'CommentController@destroy');
 
 });
+

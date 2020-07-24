@@ -68,10 +68,12 @@
                                         <a class="video-btn" data-open="exampleModal2" href="javascipt:void(0)"><i class="fa fa-trash"></i>delete</a>
                                         
                                         <!-- This is the first modal -->
-                                        <div class="reveal" id="exampleModal2" data-reveal>
-                                            <h1 class="text-center">Are You Sure?</h1>
-                                            <a href="{{ route('action-delete-video', $video->id) }}" class="button" style="margin-left: 11rem; padding: 17px 38px">OK</a>
-                                            <button class="button" data-close>Cancel</button>
+                                        <div class="reveal" id="exampleModal2" data-reveal style="border-radius: 5px">
+                                            <p class="text-center"><i class="fa fa-exclamation-triangle" style="font-size: 84px; color:#e96969"></i></p>
+                                            <h3 class="text-center">Deleted Video</h3>
+                                            <p  style="font-size:16px" class="text-center">You will not be able to recover this video file ?</p>
+                                            <a href="{{ route('action-delete-video', $video->id) }}" class="button" style="margin-left: 10rem; padding: 15px 10px; text-transform: none">Yes, deleted it!</a>
+                                            <button class="button" data-close style=" padding: 15px 18px; text-transform: none">No, cancel!</button>
                                             <button class="close-button" data-close aria-label="Close reveal" type="button">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
