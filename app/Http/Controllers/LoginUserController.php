@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginUserRequest;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class LoginUserController extends Controller
@@ -16,11 +17,14 @@ class LoginUserController extends Controller
     {
         $email = $request->email;
         $password = $request->password;
+        $checkAdmin = User::where('is_admin', 'false')->where('email', $email)->first();
 
-        if(Auth::attempt(['email'=> $email,'password' => $password]))
-        {
-            return redirect()->route('home');
+        if ($checkAdmin) {
+            if(Auth::attempt(['email'=> $email,'password' => $password])) {
+                return redirect()->route('home');
+            }
         }
+             
         return redirect()->back()->with('error',"Email or Password invalid!");
     }
     
