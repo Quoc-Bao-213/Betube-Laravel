@@ -8,16 +8,18 @@ class SearchController extends Controller
 {
     public function index()
     {   
+        $videos = Video::all();
         $query = request()->search;
         $searchVideos = collect();
 
         if ($query) {
-            $searchVideos = Video::where('title', 'LIKE', "%{$query}%")->orWhere('hashtag', 'LIKE', "%{$query}%")->paginate(12);
+            $searchVideos = Video::where('title', 'LIKE', "%{$query}%")->orWhere('hashtag', 'LIKE', "%{$query}%")->paginate(50);
             // dd($query);
         }
 
         return view('betube.search')->with([
-            'searchVideos' => $searchVideos
+            'searchVideos' => $searchVideos,
+            'videos' => $videos
         ]);
     }
 }

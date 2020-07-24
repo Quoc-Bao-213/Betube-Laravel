@@ -83,7 +83,7 @@ export default {
                     }
                 }
 
-                console.log(isDelele)
+                // console.log(isDelele)
                 
                 axios.delete(`/votes/${isDelele}/delete`)
                     .then(() => {

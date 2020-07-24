@@ -19,7 +19,7 @@
                 <votes :default_votes="comment.votes" :entity="comment"></votes>
                 <span style="margin-left: 10px;"><button v-if="auth" @click="addingReply = !addingReply"><i class="fa fa-share"></i>{{ addingReply ? 'Cancel' : 'Add Reply' }}</button></span>
                 <!-- <span class='reply float-right hide-reply'></span> -->
-                <span @click="deleteComment(comment.id)" class="float-right" style="margin-top: 5px;"><i style="font-size: 1.5em" class="fa fa-trash-o"></i></span>
+                <span v-if="auth.id === comment.user_id" @click="deleteComment(comment.id)" class="float-right" style="margin-top: 5px;"><i style="font-size: 1.5em" class="fa fa-trash-o"></i></span>
             </div>
 
             <div v-if="addingReply" class="comment-box thumb-border">
@@ -89,8 +89,6 @@ export default {
 
     methods: {
         addReply() {
-            // console.log(this.video.user_id)
-            // return 
             if (!this.content) return
 
             axios.post(`/comments/${this.video.id}`, {

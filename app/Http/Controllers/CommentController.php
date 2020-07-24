@@ -10,6 +10,7 @@ class CommentController extends Controller
 {
     public function index(Video $video)
     {
+        // dd($video->comments());
         return $video->comments()->paginate(10);
     }
 

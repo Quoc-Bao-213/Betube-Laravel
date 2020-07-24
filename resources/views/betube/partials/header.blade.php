@@ -108,7 +108,7 @@
                                     <a href="javascript:void(0)"><i class="fa fa-film"></i>Videos</a>                                     
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><i class="fa fa-th"></i>playlist</a>
+                                    <a href="{{ route('playlist') }}"><i class="fa fa-th"></i>playlist</a>
                                 </li>
                                 @if(isset(Auth::user()->id))
                                 <li class="{{ $channel }}">

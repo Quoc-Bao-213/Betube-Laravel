@@ -51,7 +51,7 @@
                         </div>
                         <div class="media-object-section object-second">
                             <div class="author-des clearfix">
-                                <div class="post-title">
+                                <div class="post-title" style="width: 80%">
 
                                     <h4>{{ $video->title }}</h4>
                                     <p>
@@ -90,9 +90,7 @@
                             </div>
                             <div class="social-share">
                                 <div class="post-like-btn clearfix">
-                                    <form method="post">
-                                        <button type="submit" name="fav"><i class="fa fa-heart"></i>Add to</button>
-                                    </form>
+                                    <playlist :video="{{ $video }}" :playlist-detail="{{ $playlistDetail }}"  @if(Auth::user()) :user="{{ $user }}" @endif></playlist>
                                     
                                     <votes :default_votes="{{ $video->votes }}" :entity="{{ $video }}"></votes>
 
@@ -154,7 +152,6 @@
             </div>
         </section><!-- End single post description -->
         <!-- Comments -->
-        {{-- @if(Auth::user()) avatar="{{ $user->avatar() }}" @endif --}}
 
         <comments :video="{{ $video }}" @if(Auth::user()) :user="{{ $user }}" @endif></comments>
        

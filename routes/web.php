@@ -92,11 +92,17 @@ Route::middleware('auth')->group(function() {
     Route::post('votes/{entityID}/{type}', 'VoteController@vote');
     Route::delete('votes/{id}/delete', 'VoteController@deleteVote');
 
-
     Route::get('subscriptions/{id}','ProfileController@getSubscriber')->name('subscriber');
 
     Route::post('comments/{video}', 'CommentController@store');
     Route::delete('comments/{comment}', 'CommentController@destroy');
 
-});
+    Route::get('user/{id}/playlist', 'PlaylistController@getPlaylists');
+    Route::post('playlist/create', 'PlaylistController@create');
+    Route::post('playlist/{id}/video/{video}', 'PlaylistController@addingToPlaylist');
+    Route::post('playlist-detail/{id}', 'PlaylistController@destroy');
 
+    Route::get('playlist', 'PlaylistController@index')->name('playlist');
+    Route::get('playlist/{id}', 'PlaylistController@show')->name('edit-playlist');
+    
+});

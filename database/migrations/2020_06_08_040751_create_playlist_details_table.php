@@ -14,8 +14,9 @@ class CreatePlaylistDetailsTable extends Migration
     public function up()
     {
         Schema::create('playlist_details', function (Blueprint $table) {
-            $table->uuid('playlist_id')->unique();
-            $table->uuid('video_id')->unique();
+            $table->uuid('id');
+            $table->uuid('playlist_id');
+            $table->uuid('video_id');
             $table->timestamps();
         });
     }
