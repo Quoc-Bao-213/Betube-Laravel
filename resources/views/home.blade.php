@@ -105,10 +105,14 @@
                                         </div>
                                         <div class="thumb-stats pull-left">
                                             <i class="fa fa-heart"></i>
-                                            <span>{{ $newVideo->total_likes }}</span>
+                                            <span>
+                                            @php
+                                                echo App\Http\Controllers\HomeController::getTotalLike($newVideo->id);
+                                            @endphp
+                                            </span>
                                         </div>
                                         <div class="thumb-stats pull-right">
-                                            <span>05:56</span>
+                                            <span>{{ $newVideo->duration }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -131,14 +135,6 @@
                                             <i class="fa fa-clock-o"></i>
                                             <span> {{ $newVideo->created_at->toFormattedDateString() }} </span>
                                         </p>
-                                        {{-- @php
-                                        $test = $newVideo->total_views;
-                                        if($test>1000000000000) return round(($test/1000000000000),1).' trillion';
-                                        else if($test>1000000000) return round(($test/1000000000),1).' billion';
-                                        else if($test>1000000) return round(($test/1000000),1).' million';
-                                        else if($test>1000) return round(($test/1000),1).' thousand';
-                                        dd($test);
-                                        @endphp --}}
                                         <p class="pull-left">
                                             <i class="fa fa-eye"></i>
                                             <span>
@@ -204,10 +200,14 @@
                                         </div>
                                         <div class="thumb-stats pull-left">
                                             <i class="fa fa-heart"></i>
-                                            <span>{{ $newVideo->total_likes }}</span>
+                                            <span>
+                                            @php
+                                                echo App\Http\Controllers\HomeController::getTotalLike($video->id);
+                                            @endphp
+                                            </span>
                                         </div>
                                         <div class="thumb-stats pull-right">
-                                            <span>05:56</span>
+                                            <span>{{ $video->duration }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -217,11 +217,11 @@
                                         <p class="pull-left">
                                             <i class="fa fa-user"></i>
                                             <span>
-                                                <a href="{{ route('about-me', $newVideo->user->id ) }}">
-                                                @if($newVideo->user->channel_name)
-                                                {{ $newVideo->user->channel_name }}
+                                                <a href="{{ route('about-me', $video->user->id ) }}">
+                                                @if($video->user->channel_name)
+                                                {{ $video->user->channel_name }}
                                                 @else
-                                                {{ $newVideo->user->name }}
+                                                {{ $video->user->name }}
                                                 @endif
                                                 </a>
                                             </span>
@@ -232,7 +232,7 @@
                                         </p>
                                         <p class="pull-left">
                                             <i class="fa fa-eye"></i>
-                                            <span>   {{ $newVideo->formatView($newVideo->total_views) }}</span>   
+                                            <span>   {{ $video->formatView($newVideo->total_views) }}</span>   
                                         </p>
                                     </div>
                                     <div class="post-summary">

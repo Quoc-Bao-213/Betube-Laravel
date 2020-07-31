@@ -38,23 +38,31 @@
                         <i class="fa fa-video-camera"></i>
                         <h4>Playlist</h4>
                     </div>
-                    <div class="profile-video">
+                    @if (!empty($playlists))
                         @foreach($playlists as $playlist)
-                        <div class="media-object stack-for-small">
-                            <div class="media-object-section media-img-content">
-                                <div class="video-img">
-                                    <img src="" alt="video thumbnail">
+                            <div class="profile-video">
+                                <div class="media-object stack-for-small">
+                                    <div class="media-object-section media-img-content">
+                                        <div class="video-img">
+                                            @if (isset($playlist->videos[0]->thumbnail))
+                                                <img src="{{ $playlist->videos[0]->thumbnail }}" alt="video thumbnail">
+                                            @else
+                                                <img src="{{ asset('../images/playlist.jpg') }}" alt="video thumbnail">
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="media-object-section media-video-content" style="width: 100%;">
+                                        <div style="border-bottom: none" class="video-content">
+                                            <h5><a href="{{ route('edit-playlist', $playlist->id) }}">{{ $playlist->name }}</a></h5>
+                                            <p>{{ $playlist->description }}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="media-object-section media-video-content" style="width: 100%;">
-                                <div style="border-bottom: none" class="video-content">
-                                    <h5><a href="{{ route('edit-playlist', $playlist->id) }}">{{ $playlist->name }}</a></h5>
-                                    <p>{{ $playlist->description }}</p>
-                                </div>
-                            </div>
-                        </div>
                         @endforeach
-                    </div>
+                    @else
+                        <p class="text-center">No Playlist Found :)</p>
+                    @endif
                 </div>
             </div>
         </section><!-- End single post description -->

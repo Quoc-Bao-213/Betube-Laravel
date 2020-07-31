@@ -104,5 +104,10 @@ Route::middleware('auth')->group(function() {
 
     Route::get('playlist', 'PlaylistController@index')->name('playlist');
     Route::get('playlist/{id}', 'PlaylistController@show')->name('edit-playlist');
-    
+    Route::post('edit-playlist/{id}', 'PlaylistController@editPlaylist');
+    Route::post('playlist/{id}/delete', 'PlaylistController@deletePlaylist');
+
+    Route::get('videos/{video}/list/{playlist}', 'VideoController@showWithPlaylist');
+
+    Route::put('playlist-detail/update', 'PlaylistController@updatePlaylistDetail');
 });
