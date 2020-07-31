@@ -31,8 +31,11 @@
                             <td>{{ $vote->voteable_type }}</td>
                             <td>{{ $vote->voteable_type }}</td>
                             <td>{{ $vote->voteable_type }}</td> 
-                            <td><button type="button" class="btn btn-round btn-success">Edit</button>
-                            <button type="button" class="btn btn-round btn-warning">Delete</button></td>
+                            <td>
+                              <button type="button" class="btn btn-round btn-success"><i class="fa fa-plus-circle"></i></button>
+                              <button type="button" class="btn btn-round btn-warning"><i class="fa fa-pencil"></i></button>
+                              <button type="button" class="btn btn-round btn-primary  "><i class="fa fa-trash"></i></button>
+                            </td>
                         </tr>
                     @endforeach             
                 </tbody>

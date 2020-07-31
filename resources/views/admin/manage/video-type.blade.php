@@ -2,6 +2,7 @@
 @section('css')
  <!-- Datatables -->
  <link href=" {{ asset('../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+
 @endsection
 @section('content')
 <div class="col-md-12 col-sm-12 ">
@@ -26,9 +27,9 @@
                         <tr>
                             <td>{{ $videotype->name }}</td>
                             <td>
-                              <button type="button" class="btn btn-round btn-success">Add</button>
-                              <button type="button" class="btn btn-round btn-danger">Edit</button>
-                              <button type="button" class="btn btn-round btn-warning">Delete</button>
+                              <button type="button" class="btn btn-round btn-success"><i class="fa fa-plus-circle"></i></button>
+                              <button type="button" class="btn btn-round btn-warning"><i class="fa fa-pencil"></i></button>
+                              <button type="button" class="btn btn-round btn-primary  "><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach             

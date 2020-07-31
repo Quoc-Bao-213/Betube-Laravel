@@ -3,7 +3,7 @@
  <!-- Datatables -->
  <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
  <link href=" {{ asset('../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
- @endsection
+@endsection
 @section('content')
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
@@ -46,8 +46,11 @@
                                 @endphp
                              </td> 
                              <td>{{ $video->path }}</td>
-                             <td><button type="button" class="btn btn-round btn-success">Edit</button>
-                              <button type="button" class="btn btn-round btn-warning">Delete</button></td>
+                             <td>
+                                <button type="button" class="btn btn-round btn-success"><i class="fa fa-plus-circle"></i></button>
+                                <button type="button" class="btn btn-round btn-warning"><i class="fa fa-pencil"></i></button>
+                                <button type="button" class="btn btn-round btn-primary  "><i class="fa fa-trash"></i></button>
+                            </td>
                         </tr>
                     @endforeach             
                 </tbody>
