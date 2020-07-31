@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Http\Requests\UpdateVideoRequest;
 use App\Jobs\Videos\ConvertForStreaming;
 use App\Jobs\Videos\CreateVideoThumbnail;
@@ -10,7 +9,6 @@ use App\User;
 use App\Video;
 use App\VideoType;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class UploadVideoController extends Controller

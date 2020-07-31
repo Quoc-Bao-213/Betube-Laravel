@@ -1,12 +1,4 @@
 <section class="topProfile" style="background: url('{{ $user->cover() }}') no-repeat;background-size: cover;">
-    {{-- <div class="main-text text-center">
-        <div class="row">
-            <div class="large-12 columns">
-                <h3>World’s Biggest</h3>
-                <h1>Powerfull Video Theme</h1>
-            </div>
-        </div>
-    </div> --}}
     <div class="profile-stats">
         <div class="row secBg">
             <div class="large-12 columns">
@@ -80,8 +72,8 @@
                                     <i class="fa fa-heart"></i>
                                 </div>
                                 <div class="li-text float-left">
-                                    <p class="number-text">50</p>
-                                    <span>favorites</span>
+                                    <p class="number-text">{{ count($user->playlists) }}</p>
+                                    <span>playlist</span>
                                 </div>
                             </li>
                             <li>

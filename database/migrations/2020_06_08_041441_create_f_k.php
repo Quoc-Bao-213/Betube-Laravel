@@ -46,11 +46,11 @@ class CreateFK extends Migration
         });
 
         Schema::table('playlist_details', function (Blueprint $table) {
-            $table->foreign('playlist_id')->references('id')->on('playlists');
+            $table->foreign('playlist_id')->references('id')->on('playlists')->onDelete('cascade');;
         });
 
         Schema::table('playlist_details', function (Blueprint $table) {
-            $table->foreign('video_id')->references('id')->on('videos');
+            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');;
         });
     }
 }

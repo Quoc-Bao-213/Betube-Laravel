@@ -43,48 +43,52 @@
                         </h5>
                         @endif
                     </div>
-                    @foreach($videos as $video)
-                    <div class="profile-video">
-                        <div class="media-object stack-for-small">
-                            <div class="media-object-section media-img-content">
-                                <div class="video-img">
-                                    <img src="{{ $video->thumbnail }}" alt="video thumbnail">
-                                </div>
-                            </div>
-                            <div class="media-object-section media-video-content" style="width: 100%;">
-                                <div class="video-content">
-                                    <h5><a href="{{ route('video', $video->id) }}">{{ $video->title }}</a></h5>
-                                    <p>{{ $video->description }}</p>
-                                </div>
-                                <div class="video-detail clearfix">
-                                    <div class="video-stats">
-                                        <span><i class="fa fa-check-square-o"></i>published</span>
-                                        <span><i class="fa fa-clock-o"></i>{{ $video->created_at->toFormattedDateString() }}</span>
-                                        <span><i class="fa fa-eye"></i>{{ $video->total_views }}</span>
+                    @if (isset($videos))
+                        @foreach($videos as $video)
+                        <div class="profile-video">
+                            <div class="media-object stack-for-small">
+                                <div class="media-object-section media-img-content">
+                                    <div class="video-img">
+                                        <img src="{{ $video->thumbnail }}" alt="video thumbnail">
                                     </div>
-                                    @if ($user->editable())
-                                    <div class="video-btns">
-                                        <a class="video-btn" href="{{ route('update-video', $video->id) }}"><i class="fa fa-pencil-square-o"></i>edit</a>
-                                        <a class="video-btn" data-open="exampleModal2" href="javascipt:void(0)"><i class="fa fa-trash"></i>delete</a>
-                                        
-                                        <!-- This is the first modal -->
-                                        <div class="reveal" id="exampleModal2" data-reveal style="border-radius: 5px">
-                                            <p class="text-center"><i class="fa fa-exclamation-triangle" style="font-size: 84px; color:#e96969"></i></p>
-                                            <h3 class="text-center">Deleted Video</h3>
-                                            <p  style="font-size:16px" class="text-center">You will not be able to recover this video file ?</p>
-                                            <a href="{{ route('action-delete-video', $video->id) }}" class="button" style="margin-left: 10rem; padding: 15px 10px; text-transform: none">Yes, deleted it!</a>
-                                            <button class="button" data-close style=" padding: 15px 18px; text-transform: none">No, cancel!</button>
-                                            <button class="close-button" data-close aria-label="Close reveal" type="button">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                                </div>
+                                <div class="media-object-section media-video-content" style="width: 100%;">
+                                    <div class="video-content">
+                                        <h5><a href="{{ route('video', $video->id) }}">{{ $video->title }}</a></h5>
+                                        <p>{{ $video->description }}</p>
+                                    </div>
+                                    <div class="video-detail clearfix">
+                                        <div class="video-stats">
+                                            <span><i class="fa fa-check-square-o"></i>published</span>
+                                            <span><i class="fa fa-clock-o"></i>{{ $video->created_at->toFormattedDateString() }}</span>
+                                            <span><i class="fa fa-eye"></i>{{ $video->total_views }}</span>
                                         </div>
+                                        @if ($user->editable())
+                                        <div class="video-btns">
+                                            <a class="video-btn" href="{{ route('update-video', $video->id) }}"><i class="fa fa-pencil-square-o"></i>edit</a>
+                                            <a class="video-btn" data-open="exampleModal2" href="javascipt:void(0)"><i class="fa fa-trash"></i>delete</a>
+                                            
+                                            <!-- This is the first modal -->
+                                            <div class="reveal" id="exampleModal2" data-reveal style="border-radius: 5px">
+                                                <p class="text-center"><i class="fa fa-exclamation-triangle" style="font-size: 84px; color:#e96969"></i></p>
+                                                <h3 class="text-center">Deleted Video</h3>
+                                                <p  style="font-size:16px" class="text-center">You will not be able to recover this video file ?</p>
+                                                <a href="{{ route('action-delete-video', $video->id) }}" class="button" style="margin-left: 10rem; padding: 15px 10px; text-transform: none">Yes, deleted it!</a>
+                                                <button class="button" data-close style=" padding: 15px 18px; text-transform: none">No, cancel!</button>
+                                                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        @endif
                                     </div>
-                                    @endif
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    @endforeach
+                        @endforeach
+                    @else
+                        <p class="text-center">No Videos Found :)</p>
+                    @endif
                 </div>
             </div>
         </section><!-- End single post description -->

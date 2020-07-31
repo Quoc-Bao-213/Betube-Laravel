@@ -65,10 +65,10 @@
                                                     </div>
                                                     <div class="thumb-stats pull-left">
                                                         <i class="fa fa-heart"></i>
-                                                        <span>506</span>
+                                                        <span>{{ $video->total_likes }}</span>
                                                     </div>
                                                     <div class="thumb-stats pull-right">
-                                                        <span>05:56</span>
+                                                        <span>{{ $video->duration }}</span>
                                                     </div>
                                                 </div>
                                             </div>

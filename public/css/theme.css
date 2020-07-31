@@ -1085,7 +1085,9 @@ input[type=checkbox]:checked + .customLabel:before {
       .content .post .post-des h6 a:hover {
         color: #222222; }
   .content .post .post-des .post-stats {
-    margin-right: 15px; }
+    /* margin-right: 15px; } */
+    margin-right: 2px; 
+   }
     .content .post .post-des .post-stats p {
       margin-right: 15px;
       margin-bottom: 0;

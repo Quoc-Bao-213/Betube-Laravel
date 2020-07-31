@@ -7,6 +7,7 @@ use App\PlaylistDetail;
 use App\User;
 use App\Video;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class PlaylistController extends Controller
 {
@@ -56,6 +57,45 @@ class PlaylistController extends Controller
             'playlist_id' => $playlistID,
             'video_id' => $videoID
         ]);
+    }
+
+    public function editPlaylist($id) 
+    {
+        $playlist = Playlist::find($id);
+
+        if (isset(request()->name))
+            $playlist->name = request()->name;
+
+        if (isset(request()->description))
+            $playlist->description = request()->description;
+
+        $playlist->save();
+
+        return response()->json(['Edit Success']);
+    }
+
+    public function updatePlaylistDetail(Request $request) 
+    {
+        PlaylistDetail::truncate();
+
+        foreach($request->playlistDetails as $playlistDetail) {
+            PlaylistDetail::create([
+                'id' => $playlistDetail['id'],
+                'playlist_id' => $playlistDetail['playlist_id'],
+                'video_id' => $playlistDetail['video_id'],
+            ]);
+        }
+
+        return response('update success.', 200);
+    }
+
+    public function deletePlaylist($id)
+    {
+        $playlist = Playlist::find($id);
+
+        $playlist->delete();
+
+        return redirect()->route('home');
     }
 
     public function destroy($playlistDetailID)
