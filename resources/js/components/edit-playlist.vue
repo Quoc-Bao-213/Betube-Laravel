@@ -154,7 +154,6 @@
 
                     <draggable :list="playlistDetails" :options="{animation:200, handle:'.move-video'}" :element="'div'" @change="update">
                         <div v-for="(item, index) in playlistDetails" style="height: 102px;" :key="item.id" class="profile-video">
-                            <!-- <a :href="'/videos/' + item.videos.id + '/list/' + item.playlist_id" > -->
                                 <div class="media-object stack-for-small">
                                     <div class="media-object-section media-img-content move-video">
                                         <div style="border-right: 1px solid #ececec; height: 100px; width: 35px" class="abc">
@@ -176,7 +175,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            <!-- </a> -->
                         </div>
                     </draggable>
 

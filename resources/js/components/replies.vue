@@ -16,7 +16,6 @@
                     <p>{{ reply.content }}</p>
                 </div>
                 <div class="comment-btns">
-                    <!-- <span><a href="#"><i class="fa fa-thumbs-o-up"></i></a> | <a href="#"><i class="fa fa-thumbs-o-down"></i></a></span> -->
                     <votes :default_votes="reply.votes" :entity="reply"></votes>
                 </div>
             </div>
@@ -24,7 +23,6 @@
 
         <div v-if="comment.repliesCount > 0 && replies.next_page_url" class="showmore_trigger" style="margin-top: 0;">
             <span @click="fetchReplies" class="more">Load Replies</span>
-            <!-- <span class="less">Show Less</span> -->
         </div>
 
     </div>

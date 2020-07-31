@@ -15,12 +15,7 @@ class User extends Authenticatable implements HasMedia
 
     public $incrementing = false;
 
-    //Add extra attribute
-    // public $attributes = ['avatar'];
-    //Make it available in the json response
     public $appends = ['avatar'];
-
-    // protected $guarded = [];
 
     protected static function boot()
     {

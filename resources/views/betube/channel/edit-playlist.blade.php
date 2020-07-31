@@ -58,26 +58,6 @@
         $thumbnailPlaylist = $getThumbnail->videos->thumbnail;
 @endphp
 
-{{-- <div class="row"> --}}
-
 <edit-playlist thumbnail-playlist="{{ $thumbnailPlaylist }}" :default-playlist="{{ $playlist }}" :playlist-detail="{{ $playlistDetails->sortBy('created_at') }}" user-avatar="{{ $user->avatar() }}" :user="{{ $user }}"></edit-playlist>
-{{-- 
-    <!-- right side content area -->
-    <div class="large-8 columns profile-inner" style="margin-top: 30px">
-        <!-- single post description -->
-        <section class="profile-videos">
-            <div class="row secBg">
-                <div class="large-12 columns">
-                    <div class="heading">
-                        <i class="fa fa-list-ul"></i>
-                        <h4>Edit Playlist</h4>
-                    </div>
 
-                    <drag-items :playlist-detail="{{ $playlistDetails->sortBy('created_at') }}"></drag-items>
-
-                 </div>
-            </div>
-        </section><!-- End single post description -->
-    </div><!-- end left side content area -->
-</div> --}}
 @endsection

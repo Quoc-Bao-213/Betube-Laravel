@@ -21,8 +21,6 @@ Vue.component('channel-uploads', {
             this.isSelected = true
             this.videos = Array.from(this.$refs.videos.files)
             
-            // console.log(this.$refs.videos.files)
-            // return
             const uploaders = this.videos.map(video => {
                 const form = new FormData()
                 
