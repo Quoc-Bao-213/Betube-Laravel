@@ -3,9 +3,12 @@
     
     $homepage = "";
     $channel = "";
+    $playlist = "";
 
     if ($section[0] === 'about-me'){
         $channel = 'active';
+    }elseif($section[0] === 'playlist'){
+        $playlist = 'active';
     }else{
         $homepage = 'active';
     }
@@ -107,7 +110,7 @@
                                 <li>
                                     <a href="javascript:void(0)"><i class="fa fa-film"></i>Videos</a>                                     
                                 </li>
-                                <li>
+                                <li class="{{ $playlist }}">
                                     <a href="{{ route('playlist') }}"><i class="fa fa-th"></i>playlist</a>
                                 </li>
                                 @if(isset(Auth::user()->id))

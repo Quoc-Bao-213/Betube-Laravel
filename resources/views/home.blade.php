@@ -105,10 +105,14 @@
                                         </div>
                                         <div class="thumb-stats pull-left">
                                             <i class="fa fa-heart"></i>
-                                            <span>{{ $newVideo->total_likes }}</span>
+                                            <span>
+                                            @php
+                                                echo App\Http\Controllers\HomeController::getTotalLike($newVideo->id);
+                                            @endphp
+                                            </span>
                                         </div>
                                         <div class="thumb-stats pull-right">
-                                            <span>05:56</span>
+                                            <span>{{ $newVideo->duration }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -195,10 +199,14 @@
                                         </div>
                                         <div class="thumb-stats pull-left">
                                             <i class="fa fa-heart"></i>
-                                            <span>{{ $video->total_likes }}</span>
+                                            <span>
+                                            @php
+                                                echo App\Http\Controllers\HomeController::getTotalLike($video->id);
+                                            @endphp
+                                            </span>
                                         </div>
                                         <div class="thumb-stats pull-right">
-                                            <span>05:56</span>
+                                            <span>{{ $video->duration }}</span>
                                         </div>
                                     </div>
                                 </div>

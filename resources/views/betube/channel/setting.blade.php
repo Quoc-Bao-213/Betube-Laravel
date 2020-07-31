@@ -120,8 +120,8 @@
                                     <i class="fa fa-heart"></i>
                                 </div>
                                 <div class="li-text float-left">
-                                    <p class="number-text">50</p>
-                                    <span>favorites</span>
+                                    <p class="number-text">{{ count($user->playlists) }}</p>
+                                    <span>playlist</span>
                                 </div>
                             </li>
                             <li>

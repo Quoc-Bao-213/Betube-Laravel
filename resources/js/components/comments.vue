@@ -42,7 +42,6 @@
 
                     <div v-if="comments.next_page_url" class="showmore_trigger" style="margin-top: 25px">
                         <span @click="fetchComments" class="more">Load Comments</span>
-                        <!-- <span v-else class="less">Show Less</span> -->
                     </div>
                 </div><!-- End main comment -->
 
@@ -86,7 +85,6 @@ export default {
 
     computed: {
         auth() {
-            // console.log(__auth())
             return __auth()
         },
         findUser() {

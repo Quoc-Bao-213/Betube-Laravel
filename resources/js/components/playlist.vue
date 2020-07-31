@@ -6,7 +6,7 @@
         <div class="reveal" id="exampleModal2" data-reveal style="border-radius: 5px; width: 20%">
             <h5 class="text-center">Add to...</h5> <hr>
             <div style="max-height: 250px; overflow: auto">
-                <div v-for="playlist in playlists.data">
+                <div v-for="playlist in playlists.data" :key="playlist.id">
                     <input type="checkbox" 
                         style="display:inline-block" 
                         :id="playlist.name" 
@@ -72,28 +72,28 @@ export default {
             if (! this.auth) return  
 
             axios.get(`/user/${this.user.id}/playlist`)
-                .then(({ data }) => {
-                    this.playlists = {
-                        ...data,
-                        data: [
-                            ...this.playlists.data,
-                            ...data.data
-                        ]
-                    }
+            .then(({ data }) => {
+                this.playlists = {
+                    ...data,
+                    data: [
+                        ...this.playlists.data,
+                        ...data.data
+                    ]
+                }
 
-                    for (let i = 0; i < this.playlistDetail.length; i++) {
-                        if (this.playlistDetail[i].video_id != this.video.id) {
+                for (let i = 0; i < this.playlistDetail.length; i++) {
+                    if (this.playlistDetail[i].video_id != this.video.id) {
+                        continue
+                    } else {
+                        var findPlaylist = this.playlists.data.find(p => p.id === this.playlistDetail[i].playlist_id && p.user_id === this.auth.id)
+                        if (findPlaylist === undefined) {
                             continue
                         } else {
-                            var findPlaylist = this.playlists.data.find(p => p.id === this.playlistDetail[i].playlist_id && p.user_id === this.auth.id)
-                            if (findPlaylist === undefined) {
-                                continue
-                            } else {
-                                this.checkedNames.push(findPlaylist.name)
-                            }
+                            this.checkedNames.push(findPlaylist.name)
                         }
                     }
-                })
+                }
+            })
         },
 
         createPlaylist() {

@@ -2,6 +2,80 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('css/jquery.kyco.easyshare.css') }}">
+    <style>
+        .header-playlist {
+            padding: 5px 16px 5px;
+        }
+        .header-top-playlist {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            margin-bottom: 0;
+            line-height: normal;
+            font-size: inherit;
+        }
+        .header-title a{
+            font-size: 14px;
+            color: #444 !important; 
+        }
+        .publisher-container {
+            align-items: center;
+            font-size: 13px;
+            margin-top: 2px;
+        }
+        .item-container {
+            max-height: 255px;
+            overflow-y: auto;
+        }
+        .widgetContent .items{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 8px 4px 0;
+            flex-direction: row;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .widgetContent .items a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #444;
+            width: 80%;
+        }
+        .items .title-video {
+            display: block;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .items .channel-name {
+            display: block;
+            font-size: 10px;
+        }
+        .items .trash {
+            width: 20%;
+            padding-left: 30px;
+            cursor: pointer;
+            display: none;
+        }
+        .widgetContent .items:hover .trash {
+            display: block;
+        }
+        .widgetContent .items:hover {
+            box-shadow: 0px 0px 5px;
+            background: rgb(240, 240, 240);
+        }
+        .active-item {
+            background: rgb(245, 245, 245);
+        }
+        .none-item {
+            display: none;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -158,6 +232,58 @@
         <!-- End Comments -->
 
     </div><!-- end left side content area -->
+
+    @php
+        $arrayPath = explode('/', Request::path());
+    @endphp
+
+    @if(isset($arrayPath[2]) && isset($arrayPath[3]))
+    <div class="large-4 columns">
+        <aside class="secBg sidebar">
+            <div class="row">
+
+                <!-- most view Widget -->
+                <div class="large-12 medium-7 medium-centered columns">
+                    <div class="widgetBox">
+
+                        <drag-items :playlist="{{ $playlist }}" :default-playlist-detail="{{ $findPlaylistDetail }}" current-video="{{ $video->id }}"></drag-items>
+
+                        <div class="widgetTitle">
+                            <h5>More Videos</h5>
+                        </div>
+                        <div class="widgetContent">
+                            @foreach($videos as $videos)
+                                @php
+                                    $test = explode('/', Request::path());
+                                @endphp
+                                @if($test[1] === $videos->id)
+                                    @continue
+                                @else
+                                    <div class="video-box thumb-border">
+                                        <div class="video-img-thumb">
+                                            <img src="{{ asset($videos->thumbnail) }}" alt="most viewed videos">
+                                            <a href="{{ route('video', $video->id) }}" class="hover-posts">
+                                                <span><i class="fa fa-play"></i>Watch Video</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-box-content">
+                                            <h6><a href="{{ route('video', $videos->id) }}">{{ $videos->title }}</a></h6>
+                                            <p>
+                                                <span><i class="fa fa-user"></i><a href="{{ route('about-me', $videos->user->id) }}">{{ $videos->user->channel_name }}</a></span>
+                                                <span><i class="fa fa-clock-o"></i>{{ $videos->created_at->toFormattedDateString() }}</span>
+                                                <span><i class="fa fa-eye"></i>{{ $videos->total_views }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div><!-- end most view Widget -->
+            </div>
+        </aside>
+    </div><!-- end sidebar -->
+    @else
     <!-- sidebar -->
     <div class="large-4 columns">
         <aside class="secBg sidebar">
@@ -170,26 +296,23 @@
                             <h5>More Videos</h5>
                         </div>
                         <div class="widgetContent">
-                            @foreach($videos as $video)
-                                @php
-                                    $test = explode('/', Request::path());
-                                @endphp
-                                @if($test[1] === $video->id)
+                            @foreach($videos as $videos)
+                                @if($arrayPath[1] === $videos->id)
                                     @continue
                                 @else
                                     <div class="video-box thumb-border">
                                         <div class="video-img-thumb">
-                                            <img src="{{ asset($video->thumbnail) }}" alt="most viewed videos">
-                                            <a href="{{ route('video', $video->id) }}" class="hover-posts">
+                                            <img src="{{ asset($videos->thumbnail) }}" alt="most viewed videos">
+                                            <a href="{{ route('video', $videos->id) }}" class="hover-posts">
                                                 <span><i class="fa fa-play"></i>Watch Video</span>
                                             </a>
                                         </div>
                                         <div class="video-box-content">
-                                            <h6><a href="{{ route('video', $video->id) }}">{{ $video->title }}</a></h6>
+                                            <h6><a href="{{ route('video', $videos->id) }}">{{ $videos->title }}</a></h6>
                                             <p>
-                                                <span><i class="fa fa-user"></i><a href="{{ route('about-me', $video->user->id) }}">{{ $video->user->channel_name }}</a></span>
-                                                <span><i class="fa fa-clock-o"></i>{{ $video->created_at->toFormattedDateString() }}</span>
-                                                <span><i class="fa fa-eye"></i>{{ $video->total_views }}</span>
+                                                <span><i class="fa fa-user"></i><a href="{{ route('about-me', $videos->user->id) }}">{{ $videos->user->channel_name }}</a></span>
+                                                <span><i class="fa fa-clock-o"></i>{{ $videos->created_at->toFormattedDateString() }}</span>
+                                                <span><i class="fa fa-eye"></i>{{ $videos->total_views }}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -202,6 +325,8 @@
             </div>
         </aside>
     </div><!-- end sidebar -->
+    @endif
+    
 </div>
 @endsection
 

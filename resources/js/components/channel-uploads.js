@@ -18,12 +18,9 @@ Vue.component('channel-uploads', {
 
     methods: {
         upload() {
-            // console.log(this.$refs)
             this.isSelected = true
             this.videos = Array.from(this.$refs.videos.files)
             
-            // console.log(this.videos)
-            // return 
             const uploaders = this.videos.map(video => {
                 const form = new FormData()
                 
@@ -34,18 +31,15 @@ Vue.component('channel-uploads', {
                 form.append('video_type_id', this.videoType)
               
                 return axios.post(`/upload-video/${this.channel.id}/videos`, form, {
-                    onUploadProgress: (event) => { 
-                        // console.log(event)
+                    onUploadProgress: (event) => {  
                         this.progress[video.name] = Math.ceil((event.loaded / event.total) * 100) 
                         this.$forceUpdate()
                     } 
                 }).then(({ data }) => {
-
                     this.uploads = [
                         ...this.uploads,
                         data
                     ]
-                    // console.log(this.uploads)
                 })
             })
 
@@ -58,6 +52,7 @@ Vue.component('channel-uploads', {
                             
                             if(data.percentage === 100) {
                                 clearInterval(this.intervals[video.id])
+                                console.log('upload ok')
                             }
 
                             this.videos = this.videos.map(v => {

@@ -2,10 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-
 class Video extends Model
 {
+    protected $with = ['user'];
     
     public function videoTypes()
     {
@@ -14,7 +13,7 @@ class Video extends Model
 
     public function playlist()
     {
-        return $this->belongsToMany(Playlist::class);
+        return $this->belongsToMany(Playlist::class, 'playlist_details');
     }
 
     public function user()

@@ -3,7 +3,6 @@
         <div class="media-object-section comment-img text-center">
             <div class="comment-box-img">
                 <img :src="comment.user.avatar" alt="comment">
-                <!-- <avatar :username="comment.user.name"></avatar> -->
             </div>
         </div>
         <div class="media-object-section comment-desc">
@@ -15,10 +14,8 @@
                 <p>{{ comment.content }}</p>
             </div>
             <div class="comment-btns">
-                <!-- <span><a href="#"><i class="fa fa-thumbs-o-up"></i></a> | <a href="#"><i class="fa fa-thumbs-o-down"></i></a></span> -->
                 <votes :default_votes="comment.votes" :entity="comment"></votes>
                 <span style="margin-left: 10px;"><button v-if="auth" @click="addingReply = !addingReply"><i class="fa fa-share"></i>{{ addingReply ? 'Cancel' : 'Add Reply' }}</button></span>
-                <!-- <span class='reply float-right hide-reply'></span> -->
                 <span v-if="auth.id === comment.user_id" @click="deleteComment(comment.id)" class="float-right" style="margin-top: 5px;"><i style="font-size: 1.5em" class="fa fa-trash-o"></i></span>
             </div>
 

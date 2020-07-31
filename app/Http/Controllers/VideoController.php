@@ -17,12 +17,11 @@ class VideoController extends Controller
         $videos = Video::all();
         $videoType = VideoType::all();
         $user = User::find(Auth::id());
+        $playlistDetail = PlaylistDetail::all();
         
         $url = $request->url();
-        
-        $playlistDetail = PlaylistDetail::all();
 
-        if (request()->wantsJson()){
+        if (request()->wantsJson()) {
             return $video;
         }
         // dd($video->comments->first()->replies);
@@ -30,9 +29,29 @@ class VideoController extends Controller
         return view('betube.video', compact('video', 'videos', 'user', 'videoType', 'url', 'playlistDetail'));
     }
 
+    public function showWithPlaylist(Video $video, Request $request, $playlistID)
+    {   
+        $videos = Video::all();
+        $videoType = VideoType::all();
+        $user = User::find(Auth::id());
+        $playlist = Playlist::find($playlistID);
+        $playlistDetail = PlaylistDetail::all();
+        $findPlaylistDetail = PlaylistDetail::where('playlist_id', $playlistID)->get();
+        
+        $url = $request->url();
+
+        if (request()->wantsJson()) {
+            return $video;
+        }
+
+        return view('betube.video', compact('video', 'videos', 'user', 'videoType', 'url', 'playlistDetail', 'playlist', 'findPlaylistDetail'));
+    }
+
     public function updateViews(Video $video)
     {
         $video->increment('total_views');
+        $video->duration = request()->duration;
+        $video->save();
 
         return response()->json(['+1 View']);
     }
