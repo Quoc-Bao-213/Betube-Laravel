@@ -47,9 +47,7 @@
                              </td> 
                              <td>{{ $video->path }}</td>
                              <td>
-                                <button type="button" class="btn btn-round btn-success"><i class="fa fa-plus-circle"></i></button>
-                                <button type="button" class="btn btn-round btn-warning"><i class="fa fa-pencil"></i></button>
-                                <button type="button" class="btn btn-round btn-primary  "><i class="fa fa-trash"></i></button>
+                                <a href="{{ route('action-delete-video', $video->id) }}" type="button" class="btn btn-round btn-primary "><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach             

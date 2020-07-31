@@ -2,8 +2,11 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Video extends Model
 {
+   
     protected $with = ['user'];
     
     public function videoTypes()

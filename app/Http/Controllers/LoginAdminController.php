@@ -10,7 +10,7 @@ class LoginAdminController extends Controller
 {
     public function index()
     {   
-        if(Auth::check())
+        if(Auth::user() && Auth::user()->isAdmin())
         {
             return redirect()->route('home-admin'); 
         }

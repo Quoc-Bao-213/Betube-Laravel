@@ -31,13 +31,35 @@ Route::post('/admin/logout','LoginAdminController@logout')->name('action-logout-
 Route::middleware(Admin::class)->group(function() {
 
     Route::get('/admin/administrator','HomeAdminController@index')->name('home-admin');
-    Route::get('/admin/manage-user', 'AdminManageController@manageUser')->name('manage-user');
-    Route::get('/admin/manage-subscription', 'AdminManageController@manageSubscription')->name('manage-subscription');
-    Route::get('/admin/manage-video', 'AdminManageController@manageVideo')->name('manage-video');
-    Route::get('/admin/manage-videotype', 'AdminManageController@manageVideoType')->name('manage-videotype');
-    Route::get('/admin/manage-comment', 'AdminManageController@manageComment')->name('manage-comment');
-    Route::get('/admin/manage-vote', 'AdminManageController@manageVote')->name('manage-vote');
     Route::get('/admin/profile', 'AdminManageController@adminProfile')->name('profile');
+
+    // User
+    Route::get('/admin/manage-user', 'AdminManageController@manageUser')->name('manage-user');
+    Route::get('/admin/manage-user/add-user/', 'AdminManageController@indexAddUser')->name('add-user');
+    Route::post('/admin/manage-user/add-user/', 'AdminManageController@addUser')->name('add-user');
+    Route::post('admin/manage-user/delete-user/{id}', 'AdminManageController@deleteUser')->name('delete-user');
+
+    // Subscription
+    Route::get('/admin/manage-subscription', 'AdminManageController@manageSubscription')->name('manage-subscription');
+    Route::post('/admin/delete-subscription/{id}', 'AdminManageController@deleteSubscription')->name('delete-subscription');
+
+    // Video
+    Route::get('/admin/manage-video', 'AdminManageController@manageVideo')->name('manage-video');
+
+    // Video Type
+    Route::get('/admin/manage-videotype', 'AdminManageController@manageVideoType')->name('manage-videotype');
+    Route::get('/admin/manage-videotype/add-video-type', 'AdminManageController@indexAddVideoType')->name('add-videotype');
+    Route::get('/admin/manage-videotype/edit-video-type/{id}', 'AdminManageController@indexEditVideoType')->name('add-videotype');
+    Route::post('/admin/manage-videotype/add-video-type', 'AdminManageController@addVideoType')->name('add-videotype');
+    Route::post('/admin/manage-videotype/edit-video-type/{id}', 'AdminManageController@editVideoType')->name('edit-videotype');
+    Route::post('/admin/manage-videotype/delete-video-type/{id}', 'AdminManageController@deleteVideoType')->name('delete-videotype');
+
+    // Comment
+    Route::get('/admin/manage-comment', 'AdminManageController@manageComment')->name('manage-comment');
+    Route::post('admin/manage-comment/delete-comment/{id}' , 'AdminManageController@deleteComment')->name('delete-comment');
+    // Vote
+    Route::get('/admin/manage-vote', 'AdminManageController@manageVote')->name('manage-vote');
+
 });
 
 

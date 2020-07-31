@@ -12,6 +12,13 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
+        @if(session('success'))
+        <div class="alert alert-success alert-dismissible " role="alert">
+            <button type="button" class="close" style="color:white" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <strong>{{ session('success')}}</strong> 
+        </div>
+        @endif
         <div class="row">
           <div class="col-sm-12">
             <div class="card-box table-responsive">
@@ -35,9 +42,11 @@
                     <td>{{ $user->channel_name }}</td>
                     <td>{{ $user->description }}</td>
                     <td>
-                      <button type="button" class="btn btn-round btn-success"><i class="fa fa-plus-circle"></i></button>
-                      <button type="button" class="btn btn-round btn-warning"><i class="fa fa-pencil"></i></button>
-                      <button type="button" class="btn btn-round btn-primary  "><i class="fa fa-trash"></i></button>
+                      <form action="{{ route('delete-user', $user->id) }}" method="POST">
+                        @csrf
+                        <a href="{{ route('add-user') }}" type="button" class="btn btn-round btn-success"><i class="fa fa-plus-circle"></i></a> 
+                        <button type="submit" class="btn btn-round btn-primary "><i class="fa fa-trash"></i></button>
+                      </form> 
                     </td>
                   </tr>
                   @endforeach

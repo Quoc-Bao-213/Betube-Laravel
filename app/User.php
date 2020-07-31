@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -13,6 +14,8 @@ class User extends Authenticatable implements HasMedia
 {
     use Notifiable, HasMediaTrait;
 
+    use SoftDeletes; 
+    
     public $incrementing = false;
 
     public $appends = ['avatar'];
@@ -123,6 +126,11 @@ class User extends Authenticatable implements HasMedia
     public function getAvatarAttribute()
     {
         return $this->avatar();
+    }
+
+    public function isAdmin()
+    {
+        return $this->is_admin === 'true';
     }
 
 }

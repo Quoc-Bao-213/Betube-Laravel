@@ -16,6 +16,7 @@ class CreateVideoTypesTable extends Migration
         Schema::create('video_types', function (Blueprint $table) {
             $table->uuid('id')->unique();
             $table->string('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
