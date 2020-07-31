@@ -8,10 +8,10 @@
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
                         data-toggle="dropdown" aria-expanded="false">
-                        <img src="images/img.jpg" alt="">{{ Auth::user()->name }}
+                        <img src="{{ asset('../production/images/img.jpg') }}" alt="">{{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#"> Profile</a>
+                        <a class="dropdown-item" href="{{ route('profile') }}"> Profile</a>
                         {{-- <form action="{{ route('actionLogout') }}" method="POST">
                             @csrf
                             <button type="submit" style="width: 97.8%; height: 2.3rem;" class="text-center hi-user">Logout</button>
@@ -22,7 +22,7 @@
                         </form>
                     </div>
                 </li>
-
+{{-- 
                 <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1"
                         data-toggle="dropdown" aria-expanded="false">
@@ -58,7 +58,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="dropdown-item">
-                                <span class="image"><img src="{{asset('../production/images/img.jpg')}}"
+                                <span class="image"><img src="{{ asset('../production/images/img.jpg') }}"
                                         alt="Profile Image" /></span>
                                 <span>
                                     <span>John Smith</span>
@@ -71,8 +71,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="dropdown-item">
-                                <span class="image"><img src="{{asset('../production/images/img.jpg')}}"
-                                        alt="Profile Image" /></span>
+                                <span class="image"><img src="{{ asset('../production/images/img.jpg') }}"
+                                        alt="Profile Image"/></span>
                                 <span>
                                     <span>John Smith</span>
                                     <span class="time">3 mins ago</span>
@@ -91,7 +91,7 @@
                             </div>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </nav>
     </div>

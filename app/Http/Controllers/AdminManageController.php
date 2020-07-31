@@ -47,4 +47,9 @@ class AdminManageController extends Controller
         $votes = Vote::all();
         return view('admin.manage.vote', compact('votes'));
     }
+
+    public function adminProfile()
+    {
+        return view('admin.manage.admin-profile');
+    }
 }

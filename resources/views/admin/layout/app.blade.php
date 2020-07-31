@@ -31,6 +31,11 @@
   <!-- Custom Theme Style -->
   <link href=" {{ asset('../build/css/custom.min.css')}} " rel="stylesheet">
   @yield('css')
+  <style>
+    .table tbody tr td{
+     vertical-align: middle;
+    }
+  </style>
 </head>
 
 <body class="nav-md">

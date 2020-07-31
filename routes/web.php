@@ -37,7 +37,7 @@ Route::middleware(Admin::class)->group(function() {
     Route::get('/admin/manage-videotype', 'AdminManageController@manageVideoType')->name('manage-videotype');
     Route::get('/admin/manage-comment', 'AdminManageController@manageComment')->name('manage-comment');
     Route::get('/admin/manage-vote', 'AdminManageController@manageVote')->name('manage-vote');
-
+    Route::get('/admin/profile', 'AdminManageController@adminProfile')->name('profile');
 });
 
 

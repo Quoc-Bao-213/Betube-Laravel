@@ -140,7 +140,6 @@
                                             <span>
                                                 {{ $newVideo->formatView($newVideo->total_views) }}
                                             </span>
-
                                         </p>
                                     </div>
                                     <div class="post-summary">
