@@ -19,7 +19,7 @@
                   <tr>
                     <th>Type</th>
                     <th>Model</th>
-                    <th>Video</th>
+                    <th>Name Video</th>
                     <th>User</th>
                   </tr>
                 </thead>
@@ -28,8 +28,8 @@
                         <tr>
                             <td>{{ $vote->type }}</td>
                             <td>{{ $vote->voteable_type }}</td>
-                            <td>{{ $vote->voteable_type }}</td>
-                            <td>{{ $vote->voteable_type }}</td> 
+                            <td>{{ $vote->voteable->title }}</td>  
+                            <td>{{ $vote->voteable->user->name }}</td>  
                         </tr>
                     @endforeach             
                 </tbody>

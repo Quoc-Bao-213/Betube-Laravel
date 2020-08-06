@@ -37,7 +37,7 @@
                             <td>              
                             <form action="{{ route('delete-subscription', $subscription->id )}}" method="POST">
                               @csrf
-                              <button type="submit" class="btn btn-round btn-primary  "><i class="fa fa-trash"></i></button>
+                              <button type="submit" class="btn btn-round btn-primary"><i class="fa fa-trash"></i></button>
                             </form>
                             </td>
                         </tr>

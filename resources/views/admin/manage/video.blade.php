@@ -43,11 +43,12 @@
                                 foreach ($video->videoTypes as $value) {
                                   echo($value->name);
                                 }
-                                @endphp
+                              @endphp
                              </td> 
                              <td>{{ $video->path }}</td>
                              <td>
                                 <a href="{{ route('action-delete-video', $video->id) }}" type="button" class="btn btn-round btn-primary "><i class="fa fa-trash"></i></a>
+                                <a href="{{ route('edit-video', $video->id) }}" type="button" class="btn btn-round btn-warning "><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
                     @endforeach             

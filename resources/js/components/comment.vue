@@ -16,7 +16,7 @@
             <div class="comment-btns">
                 <votes :default_votes="comment.votes" :entity="comment"></votes>
                 <span style="margin-left: 10px;"><button v-if="auth" @click="addingReply = !addingReply"><i class="fa fa-share"></i>{{ addingReply ? 'Cancel' : 'Add Reply' }}</button></span>
-                <span v-if="auth.id === comment.user_id" @click="deleteComment(comment.id)" class="float-right" style="margin-top: 5px;"><i style="font-size: 1.5em" class="fa fa-trash-o"></i></span>
+                <span v-if="auth && auth.id === comment.user_id" @click="deleteComment(comment.id)" class="float-right" style="margin-top: 5px;"><i style="font-size: 1.5em" class="fa fa-trash-o"></i></span>
             </div>
 
             <div v-if="addingReply" class="comment-box thumb-border">

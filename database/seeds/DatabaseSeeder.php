@@ -39,11 +39,11 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true
         ]);
 
-        factory(Subscription::class, 50)->create([
+        factory(Subscription::class, 10)->create([
             'user_id' => $user1->id,
         ]);
 
-        factory(Subscription::class, 50)->create([
+        factory(Subscription::class, 10)->create([
             'user_id' => $user2->id,
         ]);
 
@@ -70,9 +70,12 @@ class DatabaseSeeder extends Seeder
             'name' => "Game"
         ]);
 
-        // $video = factory(Video::class)->create([
-        //     'user_id' => $user1->id
-        // ]);
+
+        $video = factory(Video::class,5)->create([
+            'user_id' => $user1->id,
+            'total_views' => 1000
+        ]);
+        
 
         // factory(Playlist::class)->create([
         //     'user_id' => $user1->id

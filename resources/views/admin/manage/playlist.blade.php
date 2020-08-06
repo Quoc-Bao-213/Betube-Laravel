@@ -5,11 +5,10 @@
 @endsection
 
 @section('content')
-
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Manage<small>Users</small></h2>
+        <h2>Manage<small>Playlist</small></h2>
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
@@ -27,32 +26,28 @@
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Channel Name</th>
                     <th>Description</th>
+                    <th>User Created</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($users as $user)
+                 @foreach($playlists as $playlist)
                   <tr>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->phone }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->channel_name }}</td>
-                    <td>{{ $user->description }}</td>
+                    <td>{{ $playlist->name }}</td>
+                    <td>{{ $playlist->description }}</td>
+                    <td>{{ $playlist->user->name }}</td>
                     <td>
-                      <form action="{{ route('delete-user', $user->id) }}" method="POST">
-                        @csrf
-                        <a href= "{{ route('edit-user', $user->id)}}" type="button" class="btn btn-round btn-warning "><i class="fa fa-pencil"></i></a>
-                        <button type="submit" class="btn btn-round btn-primary "><i class="fa fa-trash"></i></button>
-                      </form> 
+                        <form action="{{ route('delete-playlist', $playlist->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-round btn-primary "><i class="fa fa-trash"></i></button>
+                            <a href= "{{ route('edit-playlists', $playlist->id)}}" type="button" class="btn btn-round btn-warning "><i class="fa fa-pencil"></i></a>
+                          </form> 
                     </td>
                   </tr>
-                  @endforeach
+                 @endforeach
                 </tbody>
-                <a href="{{ route('add-user') }}" type="button" class="btn btn-round btn-success"><i class="fa fa-plus-circle"></i></a> 
+                <a href="{{ route('add-playlist') }}" type="button" class="btn btn-round btn-success"><i class="fa fa-plus-circle"></i></a> 
               </table>
             </div>
           </div>

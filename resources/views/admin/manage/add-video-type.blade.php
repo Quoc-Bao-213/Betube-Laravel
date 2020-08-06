@@ -27,7 +27,11 @@
                     @csrf
                     <label for="fullname">Name video type * :</label>
                     <input type="text" class="form-control" name="name_videotype">
-                    <button type="submit" style="margin-top:10px" class="btn btn-primary">Submit</span> 
+
+                    @if($errors->any())
+                        <p class="alert alert-danger"  style="margin-top:10px; background-color:#fff3cd; border-color:#ffeeba; color:#856404" role="alert">{{ $errors->first('name_videotype') }}</p>
+                    @endif
+                    <button type="submit" style="margin-top:10px" class="btn btn-primary">Submit</button> 
                 </form>
                 <!-- end form for validations -->
 

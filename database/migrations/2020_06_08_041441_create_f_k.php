@@ -23,7 +23,7 @@ class CreateFK extends Migration
         });
 
         Schema::table('videos', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('videos', function (Blueprint $table) {
@@ -31,7 +31,7 @@ class CreateFK extends Migration
         });
 
         Schema::table('comments', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('comments', function (Blueprint $table) {
@@ -43,7 +43,7 @@ class CreateFK extends Migration
         });
 
         Schema::table('playlists', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('playlist_details', function (Blueprint $table) {
