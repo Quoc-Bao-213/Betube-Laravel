@@ -132,4 +132,6 @@ Route::middleware('auth')->group(function() {
     Route::get('videos/{video}/list/{playlist}', 'VideoController@showWithPlaylist');
 
     Route::put('playlist-detail/update', 'PlaylistController@updatePlaylistDetail');
+
+    Route::get('/categories/{categories}', 'CaregoriesContronller@index')->name('categories');
 });

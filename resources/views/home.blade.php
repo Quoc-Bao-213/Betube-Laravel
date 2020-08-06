@@ -52,7 +52,7 @@
                 <div class="item-cat item thumb-border">
                     <figure class="premium-img">
                         <img src="{{ asset('images/category/category'.($index + 1).'.png') }}" alt="carousel">
-                        <a href="javascript:void(0)" class="hover-posts">
+                        <a href="{{ route('categories', $videoType->id) }}" class="hover-posts">
                             <span><i class="fa fa-search"></i></span>
                         </a>
                     </figure>
