@@ -2,6 +2,23 @@
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/jquery.kyco.easyshare.css') }}">
+<style>
+    .border {
+        /* border: 1px solid lightgray; */
+        padding: 5px;
+        /* width: 50%;
+        margin: 0 auto; */
+    }
+    .avatar-channel img{
+        border-radius: 50%;
+        width: 100px;
+        margin-bottom: 10px;
+    }
+
+    .avatar-title a {
+        font-weight: bold;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -41,7 +58,7 @@
                 <div class="row secBg">
                     <div class="large-12 columns">
                         <div class="row column head-text clearfix">
-                            <p class="pull-left">Search Results:</p>
+                            <p class="pull-left">Search Results: {{ count($searchVideos) + count($searchChannel) == 0 ? "No result" : count($searchVideos) + count($searchChannel)." results" }}</p>
                             <div class="grid-system pull-right show-for-large">
                                 {{-- <a class="secondary-button grid-default" href="#"><i class="fa fa-th"></i></a>
                                 <a class="secondary-button grid-medium" href="#"><i class="fa fa-th-large"></i></a> --}}
@@ -51,6 +68,16 @@
                         <div class="tabs-content" data-tabs-content="newVideos">
                             <div class="tabs-panel is-active" id="new-all">
                                 <div class="row list-group">
+                                    @foreach($searchChannel as $channel)
+                                    <div class="item large-4 medium-6 columns list">
+                                        <div class="text-center border">
+                                            <div class="avatar-channel"><a href="{{ route('about-me', $channel->id) }}"><img src="{{ $channel->avatar() }}" alt=""></a></div>
+                                            <div class="title-channel"><a href="{{ route('about-me', $channel->id) }}">{{ $channel->channel_name }}</a></div>
+                                            <div class="description-channel"><span>{{ $channel->description }}</span></div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+
                                     @foreach ($searchVideos as $video)
                                     <div class="item large-4 medium-6 columns list">
                                         <div class="post thumb-border">
@@ -65,7 +92,11 @@
                                                     </div>
                                                     <div class="thumb-stats pull-left">
                                                         <i class="fa fa-heart"></i>
-                                                        <span>{{ $video->total_likes }}</span>
+                                                        <span>
+                                                        @php
+                                                            echo App\Http\Controllers\SearchController::getTotalLike($video->id);
+                                                        @endphp
+                                                        </span>
                                                     </div>
                                                     <div class="thumb-stats pull-right">
                                                         <span>{{ $video->duration }}</span>
@@ -124,8 +155,9 @@
                             </div>
                             <div class="widgetContent">
                                 <ul class="accordion" data-accordion>
-                                    <li class="accordion-item is-active" data-accordion-item>
-                                        <a href="#" class="accordion-title">Entertainment</a>
+                                    @foreach($allCategories as $index => $catrgory)
+                                    <li @if($index == 0) class="accordion-item is-active" @else class="accordion-item" @endif data-accordion-item>
+                                        <a href="#" class="accordion-title">{{ $catrgory->name }}</a>
                                         <div class="accordion-content" data-tab-content>
                                             <ul>
                                                 <li class="clearfix">
@@ -155,234 +187,7 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">Technology</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">Fashion &amp; Beauty</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">sports &amp; recreation</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">Automotive</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">foods &amp; drinks</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">Peopls</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">Nature</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">Transportationy</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">places &amp; landmarks</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">Travel</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">Animals</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="accordion-item" data-accordion-item>
-                                        <a href="#" class="accordion-title">Historicals &amp; Architectural</a>
-                                        <div class="accordion-content" data-tab-content>
-                                            <ul>
-                                                <li class="clearfix">
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Movies <span>(10)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Trailers <span>(3)</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-play-circle-o"></i>
-                                                    <a href="#">Comedy <span>(6)</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -489,7 +294,7 @@
                             </div>
                             <div class="widgetContent">
                                 <div class="advBanner text-center">
-                                    <a href="#"><img src="images/sideradv.png" alt="sidebar adv"></a>
+                                    <a href="#"><img src="{{ asset('images/sideradv.png') }}" alt="sidebar adv"></a>
                                 </div>
                             </div>
                         </div>

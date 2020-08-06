@@ -38,6 +38,7 @@
 
 <script>
 import draggable from "vuedraggable"
+import EventBus from './event-bus'
 
 export default {
     components: {
@@ -62,8 +63,14 @@ export default {
     data() {
         return {
             playlistDetail: this.defaultPlaylistDetail,
-            isActive: false
+            isActive: false,
+            playlists: [],
+            // proxyUrl: process.env.MIX_APP_URL,
         }
+    },
+
+    created() {
+        this.getDataPlaylist
     },
 
     computed: {
@@ -77,7 +84,20 @@ export default {
                     index = i
             }
             return index + 1;
-        }
+        },
+        getDataPlaylist() {
+            for (var i = 0; i < this.playlistDetail.length; i++) {
+                this.playlists.push({
+                    sources: [{
+                        src: 'http://pc-baota.s3corp.com.vn/storage/videos/' + this.playlistDetail[i].videos.id + '/' + this.playlistDetail[i].videos.id + '.m3u8',
+                        type: 'application/x-mpegURL'
+                    }],
+                    poster: this.playlistDetail[i].videos.thumbnail,
+                })
+            }
+
+            EventBus.$emit('inputData', this.playlists)
+        },
     },
 
     methods: {
@@ -95,9 +115,6 @@ export default {
                 console.log('Delete Ok')
             })
         },
-        expand() {
-
-        }
     }
 }
 </script>

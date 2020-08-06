@@ -164,4 +164,6 @@ Route::middleware('auth')->group(function() {
     // Playlist Detail
     Route::put('playlist-detail/update', 'PlaylistController@updatePlaylistDetail');
     Route::post('playlist-detail/{id}', 'PlaylistController@destroy');
+
+    Route::get('/categories/{categories}', 'CaregoriesContronller@index')->name('categories');
 });

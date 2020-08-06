@@ -101,11 +101,7 @@
         <section class="inner-video">
             <div class="row secBg">
                 <div class="large-12 columns inner-flex-video">
-                    <div style="height: 370px; padding-bottom: 10px;">
-                        <video id="my-video" class="video-js vjs-big-play-centered" controls poster="{{ asset($video->thumbnail) }}" autoplay controls preload="auto" style="width: 100%; height: 100%" data-setup='{ "aspectRatio":"640:267", "playbackRates": [0.25, 0.5, 1, 1.5, 2] }'>
-                            <source src='{{ asset(Storage::url("videos/{$video->id}/{$video->id}.m3u8")) }}' type="application/x-mpegURL">
-                        </video>
-                    </div>
+                    <player link="{{ asset(Storage::url("videos/{$video->id}/{$video->id}.m3u8")) }}" poster="{{ asset($video->thumbnail) }}" request-path={{ Request::path() }}></player>
                 </div>
             </div>
         </section>
@@ -262,7 +258,7 @@
                                     <div class="video-box thumb-border">
                                         <div class="video-img-thumb">
                                             <img src="{{ asset($videos->thumbnail) }}" alt="most viewed videos">
-                                            <a href="{{ route('video', $video->id) }}" class="hover-posts">
+                                            <a href="{{ route('video', $videos->id) }}" class="hover-posts">
                                                 <span><i class="fa fa-play"></i>Watch Video</span>
                                             </a>
                                         </div>
@@ -332,7 +328,7 @@
 
 @section('styles')
     <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.css" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.css" rel="stylesheet" /> --}}
 @endsection
 
 @section('script')
