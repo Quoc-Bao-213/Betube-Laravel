@@ -123,7 +123,7 @@
                             <div class="author-des clearfix">
                                 <div class="post-title" style="width: 80%">
 
-                                    <h4>{{ $video->title }}</h4>
+                                    <h4 id="current_video_title_h4">{{ $video->title }}</h4>
                                     <p>
                                         <span><i class="fa fa-clock-o"></i>{{ $video->created_at->toFormattedDateString() }}</span>
                                         <span><i class="fa fa-eye"></i>{{ $video->total_views }}</span>
@@ -242,7 +242,7 @@
                 <div class="large-12 medium-7 medium-centered columns">
                     <div class="widgetBox">
 
-                        <drag-items :playlist="{{ $playlist }}" :default-playlist-detail="{{ $findPlaylistDetail }}" current-video="{{ $video->id }}"></drag-items>
+                        <drag-items :playlist="{{ $playlist }}" :default-playlist-detail="{{ $findPlaylistDetail }}"></drag-items>
 
                         <div class="widgetTitle">
                             <h5>More Videos</h5>
@@ -328,19 +328,10 @@
 
 @section('styles')
     <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
-    {{-- <link href="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.css" rel="stylesheet" /> --}}
 @endsection
 
 @section('script')
-    <script src="https://vjs.zencdn.net/7.8.3/video.js"></script>
-    {{-- <script src="https://vjs.zencdn.net/7.8.3/video.min.js"></script> --}}
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-quality-levels/2.0.9/videojs-contrib-quality-levels.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.cjs.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.es.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.min.js"></script> --}}
     <script>
         window.CURRENT_VIDEO = '{{ $video->id }}'
     </script>
-    <script src="{{ asset('js/player.js') }}" type="text/javascript"></script>
 @endsection
