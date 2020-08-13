@@ -17,8 +17,8 @@ class HomeAdminController extends Controller
           $user = User::all();
           $video = Video::all();
           $playlist = Playlist::all();
-          $voteUp = Vote::where('type','up')->get();
-          $voteDown = Vote::where('type','down')->get();
+          $voteUp = Vote::where('type','up')->where('voteable_type', 'App\Video')->get();
+          $voteDown = Vote::where('type','down')->where('voteable_type', 'App\Video')->get();
           // top user subscriber
           $selectTopUserSubscriber = DB::select("select  users.id, users.name, count(subscriptions.user_subscribe) as subscribe from users, subscriptions where users.id = subscriptions.user_id group by users.id, users.name order by subscribe desc limit 5");
           $getTopUserSubscriber =  json_encode($selectTopUserSubscriber);

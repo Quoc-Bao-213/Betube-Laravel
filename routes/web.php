@@ -20,12 +20,14 @@ Auth::routes();
 Route::get('/admin/login','LoginAdminController@index')->name('login-admin');
 Route::post('/admin/login','LoginAdminController@login')->name('action-login-admin');
 Route::post('/admin/logout','LoginAdminController@logout')->name('action-logout-admin');
-
+Route::get('/admin/forgot', 'AdminResetpasswordController@index')->name('admin-forgot-password');
+Route::post('/admin/reset', 'AdminResetpasswordController@resetPassAdmin')->name('admin-reset-password');
 Route::middleware(Admin::class)->group(function() {
     Route::prefix('admin')->group(function(){
         
         // Admin (Statistic)
         Route::get('administrator','HomeAdminController@index')->name('home-admin');
+      
 
         // Manage User
         Route::prefix('manage-user')->group(function(){
@@ -115,6 +117,9 @@ Route::get('videos/{video}/comments', 'CommentController@index');
 Route::get('comments/{comment}/replies', 'CommentController@show');
 Route::get('result', 'SearchController@index')->name('action-search');
 
+// Search Detail Video
+Route::get('/categories/{categories}', 'CaregoriesContronller@index')->name('categories');
+
 
 // User
 Route::middleware('auth')->group(function() {
@@ -165,5 +170,4 @@ Route::middleware('auth')->group(function() {
     Route::put('playlist-detail/update', 'PlaylistController@updatePlaylistDetail');
     Route::post('playlist-detail/{id}', 'PlaylistController@destroy');
 
-    Route::get('/categories/{categories}', 'CaregoriesContronller@index')->name('categories');
 });

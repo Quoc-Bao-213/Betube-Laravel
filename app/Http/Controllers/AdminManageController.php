@@ -143,6 +143,14 @@ class AdminManageController extends Controller
         return view('admin.manage.edit-video-type', compact('nameVideoType'));
     }
 
+    public function deleteVideoType($id)
+    {
+        $videoType = VideoType::find($id);
+        $videoType->delete();
+
+        return redirect()->back()->with('success','Delete video type success!');
+    }
+
     public function addVideoType(AdminManageVideoTypeRequest $request)
     {   
         $checkVideoType = VideoType::where('name', $request->name_videotype)->exists();
@@ -205,7 +213,7 @@ class AdminManageController extends Controller
         return redirect()->back()->with('success','Add playlist success!');
     }
 
-    public function editPlaylist(Request $request, $id)
+    public function editPlaylist(AdminManagePlaylistRequest $request, $id)
     {
         $playlist = Playlist::find($id);
         

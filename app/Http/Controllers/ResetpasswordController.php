@@ -19,7 +19,7 @@ class ResetpasswordController extends Controller
 
     public function sendLinkResetFromGmail()
     {
-        return view('link-reset');
+        return view('betube.auth.link-reset');
     }
 
     public function resetPassword(Request $request)

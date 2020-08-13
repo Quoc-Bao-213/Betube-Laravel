@@ -67,7 +67,7 @@
           @include('admin.partials.sidebar')
           <!-- /sidebar menu -->
 
-          <!-- /menu footer buttons -->
+          {{-- <!-- /menu footer buttons -->
           <div class="sidebar-footer hidden-small">
             <a data-toggle="tooltip" data-placement="top" title="Settings">
               <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
@@ -78,11 +78,11 @@
             <a data-toggle="tooltip" data-placement="top" title="Lock">
               <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="javascript:void(0)">
               <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
           </div>
-          <!-- /menu footer buttons -->
+          <!-- /menu footer buttons --> --}}
         </div>
       </div>
 

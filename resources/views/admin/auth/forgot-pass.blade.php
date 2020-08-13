@@ -29,31 +29,26 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-              <form action="{{ route('login-admin') }}" method="POST">
+              <form action="{{ route('admin-reset-password') }}" method="POST">
               @csrf
-              <h1>Login Form</h1>
+              <h1>Reset Password Form</h1>
               @if(session('error'))
               <p style="color: #e96969 !important; text-align: center; margin-bottom: 0.5rem">
                   {{ session('error') }}
-              </p>
+              </p>  
+              @elseif(session('success'))      
+              <p style="color: #28a745 !important; text-align: center; margin-bottom: 0.5rem">
+                  {{ session('success') }}
+              </p>                       
               @endif
               <div>
                 <input type="email"  name="email" class="form-control" placeholder="Email" required="" />
               </div>
               <div>
-                <input type="password" name="password" class="form-control" placeholder="Password" required="" />
+                <button style="background: #73879C; color: white;" class="btn btn-default submit">Reset your password</button>
               </div>
-              <div>
-                <button style="background: #73879C; color: white;" class="btn btn-default submit">Log in</button>
-              </div>
-              <a class="reset_pass" href="{{ route('admin-forgot-password') }}">Lost your password?</a>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
                 <div class="clearfix"></div>
                 <br />
-
                 <div>
                   <h1><i class="fa fa-paw"></i> Admin Betube</h1>
                   <p>©2020 All Rights Reserved. Admin Betube is a Bootstrap 3 template. Privacy and Terms</p>

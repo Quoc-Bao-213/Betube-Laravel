@@ -15,6 +15,16 @@
                         </button>
                         <strong>{{ session('success')}}</strong> 
                     </div>
+                @elseif($errors->any())
+                <div class="alert alert-warning fade show" style="background-color:#fff3cd; border-color:#ffeeba; color:#856404" role="alert">
+                    <button type="button" class="close" style="color:#856404" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                    </button>
+                    <h4><strong>Holy guacamole!</strong> You should check in on some of those fields below.</h4>
+                    @foreach($errors->all() as $error)
+                    <p>{{ $error}}</p>
+                    @endforeach
+                </div>
                 @endif
                 <!-- start form for validation -->
                 <form action="{{ route("edit-playlists", $playlist->id)}}" method="POST">
