@@ -46,9 +46,13 @@ class ConvertForStreaming implements ShouldQueue
                     'percentage' => $percentage
                 ]);
             })
-            ->addFormat($low)
-            ->addFormat($mid)
             ->addFormat($high)
+            ->addFormat($mid, function($media){ 
+                $media->scale(960, 720);
+            })
+            ->addFormat($low, function($media) {
+                $media->scale(640, 480);
+            })
             ->save("public/videos/{$this->video->id}/{$this->video->id}.m3u8");
     }
 }

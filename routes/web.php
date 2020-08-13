@@ -126,8 +126,6 @@ Route::middleware('auth')->group(function() {
     Route::post('/change-pass/{id}','ProfileController@changePassword')->name('action-change-password');
     Route::get('subscriptions/{id}','ProfileController@getSubscriber')->name('subscriber');
     
-
-    
     // Action Video
     Route::get('upload-video/{channel}/videos', 'UploadVideoController@index')->name('upload-video');
     Route::post('upload-video/{channel}/videos', 'UploadVideoController@store')->name('action-upload-video');
@@ -159,7 +157,6 @@ Route::middleware('auth')->group(function() {
 
     Route::get('videos/{video}/list/{playlist}', 'VideoController@showWithPlaylist');
     Route::post('playlist/{id}/delete', 'PlaylistController@deletePlaylist');
-    
     
     // Playlist Detail
     Route::put('playlist-detail/update', 'PlaylistController@updatePlaylistDetail');

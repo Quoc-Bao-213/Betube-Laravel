@@ -1,10 +1,10 @@
 <template>
-    <div v-if="getIdVideo[2] && getIdVideo[3]" style="height: 370px; padding-bottom: 10px;">
-        <video id="my-video" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" controls :poster="poster" autoplay controls preload="auto" style="width: 100%; height: 100%" data-setup='{ "aspectRatio":"640:267", "playbackRates": [0.25, 0.5, 1, 1.5, 2] }'>
+    <div v-if="getIdVideo[2] && getIdVideo[3]" style="padding-bottom: 10px;">
+        <video id="my-video" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" :poster="poster" autoplay controls preload="auto" style="width: 100%; height: 100%" data-setup='{ "playbackRates": [0.25, 0.5, 1, 1.5, 2] }'>
         </video>
     </div>
-    <div v-else style="height: 370px; padding-bottom: 10px;">
-        <video id="my-video" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" controls :poster="poster" autoplay controls preload="auto" style="width: 100%; height: 100%" data-setup='{ "aspectRatio":"640:267", "playbackRates": [0.25, 0.5, 1, 1.5, 2] }'>
+    <div v-else style="padding-bottom: 10px;">
+        <video id="my-video" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" :poster="poster" autoplay controls preload="auto" style="width: 100%; height: 100%" data-setup='{ "playbackRates": [0.25, 0.5, 1, 1.5, 2] }'>
             <source :src='link' type="application/x-mpegURL">
         </video>
     </div>
@@ -13,6 +13,8 @@
 <script>
 import videojs from "video.js"
 import videojsplaylist from "videojs-playlist"
+import videojsQuality from "videojs-hls-quality-selector"
+import videojsContribQuality from "videojs-contrib-quality-levels"
 import EventBus from './event-bus'
 
 export default {
@@ -33,7 +35,9 @@ export default {
 
     components: {
         videojs,
-        videojsplaylist
+        videojsplaylist,
+        videojsQuality,
+        videojsContribQuality
     },
     
     data() {
@@ -51,7 +55,7 @@ export default {
     },
 
     mounted() {
-        this.test
+        this.playPlaylist
     },
 
     beforeDestroy() {
@@ -61,15 +65,46 @@ export default {
     },
 
     computed: {
-        test() {
-            if (this.getIdVideo[2] && this.getIdVideo[3]) {
-                this.player = videojs('my-video')
+        playPlaylist() {
+            this.player = videojs('my-video', this.options, function onPlayerReady() {
+                this.hlsQualitySelector()
+            });
 
-                // next and previous button
-                // var button = this.player.addChild('button')
-                // this.player.controlBar.el().insertBefore(button.el(), this.player.controlBar.el().firstChild.nextSibling)
-                // console.log(button)
+            let qualityLevels = this.player.qualityLevels()
+
+            qualityLevels.on('addqualitylevel', function(event) {
+                let qualityLevel = event.qualityLevel
                 
+                if (qualityLevel.height > 720) {
+                    qualityLevel.enabled = true
+                } else {
+                    qualityLevel.enabled = false
+                }
+            })
+            
+            qualityLevels.on('change', function() {
+                console.log('Quality Level changed!')
+                console.log('New level:', qualityLevels[qualityLevels.selectedIndex])
+            })
+
+            if (this.getIdVideo[2] && this.getIdVideo[3]) {
+                
+                // Previous button
+                var button = this.player.addChild('button')
+                this.player.controlBar.el().insertBefore(button.el(), this.player.controlBar.el().firstChild)
+                this.player.controlBar.el().childNodes[0].innerHTML = '<i class="fa fa-step-backward" style="font-size: 13px;"></i>'
+                this.player.controlBar.el().childNodes[0].onclick = () => {
+                    this.player.playlist.previous(this.playlist)
+                }
+
+                // Next button
+                var button2 = this.player.addChild('button')
+                this.player.controlBar.el().insertBefore(button2.el(), this.player.controlBar.el().childNodes[2])
+                this.player.controlBar.el().childNodes[2].innerHTML = '<i class="fa fa-step-forward" style="font-size: 13px;"></i>'
+                this.player.controlBar.el().childNodes[2].onclick = () => {
+                    this.player.playlist.next(this.playlist)
+                }
+
                 var index = 0
                 for (var i = 0; i < this.playlist.length; i++) {
                     var arrayPath = this.playlist[i].sources[0].src.split("/")
@@ -81,8 +116,38 @@ export default {
 
                 this.player.playlist(this.playlist, index)
                 this.player.playlist.autoadvance(0)
-                console.log(this.player)
             }
+
+            var viewLogged = false
+
+            // Math.floor lam` tron xuong ex: 5.4 -> 5
+            // Math.ceil lam` tron` len ex: 5.4 -> 6
+
+            this.player.on('timeupdate', function() {
+                var percentagePlayed = Math.ceil(this.currentTime() / this.duration() * 100)
+
+                var curmins = Math.floor(this.currentTime() / 60)
+                var cursecs = Math.floor(this.currentTime() - curmins * 60)
+                var durmins = Math.floor(this.duration() / 60)
+                var dursecs = Math.floor(this.duration() - durmins * 60)
+                
+                console.log(Math.floor(this.currentTime() / 60))
+
+                if(cursecs < 10){ cursecs = "0" + cursecs }
+                if(dursecs < 10){ dursecs = "0" + dursecs }
+                if(curmins < 10){ curmins = "0" + curmins }
+                if(durmins < 10){ durmins = "0" + durmins }
+                // console.log(curmins + ":" + cursecs)
+                // console.log(durmins + ":" + dursecs)
+                var durationVideo = durmins + ":" + dursecs
+
+                if (percentagePlayed >= 5 && !viewLogged) {
+                    axios.post('/videos/' + window.CURRENT_VIDEO, {
+                        duration: durationVideo
+                    })
+                    viewLogged = true
+                }
+            })
         },
         getIdVideo() {
             var path = this.requestPath.split("/")

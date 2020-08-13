@@ -19,9 +19,9 @@
             </div>
         </div>
         <draggable :list="playlistDetail" :options="{animation:200}" @change="update" :element="'div'" class="item-container" :class="{ 'none-item': isActive }">
-            <div v-for="(item, index) in playlistDetail" :key="item.id" class="items" :class="{ 'active-item': item.video_id === currentVideo }">
+            <div v-for="(item, index) in playlistDetail" :key="item.id" class="items" :class="{ 'active-item': index === indexOf }">
                 <a :href="'/videos/' + item.videos.id + '/list/' + item.playlist_id">
-                    <div v-if="item.video_id === currentVideo"><span style="padding-left: 5px; padding-right: 5px;">▶</span></div>
+                    <div v-if="index === indexOf"><span style="padding-left: 5px; padding-right: 5px;">▶</span></div>
                     <div v-else><span style="padding-left: 5px; padding-right: 5px;">{{ index + 1 }}</span></div>
                     <img :src="item.videos.thumbnail" style="width: 100px; height: 56px" alt="thumbnail-video">
                     <div style="margin-left: 10px; height: 56px; width: 50%;">
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import videojs from "video.js"
 import draggable from "vuedraggable"
 import EventBus from './event-bus'
 
@@ -54,10 +55,6 @@ export default {
             required: true,
             default: () => ([])
         },
-        currentVideo: {
-            required: true,
-            default: ''
-        }
     },
 
     data() {
@@ -65,12 +62,22 @@ export default {
             playlistDetail: this.defaultPlaylistDetail,
             isActive: false,
             playlists: [],
+            indexOf: 0,
             // proxyUrl: process.env.MIX_APP_URL,
         }
     },
 
     created() {
         this.getDataPlaylist
+    },
+
+    mounted() {
+        var player = videojs('my-video')
+
+        player.on('play', () => {
+            this.indexOf = player.playlist.currentItem();
+            document.getElementById("current_video_title_h4").textContent =  this.playlistDetail[this.indexOf].videos.title;
+        }); 
     },
 
     computed: {
