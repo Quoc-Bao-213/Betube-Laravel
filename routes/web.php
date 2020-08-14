@@ -120,6 +120,10 @@ Route::get('result', 'SearchController@index')->name('action-search');
 // Search Detail Video
 Route::get('/categories/{categories}', 'CaregoriesContronller@index')->name('categories');
 
+// Contact
+Route::get('contact-us', function() {
+    return view('betube.contact');
+})->name('contact');
 
 // User
 Route::middleware('auth')->group(function() {

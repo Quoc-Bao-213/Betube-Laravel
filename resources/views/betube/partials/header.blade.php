@@ -123,7 +123,7 @@
                                 </li>
                                 @endif
                                 <li>
-                                    <a href="javascript:void(0)"><i class="fa fa-envelope"></i>contact</a>
+                                    <a href="{{ route('contact') }}"><i class="fa fa-envelope"></i>contact</a>
                                 </li>
                             </ul>
                         </div>

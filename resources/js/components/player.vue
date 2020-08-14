@@ -66,9 +66,7 @@ export default {
 
     computed: {
         playPlaylist() {
-            this.player = videojs('my-video', this.options, function onPlayerReady() {
-                this.hlsQualitySelector()
-            });
+            this.player = videojs('my-video')
 
             let qualityLevels = this.player.qualityLevels()
 
@@ -80,7 +78,11 @@ export default {
                 } else {
                     qualityLevel.enabled = false
                 }
-            })
+            }) 
+
+            this.player = videojs('my-video', this.options, function onPlayerReady() {
+                this.hlsQualitySelector()
+            });
             
             qualityLevels.on('change', function() {
                 console.log('Quality Level changed!')
@@ -131,7 +133,7 @@ export default {
                 var durmins = Math.floor(this.duration() / 60)
                 var dursecs = Math.floor(this.duration() - durmins * 60)
                 
-                console.log(Math.floor(this.currentTime() / 60))
+                // console.log(Math.floor(this.currentTime() / 60))
 
                 if(cursecs < 10){ cursecs = "0" + cursecs }
                 if(dursecs < 10){ dursecs = "0" + dursecs }

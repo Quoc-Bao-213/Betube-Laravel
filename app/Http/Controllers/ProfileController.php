@@ -104,10 +104,6 @@ class ProfileController extends Controller
             } else
             return view('betube.page404');
         }
-        else{
-            return view('betube.page404');
-        }
-
         // 
 
         if (isset(Auth::user()->email) || isset($_GET['token'])){

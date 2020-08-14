@@ -75,8 +75,14 @@ export default {
         var player = videojs('my-video')
 
         player.on('play', () => {
-            this.indexOf = player.playlist.currentItem();
-            document.getElementById("current_video_title_h4").textContent =  this.playlistDetail[this.indexOf].videos.title;
+            this.indexOf = player.playlist.currentItem()
+            document.getElementById("current_video_title_h4").textContent =  this.playlistDetail[this.indexOf].videos.title
+            document.getElementById("total_views").innerHTML = '<i class="fa fa-eye"></i>' + this.playlistDetail[this.indexOf].videos.total_views
+            document.getElementById("total_comments").innerHTML = '<i class="fa fa-commenting"></i>' + this.playlistDetail[this.indexOf].videos.comments.length
+            document.getElementById("channel_name").textContent = this.playlistDetail[this.indexOf].videos.user.channel_name
+            document.getElementById("channel_name").href = 'http://pc-baota.s3corp.com.vn/about-me/' + this.playlistDetail[this.indexOf].videos.user.id
+            document.getElementById("avatar_channel").href = 'http://pc-baota.s3corp.com.vn/about-me/' + this.playlistDetail[this.indexOf].videos.user.id
+            document.getElementById("avatar_channel").innerHTML = '<img src="' + this.playlistDetail[this.indexOf].videos.user.avatar + '" alt="post">'
         }); 
     },
 
@@ -85,9 +91,9 @@ export default {
             return __auth();
         },
         getIndexVideo() {
-            var index = 1;
+            var index = 0;
             for (var i = 0; i < this.playlistDetail.length; i++) {
-                if (this.playlistDetail[i].video_id === this.currentVideo)
+                if (i === this.indexOf)
                     index = i
             }
             return index + 1;

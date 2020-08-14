@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Video extends Model
 {
    
-    protected $with = ['user'];
+    protected $with = ['user', 'comments'];
     
     public function videoTypes()
     {
