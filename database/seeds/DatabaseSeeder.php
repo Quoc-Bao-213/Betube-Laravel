@@ -70,11 +70,11 @@ class DatabaseSeeder extends Seeder
             'name' => "Game"
         ]);
 
-
-        // $video = factory(Video::class,5)->create([
-        //     'user_id' => $user1->id,
-        //     'total_views' => 1000
-        // ]);
+      
+        $video = factory(Video::class, 8)->create([
+            'user_id' => $user1->id,
+            'total_views' => 1000
+        ]);
         
 
         // factory(Playlist::class)->create([

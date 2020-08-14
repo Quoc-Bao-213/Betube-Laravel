@@ -209,7 +209,7 @@ function showTopVideoMost() {
         arrayCountDisLike.push(renderDataDisLike[i].dislike)
     }
   var myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels: arrayNameVideoLike, arrayNameVideoDisLike,
         datasets: [{
@@ -218,7 +218,11 @@ function showTopVideoMost() {
             fill: false,
             borderColor: '#2196f3', // Add custom color border (Line)
             backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-            borderWidth: 1 // Specify bar border width
+            borderWidth: 1, // Specify bar border width
+            barPercentage:20,
+            barThickness: 20,
+            maxBarThickness: 20,
+            minBarLength: 20,
         },
         {
             label: 'DISLIKE', // Name the series
@@ -226,13 +230,26 @@ function showTopVideoMost() {
             fill: false,
             borderColor: '#4CAF50', // Add custom color border (Line)
             backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
-            borderWidth: 1 // Specify bar border width
+            borderWidth: 1, // Specify bar border width
+            barPercentage: 20,
+            barThickness: 20,
+            maxBarThickness: 20,
+            minBarLength: 20,
         }]
     },
     options: {
       responsive: true, // Instruct chart js to respond nicely.
-      maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-    }
+      maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
+      scales: {
+        yAxes: [{
+            display: true,
+            ticks: {
+                min: 0
+            }
+        }]
+    },
+    },
+
   });
 </script>
 @endsection
