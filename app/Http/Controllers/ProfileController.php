@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangepasswordRequest;
 use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\UploadImgRequest;
 use App\Subscription;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -60,7 +61,7 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', 'Update Successfully!');
     }
 
-    public function uploadAvatar(ProfileRequest $request, $id)
+    public function uploadAvatar(UploadImgRequest $request, $id)
     {
         $user = User::find($id);
 
@@ -74,7 +75,7 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
-    public function uploadBackgroundImage(ProfileRequest $request, $id)
+    public function uploadBackgroundImage(UploadImgRequest $request, $id)
     {
         $user = User::find($id);
 
@@ -127,13 +128,35 @@ class ProfileController extends Controller
         }
     }
 
-    public function getSubscriber($id)
+    public function getSubscription($id)
     {
         $user = User::find($id);
         $getUser = Subscription::where('user_subscribe', $id)->paginate(8);
 
-        if(Auth::id()== $id)
+        if(Auth::id() == $id)
             return view('betube.channel.subscriptions', compact('user', 'getUser'));
         return view('betube.channel.about-me',compact('user'));
+    }
+
+    public function getSubscribers($id) {
+        $user = User::find($id);
+
+        if(Auth::id() == $id)
+            return view('betube.channel.subscriber', compact('user'));
+        return view('betube.channel.about-me', compact('user'));
+    }
+
+    public static function getNameSubscribers($id)
+    {
+        $getName = User::find($id);
+
+        return $getName->channel_name;
+    }
+
+    public static function getAvatarSubscribers($id)
+    {
+        $getName = User::find($id);
+
+        echo $getName->avatar();
     }
 }
