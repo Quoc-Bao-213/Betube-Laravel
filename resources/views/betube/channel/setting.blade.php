@@ -182,11 +182,13 @@
                                                 <label> Name:
                                                 <input type="text" name="name" value="{{ $user->name }}" placeholder="Enter your name..">
                                                 </label>
+                                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('name') }}</span>
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label>Channel Name:
                                                     <input type="text" name="channel_name" value="{{ $user->channel_name }}"  placeholder="Enter your channel name..">
                                                 </label>
+                                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('channel_name') }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -199,7 +201,6 @@
                                                 <label>Email:
                                                     <input type="email" name="email" value="{{ $user->email }}" disabled placeholder="Enter your email address..">
                                                 </label>
-                                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('email') }}</span>
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label>Website URL:

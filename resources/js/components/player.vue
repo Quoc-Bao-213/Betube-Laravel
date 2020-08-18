@@ -132,8 +132,6 @@ export default {
                 var cursecs = Math.floor(this.currentTime() - curmins * 60)
                 var durmins = Math.floor(this.duration() / 60)
                 var dursecs = Math.floor(this.duration() - durmins * 60)
-                
-                // console.log(Math.floor(this.currentTime() / 60))
 
                 if(cursecs < 10){ cursecs = "0" + cursecs }
                 if(dursecs < 10){ dursecs = "0" + dursecs }
@@ -143,7 +141,7 @@ export default {
                 // console.log(durmins + ":" + dursecs)
                 var durationVideo = durmins + ":" + dursecs
 
-                if (percentagePlayed >= 5 && !viewLogged) {
+                if (percentagePlayed == 95 && !viewLogged) {
                     axios.post('/videos/' + window.CURRENT_VIDEO, {
                         duration: durationVideo
                     })

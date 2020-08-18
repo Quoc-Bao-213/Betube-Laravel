@@ -114,9 +114,9 @@
                         <div class="media-object-section">
                             <div class="author-img-sec">
                                 <div class="thumbnail author-single-post">
-                                    <a id="avatar_channel" href="">{{-- <img src="" alt="post"> --}}</a>
+                                    <a id="avatar_channel" href="{{ route('about-me', $video->user->id) }}"><img src="{{ $video->user->avatar() }}" alt="post"></a>
                                 </div>
-                                <p class="text-center"><a id="channel_name" href="">{{-- {{ $video->user->channel_name }} --}}</a></p>
+                                <p class="text-center"><a id="channel_name" href="{{ route('about-me', $video->user->id) }}">{{ $video->user->channel_name }}</a></p>
                             </div>
                         </div>
                         <div class="media-object-section object-second">
@@ -126,8 +126,8 @@
                                     <h4 id="current_video_title_h4">{{ $video->title }}</h4>
                                     <p>
                                         <span><i class="fa fa-clock-o"></i>{{ $video->created_at->toFormattedDateString() }}</span>
-                                        <span id="total_views">{{-- <i class="fa fa-eye"></i>{{ $video->total_views }} --}}</span>
-                                        <span id="total_comments">{{-- <i class="fa fa-commenting"></i>{{ $video->comments->count() }} --}}</span>
+                                        <span id="total_views"><i class="fa fa-eye"></i>{{ $video->total_views }}</span>
+                                        <span id="total_comments"><i class="fa fa-commenting"></i>{{ $video->comments->count() }}</span>
                                         @if ($video->hashtag)
                                         <span>
                                             <i class="fa fa-hashtag"></i>

@@ -77,12 +77,12 @@ export default {
         player.on('play', () => {
             this.indexOf = player.playlist.currentItem()
             document.getElementById("current_video_title_h4").textContent =  this.playlistDetail[this.indexOf].videos.title
-            document.getElementById("total_views").innerHTML = '<i class="fa fa-eye"></i>' + this.playlistDetail[this.indexOf].videos.total_views
-            document.getElementById("total_comments").innerHTML = '<i class="fa fa-commenting"></i>' + this.playlistDetail[this.indexOf].videos.comments.length
-            document.getElementById("channel_name").textContent = this.playlistDetail[this.indexOf].videos.user.channel_name
-            document.getElementById("channel_name").href = 'http://pc-baota.s3corp.com.vn/about-me/' + this.playlistDetail[this.indexOf].videos.user.id
-            document.getElementById("avatar_channel").href = 'http://pc-baota.s3corp.com.vn/about-me/' + this.playlistDetail[this.indexOf].videos.user.id
-            document.getElementById("avatar_channel").innerHTML = '<img src="' + this.playlistDetail[this.indexOf].videos.user.avatar + '" alt="post">'
+            // document.getElementById("total_views").innerHTML = '<i class="fa fa-eye"></i>' + this.playlistDetail[this.indexOf].videos.total_views
+            // document.getElementById("total_comments").innerHTML = '<i class="fa fa-commenting"></i>' + this.playlistDetail[this.indexOf].videos.comments.length
+            // document.getElementById("channel_name").textContent = this.playlistDetail[this.indexOf].videos.user.channel_name
+            // document.getElementById("channel_name").href = 'http://pc-baota.s3corp.com.vn/about-me/' + this.playlistDetail[this.indexOf].videos.user.id
+            // document.getElementById("avatar_channel").href = 'http://pc-baota.s3corp.com.vn/about-me/' + this.playlistDetail[this.indexOf].videos.user.id
+            // document.getElementById("avatar_channel").innerHTML = '<img src="' + this.playlistDetail[this.indexOf].videos.user.avatar + '" alt="post">'
         }); 
     },
 

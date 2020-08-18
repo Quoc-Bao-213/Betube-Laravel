@@ -134,7 +134,8 @@ Route::middleware('auth')->group(function() {
     Route::post('/upload-image/{id}', 'ProfileController@uploadAvatar')->name('action-upload-avatar');
     Route::post('/upload-image-cover/{id}', 'ProfileController@uploadBackgroundImage')->name('action-upload-cover');
     Route::post('/change-pass/{id}','ProfileController@changePassword')->name('action-change-password');
-    Route::get('subscriptions/{id}','ProfileController@getSubscriber')->name('subscriber');
+    Route::get('subscriptions/{id}','ProfileController@getSubscription')->name('subscription');
+    Route::get('subscribers/{id}','ProfileController@getSubscribers')->name('subscribers');
     
     // Action Video
     Route::get('upload-video/{channel}/videos', 'UploadVideoController@index')->name('upload-video');

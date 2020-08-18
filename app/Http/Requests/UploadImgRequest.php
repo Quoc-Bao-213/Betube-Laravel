@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileRequest extends FormRequest
+class UploadImgRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'channel_name' => 'required',
-            'phone' => 'alpha_num|min:10|max:10'
+            'image_avatar' => 'image',
+            'image_cover' => 'image'
         ];
     }
 }

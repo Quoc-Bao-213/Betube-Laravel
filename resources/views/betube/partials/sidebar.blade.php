@@ -6,6 +6,7 @@
     $changePassword = "";
     $channel = "";
     $subscriptions = "";
+    $subscribers = "";
     $playlists = "";
 
     switch ($section[0]) {
@@ -26,6 +27,9 @@
             break;
         case 'playlist':
             $playlists = "active";
+            break;
+        case 'subscribers':
+            $subscribers = "active";
             break;
         default:
             break;
@@ -49,7 +53,8 @@
                             <li class="clearfix"><a class="{{ $aboutMe }}" href="{{ route('about-me', Auth::id()) }}"><i class="fa fa-user"></i>about me</a></li>
                             <li class="clearfix"><a class="{{ $channel }}" href="{{ route('channel-videos', Auth::id()) }}"><i class="fa fa-video-camera"></i>Videos <span class="float-right">{{ count($user->videos) }}</span></a></li>
                             <li class="clearfix"><a class="{{ $playlists }}" href="{{ route('playlist') }}"><i class="fa fa-heart"></i>Playlist<span class="float-right">{{ count($user->playlists) }}</span></a></li>
-                            <li class="clearfix"><a class="{{ $subscriptions }}" href="{{ route('subscriber', Auth::id()) }}"><i class="fa fa-users"></i>subscriptions<span class="float-right"></span></a></li>
+                            <li class="clearfix"><a class="{{ $subscriptions }}" href="{{ route('subscription', Auth::id()) }}"><i class="fa fa-users"></i>subscriptions<span class="float-right"></span></a></li>
+                            <li class="clearfix"><a class="{{ $subscribers }}" href="{{ route('subscribers', Auth::id()) }}"><i class="fa fa-users"></i>subscribers<span class="float-right"></span></a></li>
                             <li class="clearfix"><a class="{{ $profileSetting }}" href="{{ route('upload-profile', Auth::user()->id) }}"><i class="fa fa-gears"></i>Profile Settings</a></li>
                             <li class="clearfix"><a href="{{ route('change-password') }}"><i class="fa fa-lock"></i>change password</a></li>
                             @else
