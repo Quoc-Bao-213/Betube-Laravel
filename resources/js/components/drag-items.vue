@@ -92,17 +92,18 @@ export default {
         },
         getIndexVideo() {
             var index = 0;
-            for (var i = 0; i < this.playlistDetail.length; i++) {
+            this.playlistDetail.map((item, i) => {
                 if (i === this.indexOf)
                     index = i
-            }
-            return index + 1;
+            })
+
+            return index + 1
         },
         getDataPlaylist() {
             for (var i = 0; i < this.playlistDetail.length; i++) {
                 this.playlists.push({
                     sources: [{
-                        src: 'http://pc-baota.s3corp.com.vn/storage/videos/' + this.playlistDetail[i].videos.id + '/' + this.playlistDetail[i].videos.id + '.m3u8',
+                        src: 'http://localhost:8000/storage/videos/' + this.playlistDetail[i].videos.id + '/' + this.playlistDetail[i].videos.id + '.m3u8',
                         type: 'application/x-mpegURL'
                     }],
                     poster: this.playlistDetail[i].videos.thumbnail,

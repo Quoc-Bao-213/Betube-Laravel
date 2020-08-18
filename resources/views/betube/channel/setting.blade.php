@@ -55,7 +55,7 @@
                 </div>
 
                 <subscribe-button :channel="{{ $user }}" :initial-subscriptions="{{ $user->subscriptions }}" inline-template>
-                    <div class="profile-subscribe">
+                    <div class="profile-subscribe" style="margin-left: 30px">
                         <span><i class="fa fa-users"></i>@{{ count }}</span>                   
                         <button @click="toggleSubscription" v-if="owner === false && subscribed === false" name="subscribe">
                             @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}

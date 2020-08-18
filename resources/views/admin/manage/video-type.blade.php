@@ -32,10 +32,14 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach($videotypes as $videotype)
+                @foreach($videotypes as $index => $videotype)
                 <tr>
                   <td>{{ $videotype->name }}</td>   
-                  <td> </td>   
+                  <td>
+                  @php
+                      echo App\Http\Controllers\AdminManageController::getCountVideoInVideoType($index);
+                  @endphp
+                  </td>   
                   <td>
                     <form action="{{ route('delete-videotype', $videotype->id) }}" method="POST">
                       @csrf

@@ -16,7 +16,7 @@
                     <label :for="playlist.name" style="font-size:16px">{{ playlist.name }}</label>
                 </div>
             </div> <hr>
-            <button href="javascipt:void(0)" @click="addingPlaylist = !addingPlaylist" class="button" style="text-transform: inherit; margin-left: 1.2rem; padding: 10px;"><i class="fa fa-plus" style="margin-right: 5px;"></i>Create New Playlist</button>
+            <button href="javascipt:void(0)" @click="addingPlaylist = !addingPlaylist" class="button" style="text-transform: inherit; margin-left: 3rem; padding: 10px;"><i class="fa fa-plus" style="margin-right: 5px;"></i>Create New Playlist</button>
             <div style="margin-top: 1rem;" v-if="addingPlaylist">
                 <input style="display: inline-block; width: 70%; outline: none;" v-model="namePlaylist" type="input" name="name" placeholder="playlist name"/>
                 <button style="padding: 5px 14px; text-transform: initial; margin-bottom: 1px;" class="button" @click="createPlaylist">Add</button>

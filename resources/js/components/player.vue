@@ -142,6 +142,11 @@ export default {
                 var durationVideo = durmins + ":" + dursecs
 
                 if (percentagePlayed == 95 && !viewLogged) {
+                    axios.post('/videos/' + window.CURRENT_VIDEO)
+                    viewLogged = true
+                }
+
+                if (percentagePlayed == 1 && !viewLogged) {
                     axios.post('/videos/' + window.CURRENT_VIDEO, {
                         duration: durationVideo
                     })

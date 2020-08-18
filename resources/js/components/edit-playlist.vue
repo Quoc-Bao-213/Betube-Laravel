@@ -79,7 +79,7 @@
                     <div class="widgetBox">
                         <div class="playlist-thumb">
                             <a href="javascript:void(0)">
-                                <img src="http://pc-baota.s3corp.com.vn/../images/playlist.jpg" width="320" height="230" alt="thumbnail">
+                                <img src="http://localhost:8000/../images/playlist.jpg" width="320" height="230" alt="thumbnail">
                                 <div class="text-center playlist-thumb-text"><i style="margin-right: 10px" class="fa fa-play"></i>Play all</div>
                             </a>
                         </div>

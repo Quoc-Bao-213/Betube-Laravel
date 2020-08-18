@@ -144,7 +144,14 @@ class AdminManageController extends Controller
     public function manageVideoType()
     {
         $videotypes = VideoType::all();
+
         return view('admin.manage.video-type', compact('videotypes'));
+    }
+
+    public static function getCountVideoInVideoType($i) {
+        $videotypes = VideoType::all();
+
+        return count($videotypes[$i]->videos);
     }
 
     public function indexAddVideoType()
