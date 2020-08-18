@@ -25,20 +25,17 @@
                 <thead>
                   <tr>
                     <th>User</th>
-                    <th>Subscriber</th>
+                    <th>Total Subscriber</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                     @foreach($subscriptions as $subscription)
                         <tr>
-                            <td>{{ $subscription->user->name }}</td>
-                            <td>{{ $subscription->users->name }}</td>
+                            <td>{{ $subscription->name }}</td>
+                            <td>{{ $subscription->sub }}</td>
                             <td>              
-                            <form action="{{ route('delete-subscription', $subscription->id )}}" method="POST">
-                              @csrf
-                              <button type="submit" class="btn btn-round btn-primary"><i class="fa fa-trash"></i></button>
-                            </form>
+                              <a href="{{ route('manage-subscription-details', $subscription->id) }}" type="button" class="btn btn-round btn-success"><i class="fa fa-list-alt"></i></a>       
                             </td>
                         </tr>
                     @endforeach             

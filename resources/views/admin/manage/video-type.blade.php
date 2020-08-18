@@ -26,14 +26,16 @@
             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
-                  <th>Name Video Types</th>
-                  <th></th>
+                <th>Name Video Types</th>
+                 <th>Video in category</th>
+                 <th></th>
                 </tr>
               </thead>
               <tbody>
                 @foreach($videotypes as $videotype)
                 <tr>
-                  <td>{{ $videotype->name }}</td>
+                  <td>{{ $videotype->name }}</td>   
+                  <td> </td>   
                   <td>
                     <form action="{{ route('delete-videotype', $videotype->id) }}" method="POST">
                       @csrf

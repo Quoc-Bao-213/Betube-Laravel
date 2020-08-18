@@ -39,7 +39,8 @@
                     <td>{{ $playlist->user->name }}</td>
                     <td>
                         <form action="{{ route('delete-playlist', $playlist->id) }}" method="POST">
-                            @csrf
+                          @csrf
+                            <a href="{{ route('manage-playlistDetail', $playlist->id) }}" type="button" class="btn btn-round btn-success"><i class="fa fa-file-audio-o"></i></a>
                             <button type="submit" class="btn btn-round btn-primary "><i class="fa fa-trash"></i></button>
                             <a href= "{{ route('edit-playlists', $playlist->id)}}" type="button" class="btn btn-round btn-warning "><i class="fa fa-pencil"></i></a>
                           </form> 

@@ -13,6 +13,7 @@ use App\User;
 use App\Video;
 use App\VideoType;
 use App\Vote;
+use Doctrine\Inflector\Rules\Substitutions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -23,8 +24,7 @@ class AdminManageController extends Controller
     //User
     public function manageUser()
     {
-
-        $users = User::all();
+       $users  = User::all();
         return view('admin.manage.user', compact('users'));
     }
 
@@ -74,6 +74,8 @@ class AdminManageController extends Controller
     {  
        DB::table('users')->where('id',$id)->delete();
        DB::table('subscriptions')->where('id',$id)->delete();
+
+    
        return redirect()->back()->with('success', 'Delete user success!');
     }
 
@@ -82,10 +84,23 @@ class AdminManageController extends Controller
     public function manageSubscription()
     {   
         $user = user::all();
-        $subscriptions = Subscription::whereIn('user_subscribe', $user->modelKeys())
-        ->whereIn('user_id', $user->modelKeys())->get();
-
+        $subscriptions  = DB::table('subscriptions')
+        ->join('users','users.id', '=', 'subscriptions.user_id')
+        ->select('users.id','users.name', DB::raw('count(subscriptions.id) sub'))
+        ->groupBy('users.id','users.name')
+        ->whereIn('user_subscribe', $user->modelKeys())
+        ->whereIn('user_id', $user->modelKeys())
+        ->get();
+        // $subscriptions = Subscription::whereIn('user_subscribe', $user->modelKeys())
+        // ->whereIn('user_id', $user->modelKeys())->get();
         return view('admin.manage.subscription', compact('subscriptions'));
+    }
+
+    public function manageSubscriptionDetails($id)
+    {
+        
+        $subscriptionDetails = Subscription::where('user_id', $id)->get();
+        return view('admin.manage.details-subscription', compact('subscriptionDetails'));
     }
 
     public function deleteSubscription($id)
@@ -235,9 +250,9 @@ class AdminManageController extends Controller
     }
 
     // Playlist Details
-    public function managePlaylistDetail()
-    {
-        $playlistDetails = PlaylistDetail::all();
+    public function managePlaylistDetail($id)
+    {   
+        $playlistDetails = PlaylistDetail::where('playlist_id', $id)->get();
         return view('admin.manage.playlist-details', compact('playlistDetails'));
     }
 

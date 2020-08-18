@@ -23,8 +23,8 @@
             <li><a href="{{ route('manage-playlist' ) }}"><i class="fa fa-music"></i> Manage Playlist </a>
             </li>
 
-            <li><a href="{{ route('manage-playlistDetail' ) }}"><i class="fa fa-file-audio-o"></i> Manage Playlist Detail </a>
-            </li>
+            {{-- <li><a href="{{ route('manage-playlistDetail' ) }}"><i class="fa fa-file-audio-o"></i> Manage Playlist Detail </a>
+            </li> --}}
 
             <li><a href="{{ route('manage-vote' ) }}">
                 <i class="fa fa-thumbs-o-up"></i> 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFK extends Migration
+class CreateFk extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,6 @@ class CreateFK extends Migration
      */
     public function up()
     {
-
         Schema::table('subscriptions', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
@@ -47,11 +46,17 @@ class CreateFK extends Migration
         });
 
         Schema::table('playlist_details', function (Blueprint $table) {
-            $table->foreign('playlist_id')->references('id')->on('playlists')->onDelete('cascade');;
+            $table->foreign('playlist_id')->references('id')->on('playlists')->onDelete('cascade');
         });
 
         Schema::table('playlist_details', function (Blueprint $table) {
-            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');;
+            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
+        });
+
+        Schema::table('votes', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
+
+
 }

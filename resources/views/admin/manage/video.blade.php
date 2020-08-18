@@ -24,8 +24,7 @@
                     <th>Thumbnail</th>
                     <th>Total_Views</th>
                     <th>Hashtag</th>
-                    <th>Video Type</th>
-                    <th>Path</th>
+                    <th>Video Type</th>             
                     <th></th>
                   </tr>
                 </thead>
@@ -38,14 +37,13 @@
                             <td><img src="{{ $video->thumbnail}}" width="150" height="100" alt=""></td>
                             <td>{{ $video->total_views }}</td>
                             <td>{{ $video->hashtag }}</td>
-                            <td>             
+                            <td>           
                               @php                              
                                 foreach ($video->videoTypes as $value) {
                                   echo($value->name);
                                 }
                               @endphp
                              </td> 
-                             <td>{{ $video->path }}</td>
                              <td>
                                 <a href="{{ route('action-delete-video', $video->id) }}" type="button" class="btn btn-round btn-primary "><i class="fa fa-trash"></i></a>
                                 <a href="{{ route('edit-video', $video->id) }}" type="button" class="btn btn-round btn-warning "><i class="fa fa-pencil"></i></a>

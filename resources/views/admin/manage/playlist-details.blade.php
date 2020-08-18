@@ -49,7 +49,7 @@
               <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                   <tr>
-                    <th>Playlist</th>
+                    <th>Name video</th>
                     <th style="width:40%;">Video</th>
                     <th></th>
                   </tr>
@@ -57,7 +57,7 @@
                 <tbody>
                  @foreach($playlistDetails as $playlistDetail)
                   <tr>
-                    <td>{{ $playlistDetail->playlist->name }}</td>
+                    <td>{{ $playlistDetail->videos->title }}</td>
                     <td> 
                         <video id="my-video" class="video-js vjs-big-play-centered"  controls poster="{{ asset($playlistDetail->videos->thumbnail) }}"  controls preload="auto" style="width: 100%; height: 100%" data-setup='{ "aspectRatio":"640:267"}'>
                             <source src='{{ asset(Storage::url("videos/{$playlistDetail->videos->id}/{$playlistDetail->videos->id}.m3u8")) }}' type="application/x-mpegURL">

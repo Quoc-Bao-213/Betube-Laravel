@@ -10,6 +10,6 @@ class VideoType extends Model
     
     public function videos()
     {
-        return $this->belongsTo(Video::class);
+        return $this->hasMany(Video::class);
     }
 }

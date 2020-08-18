@@ -41,6 +41,7 @@ Route::middleware(Admin::class)->group(function() {
       
         // Manage Subscription
         Route::get('manage-subscription', 'AdminManageController@manageSubscription')->name('manage-subscription');
+        Route::get('manage-subscription-details/{id}', 'AdminManageController@manageSubscriptionDetails')->name('manage-subscription-details');
         Route::post('delete-subscription/{id}', 'AdminManageController@deleteSubscription')->name('delete-subscription');
     
         // Manage Video
@@ -73,7 +74,7 @@ Route::middleware(Admin::class)->group(function() {
         });
        
         // Manage Playlist Detail
-        Route::get('manage-playlistdetail', 'AdminManageController@managePlaylistDetail')->name('manage-playlistDetail');
+        Route::get('manage-playlistdetail/{id}', 'AdminManageController@managePlaylistDetail')->name('manage-playlistDetail');
         Route::post('manage-playlistdetail/delete-playlist-detail/{id}', 'AdminManageController@deletePlaylistDetail')->name('delete-playlistDetail');
 
         // Manage Vote
