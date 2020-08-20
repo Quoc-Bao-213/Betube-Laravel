@@ -17,11 +17,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Admin
-Route::get('/admin/login','LoginAdminController@index')->name('login-admin');
-Route::post('/admin/login','LoginAdminController@login')->name('action-login-admin');
-Route::post('/admin/logout','LoginAdminController@logout')->name('action-logout-admin');
-Route::get('/admin/forgot', 'AdminResetpasswordController@index')->name('admin-forgot-password');
-Route::post('/admin/reset', 'AdminResetpasswordController@resetPassAdmin')->name('admin-reset-password');
+Route::get('admin/login','LoginAdminController@index')->name('login-admin');
+Route::post('admin/login','LoginAdminController@login')->name('action-login-admin');
+Route::post('admin/logout','LoginAdminController@logout')->name('action-logout-admin');
+Route::get('admin/forgot', 'AdminResetpasswordController@index')->name('admin-forgot-password');
+Route::post('admin/reset', 'AdminResetpasswordController@resetPassAdmin')->name('admin-reset-password');
+Route::get('admin/sendLink', 'AdminResetpasswordController@sendLinkResetPasswordAdmin')->name('send-link-reset-password-admin');
+Route::get('admin/form-reset', 'AdminResetpasswordController@formReset')->name('form-reset-password-admin');
+Route::post('admin/form-reset', 'AdminResetpasswordController@updatePasswordAdmin');
 Route::middleware(Admin::class)->group(function() {
     Route::prefix('admin')->group(function(){
         
@@ -48,6 +51,9 @@ Route::middleware(Admin::class)->group(function() {
         Route::get('manage-video', 'AdminManageController@manageVideo')->name('manage-video');
         Route::get('manage-video/{id}', 'AdminManageController@indexEditVideo')->name('edit-video');
         Route::post('manage-video/{id}', 'AdminManageController@editVideo')->name('edit-video');
+        Route::post('delete-video/{id}', 'AdminManageController@deleteVideo')->name('delete-video');
+        Route::post('/link-warning', 'AdminManageController@sendWarningVideo')->name('send-warning');
+
     
         // Manage Video Type
         Route::prefix('manage-videotype')->group(function(){

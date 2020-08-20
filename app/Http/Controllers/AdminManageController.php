@@ -17,6 +17,7 @@ use Doctrine\Inflector\Rules\Substitutions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AdminManageController extends Controller
 {   
@@ -117,6 +118,7 @@ class AdminManageController extends Controller
     public function manageVideo()
     {
         $videos = Video::all();
+        
         return view('admin.manage.video', compact('videos'));
     }
 
@@ -140,17 +142,39 @@ class AdminManageController extends Controller
 
         return redirect()->back()->with('success','Edit video success!');
     }
+
+    public function sendWarningVideo()
+    {
+        return view('admin.auth.send-email');
+    }
+
+    public function deleteVideo(Request $request,$id)
+    {
+        $video = Video::find($id);
+        $email = $video->user->email;
+        
+
+        $data = [
+            'content' => trim($request->text),
+            'email' => $email,
+        ];
+        Mail::send('admin.auth.send-email', $data, function($message) use ($email) {
+            $message->to($email)->subject('Warning about video');
+        });
+        $video->delete();
+        return redirect()->back()->with('success','Delete video success!');
+    }
+
     // Video Type
     public function manageVideoType()
     {
         $videotypes = VideoType::all();
-
         return view('admin.manage.video-type', compact('videotypes'));
     }
 
-    public static function getCountVideoInVideoType($i) {
+    public static function getCountVideoInVideoType($i) 
+    {
         $videotypes = VideoType::all();
-
         return count($videotypes[$i]->videos);
     }
 
@@ -296,4 +320,14 @@ class AdminManageController extends Controller
         return view('admin.manage.vote', compact('votes'));
     }
 
+    public static function getTotalLike($VideoID)
+    {
+        $getVotes = Vote::where('type', 'up')->where('voteable_id', $VideoID)->get();
+        return count($getVotes);
+    }
+    public static function getTotalDisLike($VideoID)
+    {
+        $getVotes = Vote::where('type', 'down')->where('voteable_id', $VideoID)->get();
+        return count($getVotes);
+    }
 }

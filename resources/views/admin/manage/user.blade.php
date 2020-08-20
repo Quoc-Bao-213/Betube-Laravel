@@ -45,10 +45,33 @@
                     <td>{{ $user->description }}</td>
                     <td>{{ count($user->videos) }}</td>
                     <td>
+                      <a href= "{{ route('edit-user', $user->id)}}" type="button" class="btn btn-round btn-warning "><i class="fa fa-pencil"></i></a>         
+                      <!-- Button trigger modal -->
+                      <button type="submit" class="btn btn-round btn-primary" data-toggle="modal" data-target="{{'#exampleModalCenter'.$user->id}}"><i class="fa fa-trash"></i></button>
+                      <!-- Modal -->
                       <form action="{{ route('delete-user', $user->id) }}" method="POST">
                         @csrf
-                        <a href= "{{ route('edit-user', $user->id)}}" type="button" class="btn btn-round btn-warning "><i class="fa fa-pencil"></i></a>
-                        <button type="submit" class="btn btn-round btn-primary "><i class="fa fa-trash"></i></button>
+                        <div class="modal fade" id="{{'exampleModalCenter'.$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Delete User Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <h4 class="text-center">
+                                Are you sure delete this user ?
+                                </h4>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="submit" class="btn btn-danger">Delete</button>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                       </form> 
                     </td>
                   </tr>
@@ -68,4 +91,12 @@
   <!-- Datatables -->
   <script src="{{ asset('../vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+  {{-- <script type="text/javascript">
+  var user_id;
+  $(document).on('click', '.delete', function(){
+    user_id = $(this).attr('id');
+    $('#confirmModal').modal('show');
+  });
+  $('#')
+  </script> --}}
 @endsection

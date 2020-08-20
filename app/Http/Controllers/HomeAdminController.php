@@ -24,7 +24,7 @@ class HomeAdminController extends Controller
           $getTopUserSubscriber =  json_encode($selectTopUserSubscriber);
   
           // top video most view
-          $selectTopViewVideo = Video::orderByDesc('total_views')->limit(5)->get();    
+          $selectTopViewVideo = Video::where('total_views','>=', 1000)->orderByDesc('total_views')->limit(5)->get();    
           $getTopViewVideo =  json_encode($selectTopViewVideo);
   
           // top video most like 

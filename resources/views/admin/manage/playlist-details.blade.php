@@ -64,10 +64,32 @@
                         </video>
                     </td>
                     <td>
-                        <form action="{{ route('delete-playlistDetail', $playlistDetail->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-round btn-primary "><i class="fa fa-trash"></i></button>
-                        </form> 
+                      <button type="submit" class="btn btn-round btn-primary" data-toggle="modal" data-target="{{'#exampleModalCenter'.$playlistDetail->id}}"><i class="fa fa-trash"></i></button>
+                      <!-- Modal -->
+                      <form action="{{ route('delete-playlistDetail', $playlistDetail->id) }}" method="POST">
+                        @csrf
+                        <div class="modal fade" id="{{'exampleModalCenter'.$playlistDetail->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Video From Playlist Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <h4 class="text-center">
+                                Are you sure remove video from playlist  ?
+                                </h4>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="submit" class="btn btn-danger">Delete</button>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </form> 
                     </td>
                   </tr>
                  @endforeach

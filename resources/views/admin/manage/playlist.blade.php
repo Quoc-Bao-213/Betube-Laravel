@@ -38,12 +38,34 @@
                     <td>{{ $playlist->description }}</td>
                     <td>{{ $playlist->user->name }}</td>
                     <td>
-                        <form action="{{ route('delete-playlist', $playlist->id) }}" method="POST">
-                          @csrf
-                            <a href="{{ route('manage-playlistDetail', $playlist->id) }}" type="button" class="btn btn-round btn-success"><i class="fa fa-file-audio-o"></i></a>
-                            <button type="submit" class="btn btn-round btn-primary "><i class="fa fa-trash"></i></button>
-                            <a href= "{{ route('edit-playlists', $playlist->id)}}" type="button" class="btn btn-round btn-warning "><i class="fa fa-pencil"></i></a>
-                          </form> 
+                      <a href="{{ route('manage-playlistDetail', $playlist->id) }}" type="button" class="btn btn-round btn-success"><i class="fa fa-file-audio-o"></i></a>
+                      <a href= "{{ route('edit-playlists', $playlist->id)}}" type="button" class="btn btn-round btn-warning "><i class="fa fa-pencil"></i></a>
+                      <button type="submit" class="btn btn-round btn-primary" data-toggle="modal" data-target="{{'#exampleModalCenter'.$playlist->id}}"><i class="fa fa-trash"></i></button>
+                      <!-- Modal -->
+                      <form action="{{ route('delete-playlist', $playlist->id) }}" method="POST">
+                        @csrf
+                        <div class="modal fade" id="{{'exampleModalCenter'.$playlist->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Playlist Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <h4 class="text-center">
+                                Are you sure delete this playlist ?
+                                </h4>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="submit" class="btn btn-danger">Delete</button>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </form> 
                     </td>
                   </tr>
                  @endforeach

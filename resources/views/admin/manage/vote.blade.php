@@ -29,7 +29,7 @@
                             <td>{{ $vote->type }}</td>
                             <td>{{ $vote->voteable_type }}</td>
                             <td>{{ $vote->voteable->title }}</td>  
-                            <td>{{ $vote->voteable->user->name }}</td>  
+                            <td>{{ $vote->voteable->user->name }}</td>                
                         </tr>
                     @endforeach             
                 </tbody>

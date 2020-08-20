@@ -31,7 +31,7 @@ class ResetpasswordController extends Controller
             return redirect()->back()->with('error','Email your type not exists!');
         }
 
-        $token = Crypt::encrypt(time() + 60*60);
+        $token = Crypt::encrypt(time() + 180);
         $user->token = $token;
         $user->save();
         
@@ -52,10 +52,10 @@ class ResetpasswordController extends Controller
     
     public function processChangePassword(ResetpasswordRequest $request)
     { 
-            $email = $_GET['email'];
-            $password = Hash::make($request->new_password);
-            
-            DB::update("update users set password = '".$password."' where email = '".$email."'");
-            return redirect()->back()->with('success','Change password success!');
+        $email = $_GET['email'];
+        $password = Hash::make($request->new_password);
+        
+        DB::update("update users set password = '".$password."' where email = '".$email."'");
+        return redirect()->back()->with('success','Change password success!');
     }
 }

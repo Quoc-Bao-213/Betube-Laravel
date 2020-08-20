@@ -41,12 +41,34 @@
                   @endphp
                   </td>   
                   <td>
-                    <form action="{{ route('delete-videotype', $videotype->id) }}" method="POST">
-                      @csrf
-                      <a href="{{ route("edit-videotype" ,  $videotype->id )}}" type="button"
-                        class="btn btn-round btn-warning"><i class="fa fa-pencil"></i></a>
-                      <button type="submit" class="btn btn-round btn-primary"><i class="fa fa-trash"></i></button>
-                    </form>
+                    <a href="{{ route("edit-videotype" ,  $videotype->id )}}" type="button"
+                      class="btn btn-round btn-warning"><i class="fa fa-pencil"></i></a>
+                    <button type="submit" class="btn btn-round btn-primary" data-toggle="modal" data-target="{{'#exampleModalCenter'.$videotype->id}}"><i class="fa fa-trash"></i></button>
+                    <!-- Modal -->
+                      <form action="{{ route('delete-videotype', $videotype->id) }}" method="POST">
+                        @csrf
+                        <div class="modal fade" id="{{'exampleModalCenter'.$videotype->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Video Type Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <h4 class="text-center">
+                                Are you sure delete this video type ?
+                                </h4>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="submit" class="btn btn-danger">Delete</button>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </form> 
                   </td>
                 </tr>
                 @endforeach
