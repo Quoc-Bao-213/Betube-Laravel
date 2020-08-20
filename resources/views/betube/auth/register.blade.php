@@ -74,33 +74,45 @@
                            
                             <form method="POST" data-abide novalidate>
                                 @csrf
-                                {{-- <div data-abide-error class="alert callout" style="display: none;">
-                                    <p><i class="fa fa-exclamation-triangle"></i> There are some errors in your form.
-                                    </p>
-                                </div> --}}
-
-                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('name') }}</span>
+                                
+                                @if ($errors->first('name'))
+                                    <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('name') }}</span>
+                                @else
+                                    <span style="color: #e96969; font-size: 0.9em">*The Name field is required.</span>
+                                @endif
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-user"></i></span>
                                     <input class="input-group-field" name="name" type="text"
                                         placeholder="Enter your name" >
                                 </div>
                                 
-                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('email') }}</span>
+                                @if ($errors->first('email'))
+                                    <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('email') }}</span>
+                                @else
+                                    <span style="color: #e96969; font-size: 0.9em">*The Email field is required.</span>
+                                @endif
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
                                     <input class="input-group-field" name="email" type="email"
                                         placeholder="Enter your email" >
                                 </div>
                                
-                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('password') }}</span>
+                                @if ($errors->first('password'))
+                                    <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('password') }}</span>
+                                @else
+                                    <span style="color: #e96969; font-size: 0.9em">*The Password field is required.</span>
+                                @endif
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-lock"></i></span>
                                     <input type="password" id="password" name="password"
                                         placeholder="Enter your password" >
                                 </div>
-
-                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('retype_password') }}</span>
+                                
+                                @if ($errors->first('retype_password'))
+                                    <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('retype_password') }}</span>
+                                @else
+                                    <span style="color: #e96969; font-size: 0.9em">*The Retype Password field is required.</span>
+                                @endif
                                 <div class="input-group">
                                     <span class="input-group-label"><i class="fa fa-lock"></i></span>
                                     <input type="password" name="retype_password" placeholder="Re-type your password">

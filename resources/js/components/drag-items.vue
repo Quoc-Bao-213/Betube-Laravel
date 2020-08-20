@@ -100,15 +100,15 @@ export default {
             return index + 1
         },
         getDataPlaylist() {
-            for (var i = 0; i < this.playlistDetail.length; i++) {
+            this.playlistDetail.map(item => {
                 this.playlists.push({
                     sources: [{
-                        src: 'http://localhost:8000/storage/videos/' + this.playlistDetail[i].videos.id + '/' + this.playlistDetail[i].videos.id + '.m3u8',
+                        src: 'http://localhost:8000/storage/videos/' + item.videos.id + '/' + item.videos.id + '.m3u8',
                         type: 'application/x-mpegURL'
                     }],
-                    poster: this.playlistDetail[i].videos.thumbnail,
+                    poster: item.videos.thumbnail,
                 })
-            }
+            })
 
             EventBus.$emit('inputData', this.playlists)
         },

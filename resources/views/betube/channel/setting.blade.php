@@ -67,7 +67,7 @@
                     </div>
                 </subscribe-button>
                 
-                <div class="profile-share">
+                {{-- <div class="profile-share">
                     <div class="easy-share" data-easyshare data-easyshare-http data-easyshare-url="http://joinwebs.com/">
                         <!-- Facebook -->
                         <button data-easyshare-button="facebook">
@@ -92,7 +92,8 @@
 
                         <div data-easyshare-loader>Loading...</div>
                     </div>
-                </div>
+                </div> --}}
+
                 <div class="clearfix">
                     <div class="profile-author-name float-left">
                         <h4>
@@ -180,15 +181,23 @@
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label> Name:
-                                                <input type="text" name="name" value="{{ $user->name }}" placeholder="Enter your name..">
+                                                <input type="text" name="name" value="{{ $user->name }}" placeholder="Enter your name.." style="margin-bottom: 5px;">
                                                 </label>
-                                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('name') }}</span>
+                                                @if ($errors->first('name'))
+                                                    <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('name') }}</span>
+                                                @else
+                                                    <span style="color: #e96969; font-size: 0.9em">*The Name field is required.</span>
+                                                @endif
                                             </div>
                                             <div class="medium-6 columns">
                                                 <label>Channel Name:
-                                                    <input type="text" name="channel_name" value="{{ $user->channel_name }}"  placeholder="Enter your channel name..">
+                                                    <input type="text" name="channel_name" value="{{ $user->channel_name }}"  placeholder="Enter your channel name.." style="margin-bottom: 5px;">
                                                 </label>
-                                                <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('channel_name') }}</span>
+                                                @if ($errors->first('channel_name'))
+                                                    <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('channel_name') }}</span>
+                                                @else
+                                                    <span style="color: #e96969; font-size: 0.9em">*The Channel Name field is required.</span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -209,7 +218,7 @@
                                             </div>
                                             <div class="medium-6 columns end">
                                                 <label>Phone:
-                                                <input type="tel" name="phone" value="{{ $user->phone }}" placeholder="Enter your phone..">
+                                                <input type="tel" name="phone" value="{{ $user->phone }}" placeholder="Enter your phone.." style="margin-bottom: 5px;">
                                                 </label>
                                                 <span style="color: #e96969; font-size: 0.9em">{{ $errors->first('phone') }}</span>
                                             </div>
