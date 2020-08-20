@@ -19,7 +19,7 @@
                     </div>
                 </subscribe-button>
                 
-                <div class="profile-share">
+                {{-- <div class="profile-share">
                     <div class="easy-share" data-easyshare data-easyshare-http data-easyshare-url="http://joinwebs.com/">
                         <!-- Facebook -->
                         <button data-easyshare-button="facebook">
@@ -44,7 +44,8 @@
 
                         <div data-easyshare-loader>Loading...</div>
                     </div>
-                </div>
+                </div> --}}
+
                 <div class="clearfix">
                     <div class="profile-author-name float-left">
                         <h4>

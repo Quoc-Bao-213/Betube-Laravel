@@ -164,7 +164,7 @@
                                     
                                     <votes :default_votes="{{ $video->votes }}" :entity="{{ $video }}"></votes>
 
-                                    <div class="float-right easy-share" data-easyshare data-easyshare-http data-easyshare-url="{{ $url }}">
+                                    {{-- <div class="float-right easy-share" data-easyshare data-easyshare-http data-easyshare-url="{{ $url }}">
                                         <!-- Total -->
                                         <button data-easyshare-button="total">
                                             <span>Total</span>
@@ -179,7 +179,8 @@
                                         <span data-easyshare-button-count="facebook">0</span>
 
                                         <div data-easyshare-loader>Loading...</div>
-                                    </div>
+                                    </div> --}}
+
                                 </div>
                             </div>
                         </div>

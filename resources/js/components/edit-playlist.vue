@@ -8,7 +8,7 @@
                 <div class="large-12 columns">
                     <div class="widgetBox">
                         <div class="playlist-thumb">
-                            <a :href="'/videos/' + playlistDetails[0].video_id + '/list/' + defaultPlaylist.id">
+                            <a :href="linkPlaylist">
                                 <img :src="newThumbnailPlaylist" width="320" height="230" alt="thumbnail">
                                 <div class="text-center playlist-thumb-text"><i style="margin-right: 10px" class="fa fa-play"></i>Play all</div>
                             </a>
@@ -224,8 +224,14 @@ export default {
             inputTitle: this.defaultPlaylist.name,
             playlist: this.defaultPlaylist,
             playlistDetails: this.playlistDetail,
-            newThumbnailPlaylist: this.thumbnailPlaylist
+            newThumbnailPlaylist: this.thumbnailPlaylist,
+            linkPlaylist: ''
         }
+    },
+
+    mounted() {
+        if (this.playlistDetails[0])
+            this.linkPlaylist = '/videos/' + this.playlistDetails[0].video_id + '/list/' + this.defaultPlaylist.id
     },
 
     methods: {
@@ -267,7 +273,10 @@ export default {
             axios.post(`/playlist-detail/${id}`)
             .then(() => {
                 this.playlistDetails = this.playlistDetails.filter(item => item.id !== id)
-                this.newThumbnailPlaylist = this.playlistDetails[0].videos.thumbnail
+                if (this.playlistDetails[0])
+                    this.newThumbnailPlaylist = this.playlistDetails[0].videos.thumbnail
+                else
+                    this.newThumbnailPlaylist = 'http://localhost:8000/../images/playlist.jpg'
                 console.log('Delete Ok')
             })
         }
