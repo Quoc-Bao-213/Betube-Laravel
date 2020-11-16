@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $user1 = factory(User::class)->create([
-            'email' => 'taquocbao.it.99@gmail.com'
+            'email' => 'voez210399@gmail.com'
         ]);
 
         $user2 = factory(User::class)->create([
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         factory(User::class)->create([
-            'email' => 'admin@gmail.com',
+            'email' => 'taquocbao.it.99@gmail.com',
             'is_admin' => true
         ]);
 

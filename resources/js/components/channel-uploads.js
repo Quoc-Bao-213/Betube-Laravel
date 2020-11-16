@@ -1,3 +1,5 @@
+const { split } = require("lodash")
+
 Vue.component('channel-uploads', {
     props: {
         channel: {
@@ -25,9 +27,11 @@ Vue.component('channel-uploads', {
                 const form = new FormData()
                 
                 this.progress[video.name] = 0
-  
+                
+                var nameVideo = split(video.name, '.mp4')
+
                 form.append('video', video)
-                form.append('title', video.name)
+                form.append('title', nameVideo[0])
                 form.append('video_type_id', this.videoType)
               
                 return axios.post(`/upload-video/${this.channel.id}/videos`, form, {

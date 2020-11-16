@@ -25,7 +25,7 @@ class AdminResetpasswordRequest extends FormRequest
     {
         return [
             'new_password' => 'required',
-            'retype_password' => 'required|same:password'
+            'retype_password' => 'required|same:new_password'
         ];
     }
 }

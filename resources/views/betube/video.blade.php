@@ -163,6 +163,7 @@
                                     <playlist :video="{{ $video }}" :playlist-detail="{{ $playlistDetail }}"  @if(Auth::user()) :user="{{ $user }}" @endif></playlist>
                                     
                                     <votes :default_votes="{{ $video->votes }}" :entity="{{ $video }}"></votes>
+                                    {{-- <votes :entity="{{ $video }}"></votes> --}}
 
                                     {{-- <div class="float-right easy-share" data-easyshare data-easyshare-http data-easyshare-url="{{ $url }}">
                                         <!-- Total -->
