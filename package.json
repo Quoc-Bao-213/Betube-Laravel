@@ -24,7 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "chart.js": "^2.9.3",
+        "chart.js": "^2.9.4",
         "numeral": "^2.0.6",
         "video.js": "^7.8.4",
         "videojs-contrib-quality-levels": "^2.0.9",
