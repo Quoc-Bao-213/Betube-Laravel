@@ -79,7 +79,7 @@
                     <div class="widgetBox">
                         <div class="playlist-thumb">
                             <a href="javascript:void(0)">
-                                <img src="http://localhost:8000/../images/playlist.jpg" width="320" height="230" alt="thumbnail">
+                                <img src="http://laratube.com/../images/playlist.jpg" width="320" height="230" alt="thumbnail">
                                 <div class="text-center playlist-thumb-text"><i style="margin-right: 10px" class="fa fa-play"></i>Play all</div>
                             </a>
                         </div>
@@ -276,7 +276,7 @@ export default {
                 if (this.playlistDetails[0])
                     this.newThumbnailPlaylist = this.playlistDetails[0].videos.thumbnail
                 else
-                    this.newThumbnailPlaylist = 'http://localhost:8000/../images/playlist.jpg'
+                    this.newThumbnailPlaylist = 'http://laratube.com/../images/playlist.jpg'
                 console.log('Delete Ok')
             })
         }

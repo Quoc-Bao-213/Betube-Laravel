@@ -103,7 +103,7 @@ export default {
             this.playlistDetail.map(item => {
                 this.playlists.push({
                     sources: [{
-                        src: 'http://localhost:8000/storage/videos/' + item.videos.id + '/' + item.videos.id + '.m3u8',
+                        src: 'http://laratube.com/storage/videos/' + item.videos.id + '/' + item.videos.id + '.m3u8',
                         type: 'application/x-mpegURL'
                     }],
                     poster: item.videos.thumbnail,
