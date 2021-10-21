@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $videos = Video::all();
+        $videos = Video::where('percentage', 100)->get();
         $videoTypes = VideoType::all();
         
         return View('home', compact('videos', 'videoTypes'));
