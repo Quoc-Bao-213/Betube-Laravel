@@ -7,8 +7,6 @@ use Illuminate\Database\Seeder;
 use App\User;
 use App\Video;
 use App\VideoType;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 class DatabaseSeeder extends Seeder
 {
     /**

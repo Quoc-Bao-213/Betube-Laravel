@@ -89,7 +89,6 @@ Route::middleware(Admin::class)->group(function() {
     });
 });
 
-
 // Register
 Route::get('/register','RegisterController@index')->name('register')->middleware('guest');
 Route::post('/register','RegisterController@register')->name('actionRegister');
@@ -178,5 +177,4 @@ Route::middleware('auth')->group(function() {
     // Playlist Detail
     Route::put('playlist-detail/update', 'PlaylistController@updatePlaylistDetail');
     Route::post('playlist-detail/{id}', 'PlaylistController@destroy');
-
 });

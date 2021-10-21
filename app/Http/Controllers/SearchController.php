@@ -6,7 +6,6 @@ use App\User;
 use App\Video;
 use App\VideoType;
 use App\Vote;
-use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {

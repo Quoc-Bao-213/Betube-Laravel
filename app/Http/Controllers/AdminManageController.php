@@ -13,7 +13,6 @@ use App\User;
 use App\Video;
 use App\VideoType;
 use App\Vote;
-use Doctrine\Inflector\Rules\Substitutions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
