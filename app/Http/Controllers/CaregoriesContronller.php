@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Video;
 use App\VideoType;
 use App\Vote;
-use Illuminate\Http\Request;
 
 class CaregoriesContronller extends Controller
 {

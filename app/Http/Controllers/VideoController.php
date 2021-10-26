@@ -14,7 +14,7 @@ class VideoController extends Controller
 {
     public function show(Video $video, Request $request)
     {   
-        $videos = Video::all();
+        $videos = Video::where('percentage', 100)->get();
         $videoType = VideoType::all();
         $user = User::find(Auth::id());
         $playlistDetail = PlaylistDetail::all();
@@ -31,7 +31,7 @@ class VideoController extends Controller
 
     public function showWithPlaylist(Video $video, Request $request, $playlistID)
     {   
-        $videos = Video::all();
+        $videos = Video::where('percentage', 100)->get();
         $videoType = VideoType::all();
         $user = User::find(Auth::id());
         $playlist = Playlist::find($playlistID);

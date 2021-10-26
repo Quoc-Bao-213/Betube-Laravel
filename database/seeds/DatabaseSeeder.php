@@ -7,8 +7,6 @@ use Illuminate\Database\Seeder;
 use App\User;
 use App\Video;
 use App\VideoType;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -54,6 +52,7 @@ class DatabaseSeeder extends Seeder
         factory(VideoType::class)->create([
             'name' => "Technology"
         ]);
+
         factory(VideoType::class)->create([
             'name' => "News"
         ]);
@@ -70,13 +69,11 @@ class DatabaseSeeder extends Seeder
             'name' => "Game"
         ]);
 
-      
         // $video = factory(Video::class, 8)->create([
         //     'user_id' => $user1->id,
         //     'total_views' => 1000
         // ]);
         
-
         // factory(Playlist::class)->create([
         //     'user_id' => $user1->id
         // ]);
