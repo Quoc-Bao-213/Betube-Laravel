@@ -90,6 +90,7 @@ class User extends Authenticatable implements HasMedia
     {
         if (!auth()->check())
             return false;
+            
         return $this->id === auth()->user()->id;
     }
 
@@ -127,10 +128,4 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->avatar();
     }
-
-    public function isAdmin()
-    {
-        return $this->is_admin === 'true';
-    }
-
 }
