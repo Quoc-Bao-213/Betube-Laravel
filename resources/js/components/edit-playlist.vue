@@ -79,7 +79,7 @@
                     <div class="widgetBox">
                         <div class="playlist-thumb">
                             <a href="javascript:void(0)">
-                                <img src="http://laratube.com/../images/playlist.jpg" width="320" height="230" alt="thumbnail">
+                                <img :src="location.protocol + '//' + location.host + '/../images/playlist.jpg'" width="320" height="230" alt="thumbnail">
                                 <div class="text-center playlist-thumb-text"><i style="margin-right: 10px" class="fa fa-play"></i>Play all</div>
                             </a>
                         </div>
@@ -153,7 +153,7 @@
                     </div>
 
                     <draggable :list="playlistDetails" :options="{animation:200, handle:'.move-video'}" :element="'div'" @change="update">
-                        <div v-for="(item, index) in playlistDetails" style="height: 102px;" :key="item.id" class="profile-video">
+                        <div v-for="(item) in playlistDetails" style="height: 102px;" :key="item.id" class="profile-video">
                                 <div class="media-object stack-for-small">
                                     <div class="media-object-section media-img-content move-video">
                                         <div style="border-right: 1px solid #ececec; height: 100px; width: 35px" class="abc">
@@ -258,7 +258,7 @@ export default {
         deletePlaylist() {
             axios.post(`/playlist/${this.defaultPlaylist.id}/delete`)
                 .then(() => {
-                    console.log('Delete Ok')
+                    // console.log('Delete Ok')
                 })
         },
         update() {
@@ -266,7 +266,7 @@ export default {
                 playlistDetails: this.playlistDetails
             }).then((response) => {
                 this.newThumbnailPlaylist = this.playlistDetails[0].videos.thumbnail
-                console.log('Update Success')
+                // console.log('Update Success')
             })
         },
         deleteItemVideo(id){
@@ -276,8 +276,8 @@ export default {
                 if (this.playlistDetails[0])
                     this.newThumbnailPlaylist = this.playlistDetails[0].videos.thumbnail
                 else
-                    this.newThumbnailPlaylist = 'http://laratube.com/../images/playlist.jpg'
-                console.log('Delete Ok')
+                    this.newThumbnailPlaylist = location.protocol + '//' + location.host + '/../images/playlist.jpg'
+                // console.log('Delete Ok')
             })
         }
     }

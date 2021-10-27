@@ -137,7 +137,7 @@ export default {
                 await axios.post(`/playlist-detail/${temp}`)
                     .then(() => {
                         this.playlistDetails = this.playlistDetails.filter(p => p.id !== temp)
-                        console.log('delete success')
+                        // console.log('delete success')
                     })
             } else {
                 await axios.post(`/playlist/${id}/video/${this.video.id}`)
@@ -146,7 +146,7 @@ export default {
                             ...this.playlistDetails,
                             data
                         ]
-                        console.log("add to playlist")
+                        // console.log("add to playlist")
                     })
             }
         }

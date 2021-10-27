@@ -72,7 +72,7 @@ export default {
                     .then(() => {
                         var findUser = this.upvotes.find(v => v.user_id === __auth().id)
                         this.votes = this.votes.filter(v => v.user_id !== findUser.user_id)
-                        console.log('Delete')
+                        // console.log('Delete')
                     })
                 return
             }
@@ -91,7 +91,7 @@ export default {
                     .then(() => {
                         var findUser = this.downvotes.find(v => v.user_id === __auth().id)
                         this.votes = this.votes.filter(v => v.user_id !== findUser.user_id)
-                        console.log('Delete')
+                        // console.log('Delete')
                     })
                 return
             }
@@ -100,7 +100,7 @@ export default {
             axios.post(`/votes/${this.entity.id}/${type}`)
                 .then(({ data }) => {
                     // console.log(this.votes)
-                    console.log('Votes')
+                    // console.log('Votes')
                     if (this.upvoted || this.downvoted) {
                         this.votes = this.votes.map(v => {
                             if(v.user_id === __auth().id) {

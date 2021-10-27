@@ -85,8 +85,8 @@ export default {
             });
             
             qualityLevels.on('change', function() {
-                console.log('Quality Level changed!')
-                console.log('New level:', qualityLevels[qualityLevels.selectedIndex])
+                // console.log('Quality Level changed!')
+                // console.log('New level:', qualityLevels[qualityLevels.selectedIndex])
             })
 
             if (this.getIdVideo[2] && this.getIdVideo[3]) {

@@ -56,7 +56,7 @@ Vue.component('channel-uploads', {
                             
                             if(data.percentage === 100) {
                                 clearInterval(this.intervals[video.id])
-                                console.log('upload ok')
+                                // console.log('upload ok')
                             }
 
                             this.videos = this.videos.map(v => {

@@ -103,7 +103,7 @@ export default {
             this.playlistDetail.map(item => {
                 this.playlists.push({
                     sources: [{
-                        src: 'http://laratube.com/storage/videos/' + item.videos.id + '/' + item.videos.id + '.m3u8',
+                        src: location.protocol + '//' + location.host + '/storage/videos/' + item.videos.id + '/' + item.videos.id + '.m3u8',
                         type: 'application/x-mpegURL'
                     }],
                     poster: item.videos.thumbnail,
@@ -126,7 +126,7 @@ export default {
             axios.post(`/playlist-detail/${id}`)
             .then(() => {
                 this.playlistDetail = this.playlistDetail.filter(item => item.id !== id)
-                console.log('Delete Ok')
+                // console.log('Delete Ok')
             })
         },
     }
