@@ -11,7 +11,7 @@ class SearchController extends Controller
 {
     public function index()
     {   
-        $videos = Video::all();
+        $videos = Video::where('percentage', 100)->get();
         $allCategories = VideoType::all();
         $query = request()->search;
         $searchVideos = collect();

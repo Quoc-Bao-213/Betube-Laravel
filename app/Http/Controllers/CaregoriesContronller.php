@@ -13,7 +13,7 @@ class CaregoriesContronller extends Controller
         $categories = VideoType::find($id);
         $allCategories = VideoType::all();
         $videos = Video::where('video_type_id', $id)->paginate(10);
-        $sildeVideo = Video::all();
+        $sildeVideo = Video::where('percentage', 100)->get();
 
         return view('betube.categories', compact('categories', 'allCategories', 'videos', 'sildeVideo'));
     }
