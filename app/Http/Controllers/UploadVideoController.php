@@ -8,6 +8,7 @@ use App\Jobs\Videos\CreateVideoThumbnail;
 use App\User;
 use App\Video;
 use App\VideoType;
+use FFMpeg;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,9 +27,22 @@ class UploadVideoController extends Controller
     
     public function store(UpdateVideoRequest $request, User $channel)
     {
+        $ffprobe = FFMpeg\FFProbe::create();
+        $duration = $ffprobe->format($request->video)->get('duration');
+
+        $durmins = floor($duration / 60);
+        $dursecs = floor($duration - $durmins * 60);
+
+        if ($dursecs < 10)
+            $dursecs = "0" . $dursecs;
+        
+        if ($durmins < 10)
+            $durmins = "0" . $durmins;
+
         $video = $channel->videos()->create([
             'title' => $request->title,
             'path' => $request->video->store("channels/{$channel->id}"),
+            'duration' => "$durmins:$dursecs",
             'video_type_id' => $request->video_type_id
         ]);
 
@@ -101,7 +115,6 @@ class UploadVideoController extends Controller
         $video = Video::find($id);
         
         $video->delete();
-        
         
         return redirect()->back()->with('success','Deleted Video!');
     }

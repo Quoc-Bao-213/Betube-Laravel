@@ -54,7 +54,7 @@ Vue.component('channel-uploads', {
                     this.intervals[video.id] = setInterval(() => {
                         axios.get(`/videos/${video.id}`).then(({ data }) => {
                             
-                            if(data.percentage === 100) {
+                            if (data.percentage === 100) {
                                 clearInterval(this.intervals[video.id])
                                 // console.log('upload ok')
                             }

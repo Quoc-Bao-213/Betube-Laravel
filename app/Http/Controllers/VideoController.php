@@ -50,7 +50,6 @@ class VideoController extends Controller
     public function updateViews(Video $video)
     {
         $video->increment('total_views');
-        $video->duration = request()->duration;
         $video->save();
 
         return response()->json(['+1 View']);

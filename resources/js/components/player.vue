@@ -128,28 +128,8 @@ export default {
             this.player.on('timeupdate', function() {
                 var percentagePlayed = Math.ceil(this.currentTime() / this.duration() * 100)
 
-                var curmins = Math.floor(this.currentTime() / 60)
-                var cursecs = Math.floor(this.currentTime() - curmins * 60)
-                var durmins = Math.floor(this.duration() / 60)
-                var dursecs = Math.floor(this.duration() - durmins * 60)
-
-                if(cursecs < 10){ cursecs = "0" + cursecs }
-                if(dursecs < 10){ dursecs = "0" + dursecs }
-                if(curmins < 10){ curmins = "0" + curmins }
-                if(durmins < 10){ durmins = "0" + durmins }
-                // console.log(curmins + ":" + cursecs)
-                // console.log(durmins + ":" + dursecs)
-                var durationVideo = durmins + ":" + dursecs
-
                 if (percentagePlayed == 95 && !viewLogged) {
                     axios.post('/videos/' + window.CURRENT_VIDEO)
-                    viewLogged = true
-                }
-
-                if (percentagePlayed == 1 && !viewLogged) {
-                    axios.post('/videos/' + window.CURRENT_VIDEO, {
-                        duration: durationVideo
-                    })
                     viewLogged = true
                 }
             })
