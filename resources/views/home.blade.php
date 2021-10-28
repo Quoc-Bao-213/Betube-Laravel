@@ -185,12 +185,12 @@
             <div class="tabs-content" data-tabs-content="popularVideos">
                 <div class="tabs-panel is-active" id="popular-all">
                     <div class="row list-group">
-                        @foreach($videos as $video) 
+                        @foreach($videos->sortByDesc('total_views') as $popularVideo) 
                         <div class="item large-3 medium-6 columns group-item-grid-default">
                             <div class="post thumb-border">
                                 <div class="post-thumb">
-                                    <img src="{{ asset( $video->thumbnail ) }}" alt="new video">
-                                    <a href="{{ route('video', $video->id ) }}" class="hover-posts">
+                                    <img src="{{ asset( $popularVideo->thumbnail ) }}" alt="new video">
+                                    <a href="{{ route('video', $popularVideo->id ) }}" class="hover-posts">
                                         <span><i class="fa fa-play"></i>Watch Video</span>
                                     </a>
                                     <div class="video-stats clearfix">
@@ -201,44 +201,44 @@
                                             <i class="fa fa-heart"></i>
                                             <span>
                                             @php
-                                                echo App\Http\Controllers\HomeController::getTotalLike($video->id);
+                                                echo App\Http\Controllers\HomeController::getTotalLike($popularVideo->id);
                                             @endphp
                                             </span>
                                         </div>
                                         <div class="thumb-stats pull-right">
-                                            <span>{{ $video->duration }}</span>
+                                            <span>{{ $popularVideo->duration }}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="post-des">
-                                    <h6><a class="text_overflow" href="{{ route('video', $video->id ) }}">{{ $video->title }}</a></h6>
+                                    <h6><a class="text_overflow" href="{{ route('video', $popularVideo->id ) }}">{{ $popularVideo->title }}</a></h6>
                                     <div class="post-stats clearfix">
                                         <p class="pull-left">
                                             <i class="fa fa-user"></i>
                                             <span>
-                                                <a href="{{ route('about-me', $video->user->id ) }}">
-                                                @if($video->user->channel_name)
-                                                {{ $video->user->channel_name }}
+                                                <a href="{{ route('about-me', $popularVideo->user->id ) }}">
+                                                @if($popularVideo->user->channel_name)
+                                                    {{ $popularVideo->user->channel_name }}
                                                 @else
-                                                {{ $video->user->name }}
+                                                    {{ $popularVideo->user->name }}
                                                 @endif
                                                 </a>
                                             </span>
                                         </p>
                                         <p class="pull-left">
                                             <i class="fa fa-clock-o"></i>
-                                            <span>{{ $video->created_at->toFormattedDateString() }}</span>
+                                            <span>{{ $popularVideo->created_at->toFormattedDateString() }}</span>
                                         </p>
                                         <p class="pull-left">
                                             <i class="fa fa-eye"></i>
-                                            <span>{{ $video->formatView($video->total_views) }}</span>   
+                                            <span>{{ $popularVideo->formatView($popularVideo->total_views) }}</span>   
                                         </p>
                                     </div>
                                     <div class="post-summary">
-                                        <p>{{ $video->description }}</p>
+                                        <p>{{ $popularVideo->description }}</p>
                                     </div>
                                     <div class="post-button">
-                                        <a href="{{ route('video', $video->id ) }}" class="secondary-button"><i class="fa fa-play-circle"></i>watch video</a>
+                                        <a href="{{ route('video', $popularVideo->id ) }}" class="secondary-button"><i class="fa fa-play-circle"></i>watch video</a>
                                     </div>
                                 </div>
                             </div>
