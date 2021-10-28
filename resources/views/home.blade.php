@@ -231,7 +231,7 @@
                                         </p>
                                         <p class="pull-left">
                                             <i class="fa fa-eye"></i>
-                                            <span>   {{ $video->formatView($newVideo->total_views) }}</span>   
+                                            <span>{{ $video->formatView($video->total_views) }}</span>   
                                         </p>
                                     </div>
                                     <div class="post-summary">
